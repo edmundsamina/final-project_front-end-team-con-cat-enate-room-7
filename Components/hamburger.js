@@ -8,6 +8,7 @@ import {
     MenuItem
   } from '@chakra-ui/react'
 import Link from 'next/link'
+import styles from '../styles/Burger.module.css'
 
 const Hamburger = () => {
     return (

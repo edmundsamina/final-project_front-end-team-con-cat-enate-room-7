@@ -1,6 +1,7 @@
 :root {
   --main-color: #448FFF;
   --second-color:#B2D1FF;
+  --white:#fff;
 }
 
 ::-moz-selection { /* Code for Firefox */
@@ -33,13 +34,19 @@ a {
 .navbar {
   display: flex;
   flex-flow: row;
-  justify-content: space-between;
-  align-items: baseline;
+  justify-content: center;
+  align-items: center;
 }
 
 .navbar h2 {
   color: var(--main-color);
+  font-size: 1.5em;
+  font-weight: 600;
 }
+
+.fixright{
+  position: fixed;
+  right: 0px;}
 
 
 @media (prefers-color-scheme: dark) {

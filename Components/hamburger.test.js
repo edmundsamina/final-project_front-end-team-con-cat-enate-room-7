@@ -14,6 +14,5 @@ it("check that the hamburger menu displays correctly when clicked", () => {
     const menu = screen.getByTestId("hamburger")
     fireEvent.click(menu)
     expect(screen.getByText("View Symptoms")).toBeInTheDocument();
-
 })
 })

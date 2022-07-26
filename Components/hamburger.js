@@ -11,7 +11,8 @@ import Link from 'next/link'
 
 const Hamburger = () => {
     return (
-        <Menu>
+      <div data-testid="hamburger">
+        <Menu >
   <MenuButton as={Button} rightIcon={<HamburgerIcon />}/>
   <MenuList>
   <Link href= "/pets">
@@ -37,6 +38,7 @@ const Hamburger = () => {
   </Link>
   </MenuList>
 </Menu>
+</div>
     )
 }
 

@@ -11,10 +11,10 @@ import Link from 'next/link'
 
 const Hamburger = () => {
     return (
-      <div data-testid="hamburger">
+      <div data-testid="hamburger" className='fixright'>
         <Menu >
-  <MenuButton as={Button} rightIcon={<HamburgerIcon />}/>
-  <MenuList>
+  <MenuButton as={Button} rightIcon={<HamburgerIcon />} className={styles.menubutton}/>
+  <MenuList className={styles.menu}>
   <Link href= "/pets">
     <MenuItem>Home</MenuItem>
   </Link>

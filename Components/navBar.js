@@ -1,7 +1,11 @@
-import React from 'react'
+import React from "react";
+import Hamburger from "./hamburger.js";
 
-export default function navBar() {
+export default function NavBar() {
   return (
-    <div>navBar</div>
-  )
+    <div>
+      <p>Image placeholder</p>
+      <Hamburger />
+    </div>
+  );
 }

@@ -1,11 +1,10 @@
-
-import Hamburger from '../Components/hamburger'
+import NavBar from '../Components/navBar'
 import styles from '../styles/Home.module.css'
 
 export default function Home() {
   return (
     <div className={styles.container}>
-      <Hamburger />
+      <NavBar />
     </div>
   )
 }

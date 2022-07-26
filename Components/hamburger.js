@@ -5,20 +5,14 @@ import {
     Menu,
     MenuButton,
     MenuList,
-    MenuItem,
-    MenuItemOption,
-    MenuGroup,
-    MenuOptionGroup,
-    MenuDivider,
+    MenuItem
   } from '@chakra-ui/react'
 import Link from 'next/link'
 
 const Hamburger = () => {
     return (
         <Menu>
-  <MenuButton as={Button} rightIcon={<HamburgerIcon />}>
-    Actions
-  </MenuButton>
+  <MenuButton as={Button} rightIcon={<HamburgerIcon />}/>
   <MenuList>
   <Link href= "/pets">
     <MenuItem>Home</MenuItem>

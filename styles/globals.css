@@ -48,7 +48,19 @@ a {
   position: fixed;
   right: 0px;}
 
+.addButton {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: center;
+  margin:auto;
+  text-align: center;
+}
 
+.addText{
+  color:var(--main-color);
+  
+}
 @media (prefers-color-scheme: dark) {
   html {
     color-scheme: dark;

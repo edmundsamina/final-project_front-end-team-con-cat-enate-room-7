@@ -4,10 +4,10 @@ import {IconButton} from '@chakra-ui/react'
 
 const AddButton = ({text}) => {
     return (
-        <span>
-            <IconButton icon={<AddIcon />} borderRadius="50" bgColor={'roots.100'}/>
-            <h3>{text}</h3>
-        </span>
+        <div className="addButton">
+            <IconButton icon={<AddIcon color="roots.0"/>} borderRadius="50" bgColor={'roots.100'} zIndex="1" height="5vw" width="5vw"/>
+            <h3 className="addText">{text}</h3>
+        </div>
     )
 }
 

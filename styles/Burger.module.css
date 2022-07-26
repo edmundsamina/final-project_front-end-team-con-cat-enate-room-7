@@ -4,6 +4,7 @@ background-color: var(--main-color)!important;
 line-height: 3em;
 width: 50vh;
 border: none;
+z-index: 100;
 }
 
 .menubutton{
@@ -13,4 +14,8 @@ border: none;
 .menubutton svg {
     color: var(--second-color);
     font-size: 2em;
+  }
+
+  .fixright {
+    z-index: 100;
   }

@@ -13,7 +13,7 @@ import styles from '../styles/Burger.module.css'
 const Hamburger = () => {
     return (
       <div data-testid="hamburger" className='fixright'>
-        <Menu >
+        <Menu>
   <MenuButton as={Button} rightIcon={<HamburgerIcon />} className={styles.menubutton}/>
   <MenuList className={styles.menu}>
   <Link href= "/pets">

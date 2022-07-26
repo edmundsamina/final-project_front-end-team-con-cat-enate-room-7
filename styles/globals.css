@@ -46,7 +46,8 @@ a {
 
 .fixright{
   position: fixed;
-  right: 0px;}
+  right: 0px;
+  z-index: 10;}
 
 .addButton {
   display: flex;
@@ -57,6 +58,20 @@ a {
   text-align: center;
 }
 
+.addButton >button{
+  color: white;
+  background-color: var(--main-color);
+}
+
+.addButton >button:hover{
+  color: white;
+  background-color: var(--second-color);
+}
+
+.addButton >button:active{
+  color: white;
+  background-color: var(--main-color);
+}
 .addText{
   color:var(--main-color);
   

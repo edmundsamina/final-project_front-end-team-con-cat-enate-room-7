@@ -1,3 +1,18 @@
+:root {
+  --main-color: #448FFF;
+  --second-color:#B2D1FF;
+}
+
+::-moz-selection { /* Code for Firefox */
+  color: white;
+  background: var(--main-color);
+}
+
+::selection {
+  color: white;
+  background: var(--main-color);
+}
+
 html,
 body {
   padding: 0;
@@ -14,6 +29,18 @@ a {
 * {
   box-sizing: border-box;
 }
+
+.navbar {
+  display: flex;
+  flex-flow: row;
+  justify-content: space-between;
+  align-items: baseline;
+}
+
+.navbar h2 {
+  color: var(--main-color);
+}
+
 
 @media (prefers-color-scheme: dark) {
   html {

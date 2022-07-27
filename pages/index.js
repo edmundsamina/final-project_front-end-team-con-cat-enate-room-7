@@ -7,7 +7,6 @@ export default function Home() {
   return (
     <div className={styles.container}>
       <NavBar />
-      <AddButton text="Add"/>
       <SymptomCard name="Lost Height" />
     </div>
   )

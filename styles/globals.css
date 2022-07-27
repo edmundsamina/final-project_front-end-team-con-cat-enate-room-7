@@ -52,10 +52,10 @@ a {
 .addButton {
   display: flex;
   flex-direction: column;
-  justify-content: flex-end;
   align-items: center;
-  margin:auto;
-  text-align: center;
+  width: 100%;
+  position: fixed;
+  bottom: 0px;
 }
 
 .addButton >button{
@@ -82,7 +82,7 @@ a {
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 20px;
+  padding: 10px 10px 20px;
 }
 
 .symptomcard h2 {
@@ -97,6 +97,10 @@ a {
 
 .rightleft{
   align-self: flex-end;
+}
+
+.m10{
+  margin: 1em;
 }
 
 

@@ -9,11 +9,11 @@ const AddButton = ({ text, href }) => {
       <Link href={href}>
         <IconButton
           icon={<AddIcon color="roots.0" />}
-          borderRadius="50"
+          isRound="true"
           bgColor={"roots.100"}
           zIndex="1"
-          height="5vw"
-          width="5vw"
+          height="15vw"
+          width="15vw"
         />
       </Link>
       <h3 className="addText">{text}</h3>

@@ -2,7 +2,7 @@ import React from 'react'
 import DeleteButton from '../Components/deleteButton'
 import LinkButton from '../Components/linkButton'
 
-const SymptomCard = ({name,link}) => {
+const SymptomCard = ({name}) => {
     return (
         <div className='symptomcard'>
           <DeleteButton />

@@ -34,11 +34,9 @@ const SymptomPage = () => {
             <NavBar/>
              <div className='m10'>
 
-                {array.map((item) => { return (
+                {data.map((item) => { return (
                     <SymptomCard name={item.symptoms}/>
                 )})}
-
-                <p>{data[0].symptoms}</p>
 
              </div>
             <AddButton text="Add Symptom" href="/addSymptom"/>

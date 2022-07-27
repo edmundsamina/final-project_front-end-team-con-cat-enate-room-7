@@ -73,9 +73,33 @@ a {
   background-color: var(--main-color);
 }
 .addText{
-  color:var(--main-color);
-  
+  color:var(--main-color); 
 }
+
+.symptomcard{
+  border: 3px solid var(--second-color);
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+}
+
+.symptomcard h2 {
+  font-weight: 500;
+  font-size: 2em;
+  color:var(--main-color);
+}
+
+.linkbutton{
+  color: white;
+}
+
+.rightleft{
+  align-self: flex-end;
+}
+
+
 @media (prefers-color-scheme: dark) {
   html {
     color-scheme: dark;

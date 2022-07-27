@@ -8,13 +8,14 @@ import {
     MenuItem
   } from '@chakra-ui/react'
 import Link from 'next/link'
+import styles from '../styles/Burger.module.css'
 
 const Hamburger = () => {
     return (
-      <div data-testid="hamburger">
-        <Menu >
-  <MenuButton as={Button} rightIcon={<HamburgerIcon />}/>
-  <MenuList>
+      <div data-testid="hamburger" className='fixright'>
+        <Menu>
+  <MenuButton as={Button} rightIcon={<HamburgerIcon />} className={styles.menubutton}/>
+  <MenuList className={styles.menu}>
   <Link href= "/pets">
     <MenuItem>Home</MenuItem>
   </Link>

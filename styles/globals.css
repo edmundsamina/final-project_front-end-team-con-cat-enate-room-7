@@ -1,6 +1,7 @@
 :root {
   --main-color: #448FFF;
   --second-color:#B2D1FF;
+  --white:#fff;
 }
 
 ::-moz-selection { /* Code for Firefox */
@@ -33,15 +34,48 @@ a {
 .navbar {
   display: flex;
   flex-flow: row;
-  justify-content: space-between;
-  align-items: baseline;
+  justify-content: center;
+  align-items: center;
 }
 
 .navbar h2 {
   color: var(--main-color);
+  font-size: 1.5em;
+  font-weight: 600;
 }
 
+.fixright{
+  position: fixed;
+  right: 0px;
+  z-index: 10;}
 
+.addButton {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: center;
+  margin:auto;
+  text-align: center;
+}
+
+.addButton >button{
+  color: white;
+  background-color: var(--main-color);
+}
+
+.addButton >button:hover{
+  color: white;
+  background-color: var(--second-color);
+}
+
+.addButton >button:active{
+  color: white;
+  background-color: var(--main-color);
+}
+.addText{
+  color:var(--main-color);
+  
+}
 @media (prefers-color-scheme: dark) {
   html {
     color-scheme: dark;

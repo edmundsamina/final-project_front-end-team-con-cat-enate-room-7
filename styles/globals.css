@@ -52,10 +52,10 @@ a {
 .addButton {
   display: flex;
   flex-direction: column;
-  justify-content: flex-end;
   align-items: center;
-  margin:auto;
-  text-align: center;
+  width: 100%;
+  position: fixed;
+  bottom: 0px;
 }
 
 .addButton >button{
@@ -73,9 +73,38 @@ a {
   background-color: var(--main-color);
 }
 .addText{
-  color:var(--main-color);
-  
+  color:var(--main-color); 
 }
+
+.symptomcard{
+  border: 3px solid var(--second-color);
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 10px 10px 20px;
+  margin-bottom: 20px;
+}
+
+.symptomcard h2 {
+  font-weight: 500;
+  font-size: 2em;
+  color:var(--main-color);
+}
+
+.linkbutton{
+  color: white;
+}
+
+.rightleft{
+  align-self: flex-end;
+}
+
+.m10{
+  margin: 1em;
+}
+
+
 @media (prefers-color-scheme: dark) {
   html {
     color-scheme: dark;

@@ -34,8 +34,8 @@ const SymptomPage = () => {
             <NavBar/>
              <div className='m10'>
 
-                {data.map((item) => { return (
-                    <SymptomCard name={item.symptoms}/>
+                {data.map((item, index) => { return (
+                    <SymptomCard key={index} name={item.symptoms}/>
                 )})}
 
              </div>

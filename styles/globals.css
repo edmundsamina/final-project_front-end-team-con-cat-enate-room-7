@@ -46,7 +46,8 @@ a {
 
 .fixright{
   position: fixed;
-  right: 0px;}
+  right: 0px;
+  z-index: 10;}
 
 .addButton {
   display: flex;
@@ -57,10 +58,48 @@ a {
   text-align: center;
 }
 
-.addText{
-  color:var(--main-color);
-  
+.addButton >button{
+  color: white;
+  background-color: var(--main-color);
 }
+
+.addButton >button:hover{
+  color: white;
+  background-color: var(--second-color);
+}
+
+.addButton >button:active{
+  color: white;
+  background-color: var(--main-color);
+}
+.addText{
+  color:var(--main-color); 
+}
+
+.symptomcard{
+  border: 3px solid var(--second-color);
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+}
+
+.symptomcard h2 {
+  font-weight: 500;
+  font-size: 2em;
+  color:var(--main-color);
+}
+
+.linkbutton{
+  color: white;
+}
+
+.rightleft{
+  align-self: flex-end;
+}
+
+
 @media (prefers-color-scheme: dark) {
   html {
     color-scheme: dark;

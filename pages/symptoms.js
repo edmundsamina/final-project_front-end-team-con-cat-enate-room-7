@@ -36,7 +36,7 @@ const SymptomPage = () => {
     removeDuplicates();
   }, [data]);
 
-  if (!data) {
+  if (!data || !newData) {
     return <p>is loading</p>;
   }
 

@@ -1,3 +1,23 @@
+:root {
+  --main-color: #448FFF;
+  --second-color:#B2D1FF;
+  --white:#fff;
+  --lightgrey:#D9D9D9;
+  --h2-size:2em;
+  --h4-size:0.75em;
+  --p-size:1em;
+}
+
+::-moz-selection { /* Code for Firefox */
+  color: white;
+  background: var(--main-color);
+}
+
+::selection {
+  color: white;
+  background: var(--main-color);
+}
+
 html,
 body {
   padding: 0;
@@ -13,6 +33,128 @@ a {
 
 * {
   box-sizing: border-box;
+}
+
+
+h2{
+  font-weight: 500 !important;
+  font-size: var(--h2-size) !important;
+  color:var(--main-color);
+}
+
+h4{
+  font-size: var(--h4-size) !important;
+  color:var(--lightgrey);}
+
+.navbar {
+  display: flex;
+  flex-flow: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.navbar h2 {
+  color: var(--main-color);
+  font-size: 1.5em;
+  font-weight: 600;
+}
+
+.fixright{
+  position: fixed;
+  right: 0px;
+  z-index: 10;}
+
+.addButton {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  position: fixed;
+  bottom: 0px;
+}
+
+.addButton >button{
+  color: white;
+  background-color: var(--main-color);
+}
+
+.addButton >button:hover{
+  color: white;
+  background-color: var(--second-color);
+}
+
+.addButton >button:active{
+  color: white;
+  background-color: var(--main-color);
+}
+.addText{
+  color:var(--main-color); 
+}
+
+.symptomcard{
+  border: 3px solid var(--second-color);
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 10px 10px 20px;
+  margin-bottom: 20px;
+}
+
+.symptomcard h2 {
+  font-weight: 500;
+  font-size:  var(--h2-size);
+  color:var(--main-color);
+}
+
+.linkbutton{
+  color: white;
+}
+
+.rightleft{
+  align-self: flex-end;
+}
+
+.m10{
+  margin: 1em;
+}
+
+.text-center{
+  text-align: center;
+}
+
+.detailsCard{
+  border: 3px solid var(--second-color);
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: left;
+  padding: 10px 10px 20px;
+  margin-bottom: 20px;
+}
+
+.linkbutton{
+  text-align: center;
+}
+
+.linkbutton button{
+  padding: 0px 30px;
+  border-radius: 20px;
+}
+
+.schedulecard{
+  border: 3px solid var(--second-color);
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 10px 10px 20px;
+  margin-bottom: 20px;
+}
+
+.petbutton button{
+  width: 100%;
+  border: 3px solid var(--second-color);
 }
 
 @media (prefers-color-scheme: dark) {

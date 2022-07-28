@@ -9,7 +9,21 @@ import {
 import NavBar from '../Components/navBar'
 import LinkButton from '../Components/linkButton'
 
+const url = process.env.NEXT_PUBLIC_DB_URL
 const AddSymptom = () => {
+
+    async function handlePost(body){
+        const response = await fetch(`${url}/symptoms`, {
+            method: "POST",
+            body: JSON.stringify(body),
+            headers: {
+                'Content-Type': 'application/json'
+              }
+        })
+        const data = response.json()
+        console.log(data.rows)
+    }
+
     return (
         <div>
             <NavBar />

@@ -4,7 +4,7 @@ import Link from 'next/link'
 
 const LinkButton = ({text,link}) => {
     return (
-        <div>
+        <div className='linkbutton'>
           <Link href={link}>
             <Button bgColor={'roots.100'} className="linkbutton">{text}</Button>
           </Link>

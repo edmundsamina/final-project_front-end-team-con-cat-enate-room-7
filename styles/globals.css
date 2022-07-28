@@ -76,6 +76,9 @@ h4{
 .addButton >button{
   color: white;
   background-color: var(--main-color);
+  max-width: 80px;
+  max-height: 80px;
+  border: 2px solid #fff;
 }
 
 .addButton >button:hover{

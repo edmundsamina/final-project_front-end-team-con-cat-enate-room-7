@@ -7,7 +7,7 @@ export default function NavBar() {
   return (
     <div className="navbar">
       <IndexPage text="Care-Full"/>
-      <Image src="/../public/conCAT.png" alt="Care-Full Logo" width={30} height={30} />
+      <Image src={require("./../public/conCAT.png")} alt="Care-Full Logo" width={30} height={30} />
       <h2>are-Full</h2>
       <Hamburger />
     </div>

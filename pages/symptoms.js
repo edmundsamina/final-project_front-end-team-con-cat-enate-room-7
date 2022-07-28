@@ -5,7 +5,7 @@ import Link from "next/link";
 import SymptomCard from "../Components/symptomCard";
 import { useEffect, useState } from "react";
 
-const url = process.env.DB_URL ?? "http://localhost:3000";
+const url = process.env.NEXT_PUBLIC_DB_URL ?? "http://localhost:3000";
 
 const SymptomPage = () => {
 	// const array = [{"symptoms":"Dodgy foot","symptoms_id":"1234567890","date":"120722"},

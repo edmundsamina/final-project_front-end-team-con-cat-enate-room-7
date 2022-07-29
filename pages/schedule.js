@@ -42,9 +42,9 @@ const SchedulePage = () => {
 		return <p>is loading</p>;
 	}
 
-	async function onClick(event) {
-		const id = event.currentTarget.reminder_id;
-		const response = await fetch(`${url}/reminders/${id}`, {
+	async function onClick(id) {
+    console.log(id);
+		await fetch(`${url}/reminders/${id}`, {
 			method: "PATCH",
 			headers: {
 				"Content-Type": "application/json",
@@ -56,8 +56,6 @@ const SchedulePage = () => {
 			.then(() => {
 				setStateCount((c) => c + 1);
 			});
-		// const newData = response.json();
-		// setData(newData)
 	}
 
 	return (
@@ -69,6 +67,7 @@ const SchedulePage = () => {
 					.filter((object) => object.completed === false)
 					.map((filteredData) => (
 						<ScheduleCard
+            id = {filteredData.reminder_id}
 							title={filteredData.task}
 							date={filteredData.date}
 							onClick={onClick}

@@ -1,15 +1,15 @@
 import React from 'react'
-import LinkButton from '../Components/linkButton'
+import DoneButton from './doneButton'
 import DeleteButton from '../Components/deleteButton'
 
-const ScheduleCard = () => {
+const ScheduleCard = ({onClick, title, date}) => {
     return (
         <div className='schedulecard'>
             <DeleteButton />
-            <h2>Flea Treatment</h2>
-            <p>Due: 2022/08/12</p>
+            <h2>{title}</h2>
+            <p>Due: {date}</p>
             <br/>
-            <LinkButton text="Update" link="/symptomDetails"/> 
+            <DoneButton text="Done" onClick={onClick}/> 
         </div>
     )
 }

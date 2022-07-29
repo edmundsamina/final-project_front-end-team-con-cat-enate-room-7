@@ -14,6 +14,8 @@ const SymptomPage = () => {
 
   const [data, setData] = useState();
   const [newData, setNewData] = useState();
+
+
   useEffect(() => {
     // declare the data fetching function
     const fetchData = async () => {
@@ -28,11 +30,42 @@ const SymptomPage = () => {
       .catch(console.error);
   }, []);
 
+  // useEffect(() => {
+  //   function removeDuplicates() {
+  //     if (data) {
+  //       let unique = [...new Set(data.map((item) => item.symptoms))];
+  //       console.log(unique)
+  //       let uniqueNoNull = []
+  //       for (let i = 0; i < unique.length; i++){
+  //         if (unique[i]){
+  //           uniqueNoNull.push(unique[i])
+  //         }
+  //       }
+  //       setNewData(uniqueNoNull);
+  //     }
+  //   }
+  //   removeDuplicates();
+  // }, [data]);
+
   useEffect(() => {
     function removeDuplicates() {
-      if (data) {
-        let unique = [...new Set(data.map((item) => item.symptoms))];
-        setNewData(unique);
+      if(data){
+        let uniqueSymptomsId = []
+        let uniqueSymptoms = []
+       for (let i=0; i < data.length; i++){
+          if (data[i]  && uniqueSymptomsId.includes(data[i].symptoms_id)===false){
+            uniqueSymptomsId.push(data[i].symptoms_id)
+            uniqueSymptoms.push(data[i].symptoms)
+          }
+       }
+       console.log(uniqueSymptomsId)
+       console.log(uniqueSymptoms)
+       let unique = []
+       for (let i = 0; i < uniqueSymptomsId.length; i++){
+        unique.push({symptoms_id:uniqueSymptomsId[i],symptoms:uniqueSymptoms[i]})
+        console.log(unique)
+       }
+       setNewData(unique)
       }
     }
     removeDuplicates();
@@ -47,13 +80,13 @@ const SymptomPage = () => {
       <NavBar />
 
       <div className="m10">
-        {newData.map((item, index) => {
+        {newData.map((item) => {
           console.log(item);
           return (
             <SymptomCard
-              key={index}
-              name={item}
-              link={"/symptomRoutes/" + index}
+              key={item.symptoms_id}
+              name={item.symptoms}
+              link={"/symptomRoutes/" + item.symptoms_id}
             />
           );
         })}

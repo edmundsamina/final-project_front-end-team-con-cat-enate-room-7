@@ -43,13 +43,26 @@ const SchedulePage = () => {
   }
 
   async function onClick(id) {
-    console.log(id);
     await fetch(`${url}/reminders/${id}`, {
       method: "PATCH",
       headers: {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({ completed: true }),
+    })
+      .then((res) => res.json)
+      .then((data) => console.log(data))
+      .then(() => {
+        setStateCount((c) => c + 1);
+      });
+  }
+
+  async function onDelete(id) {
+    await fetch(`${url}/reminders/${id}`, {
+      method: "DELETE",
+      headers: {
+        "Content-Type": "application/json",
+      },
     })
       .then((res) => res.json)
       .then((data) => console.log(data))
@@ -72,6 +85,7 @@ const SchedulePage = () => {
               title={filteredData.task}
               date={filteredData.date}
               onClick={onClick}
+              onDelete={onDelete}
             />
           ))}
       </div>
@@ -84,6 +98,8 @@ const SchedulePage = () => {
               key={filteredData.reminder_id}
               title={filteredData.task}
               date={filteredData.date}
+              id={filteredData.reminder_id}
+              onDelete={onDelete}
             />
           ))}
       </div>

@@ -42,6 +42,9 @@ const SchedulePage = () => {
     return <p>is loading</p>;
   }
 
+  /*
+  need to add a post method to this function to create a copy of the card going into completed, but generate a new reminder_id, and perform an update on the date based on frequency chosen at inital creation
+  */
   async function onClick(id) {
     await fetch(`${url}/reminders/${id}`, {
       method: "PATCH",

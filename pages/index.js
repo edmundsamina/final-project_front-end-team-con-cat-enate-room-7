@@ -12,8 +12,6 @@ export default function Home() {
   return (
     <div className={styles.container}>
       <NavBar />
-      <SymptomCard name="Lost Height" />
-      <LinkButton link="/404" text="Test" onClick={onClick}/>
     </div>
   )
 }

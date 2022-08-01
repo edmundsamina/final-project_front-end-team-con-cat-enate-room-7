@@ -1,9 +1,16 @@
 import React from 'react'
+import Image from 'next/image'
 
 const pageNotFound = () => {
     return (
-        <div>
-            <h1>Page Not Found</h1>
+        <div className='not-fund'>
+          <Image
+              className="home-image"
+              src={require("./../public/conCAT.png")}
+              alt="Picture of cat and dog"
+
+              />
+            <h1>404</h1>
         </div>
     )
 }

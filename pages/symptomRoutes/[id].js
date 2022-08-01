@@ -1,4 +1,7 @@
 import React from "react";
+import LinkButton from '../../Components/linkButton'
+import SymptomDetailsCard from '../../Components/symptomDetailsCard'
+
 
 const url = process.env.NEXT_PUBLIC_DB_URL ?? "http://localhost:3000";
 
@@ -44,15 +47,13 @@ export const getStaticProps = async (context) => {
 
 const Details = ({incidents}) => {
   return (
-    <div>
-      <h1>Details</h1>
+    <div className="m10">
+    <h2 className="text-center">{incidents[0].symptoms}</h2>
       {incidents.map((card)=>{
-        return (<div key={card.incident_id}>
-          <h2>{card.description}</h2>
-          <h3>{card.date}</h3>
-          <h3>{card.time}</h3>
-        </div>)
+        return (
+          <SymptomDetailsCard key={card.incident_id} date={card.date} time={card.time} description={card.description}/>)
       })}
+      <LinkButton text="Add incident" link="/addIncident"/> 
     </div>
   );
 }

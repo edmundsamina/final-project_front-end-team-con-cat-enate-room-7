@@ -5,11 +5,34 @@ import SymptomCard from "../Components/symptomCard";
 import LinkButton from "../Components/linkButton";
 import Image from "next/image";
 import PetCard from "../Components/PetCard";
+import { useEffect, useState } from "react";
+
+const url = process.env.NEXT_PUBLIC_DB_URL ?? "http://localhost:3000";
 
 export default function Home() {
-  function onClick() {
-    console.log("I am here!");
-  }
+
+  const [data, setData] = useState();
+	const user_id = "1234567890" //To be passed in as a prop/context
+	useEffect(() => {
+		// declare the data fetching function
+		const fetchData = async () => {
+			const response = await fetch(`${url}/pets`);
+			const data = await response.json();
+			setData(data.payload);
+		};
+
+		// call the function
+		fetchData()
+			// make sure to catch any error
+			.catch(console.error);
+	}, []);
+
+
+	if (!data) {
+		return <p>is loading</p>;
+	}
+
+  
   return (
     <main>
       <NavBar />
@@ -21,10 +44,16 @@ export default function Home() {
           layout="responsive"
         />
         <div className="m10 flex">
-           <PetCard name="Fluffy" image="pet-card-cat.png" />
-           <PetCard name="King" image="pet-card-dog.png" />
-           <PetCard name="Sweet" image="pet-card-cat.png" />
-           <PetCard name="Bobby" image="pet-card-dog.png" />
+
+				{data.map((item, index) => {
+          let images ="";
+          if(item.species== true){
+            images = "pet-card-cat.png"}
+            else{
+            images = "pet-card-dog.png"}
+					return <PetCard key={index} name={item.name} image={images}/>;
+				})}
+
         </div>
         <AddButton text="Add Pet" href="/petDetails" />
       </div>

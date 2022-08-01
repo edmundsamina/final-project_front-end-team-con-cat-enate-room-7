@@ -1,5 +1,5 @@
 import { render, screen } from "@testing-library/react";
-import AddIncident from "./addIncident.js";
+import AddIncident from "../pages/addIncident.js";
 import "@testing-library/jest-dom";
 import "@jest/globals"
 

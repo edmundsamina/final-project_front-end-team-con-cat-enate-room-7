@@ -86,7 +86,7 @@ const SymptomPage = () => {
             <SymptomCard
               key={item.symptoms_id}
               name={item.symptoms}
-              link={"/symptomRoutes/" + item.symptoms_id}
+              link={"/symptoms/" + item.symptoms_id}
             />
           );
         })}

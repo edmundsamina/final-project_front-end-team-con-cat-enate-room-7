@@ -1,7 +1,7 @@
 import { render, screen } from "@testing-library/react";
 import AddSymptom from "../pages/addSymptom.js";
 import "@testing-library/jest-dom";
-import "@jest/globals"
+import "@jest/globals";
 
 describe("Add Symptom page", () => {
     render(<AddSymptom/>)

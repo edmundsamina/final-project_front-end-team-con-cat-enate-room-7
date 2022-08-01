@@ -20,7 +20,13 @@ export default function Home() {
           alt="Picture of cat and dog"
           layout="responsive"
         />
-        <PetCard name="Fluffy" image="pet-card-cat.png" />
+        <div className="m10 flex">
+           <PetCard name="Fluffy" image="pet-card-cat.png" />
+           <PetCard name="King" image="pet-card-dog.png" />
+           <PetCard name="Sweet" image="pet-card-cat.png" />
+           <PetCard name="Bobby" image="pet-card-dog.png" />
+        </div>
+        <AddButton text="Add Pet" href="/petDetails" />
       </div>
     </main>
   );

@@ -1,5 +1,5 @@
 import { render, screen } from "@testing-library/react";
-import AddSymptom from "./addSymptom.js";
+import AddSymptom from "../pages/addSymptom.js";
 import "@testing-library/jest-dom";
 import "@jest/globals"
 

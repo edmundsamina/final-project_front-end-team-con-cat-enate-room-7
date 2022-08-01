@@ -1,6 +1,7 @@
 import React from "react";
 import LinkButton from '../../Components/linkButton'
 import SymptomDetailsCard from '../../Components/symptomDetailsCard'
+import NavBar from "../../Components/navBar.js";
 
 
 const url = process.env.NEXT_PUBLIC_DB_URL ?? "http://localhost:3000";
@@ -38,7 +39,6 @@ export const getStaticProps = async (context) => {
   const petId = "1234567890" //To be handed in as a prop
   const res = await fetch(`${url}/symptoms/${petId}?symptoms_id=${symptomsId}`);
   const data = await res.json();
-  console.log(data.payload)
   return {
     props: {incidents: data.payload}
   }
@@ -47,6 +47,8 @@ export const getStaticProps = async (context) => {
 
 const Details = ({incidents}) => {
   return (
+    <main> 
+    <NavBar />
     <div className="m10">
     <h2 className="text-center">{incidents[0].symptoms}</h2>
       {incidents.map((card)=>{
@@ -55,6 +57,7 @@ const Details = ({incidents}) => {
       })}
       <LinkButton text="Add incident" link="/addIncident"/> 
     </div>
+    </main>
   );
 }
 

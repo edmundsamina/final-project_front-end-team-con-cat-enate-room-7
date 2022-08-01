@@ -14,7 +14,7 @@ const SymptomDetailsPage = () => {
          <h2 className="text-center">Symptom Name</h2>
          <SymptomDetailsCard/>
       </div>
-      <LinkButton text="Update" link="/symptomDetails"/> 
+      <LinkButton text="Update" link="/addIncident"/> 
     </main>
   );
 };

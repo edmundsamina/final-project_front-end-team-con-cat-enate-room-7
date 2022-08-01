@@ -155,6 +155,17 @@ h4{
   margin-bottom: 20px;
 }
 
+.completedtaskcard{
+  border: 3px solid var(--second-color);
+  background-color: var(--lightgrey);
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 10px 10px 20px;
+  margin-bottom: 20px;
+}
+
 .petbutton button{
   width: 100%;
   border: 3px solid var(--second-color);

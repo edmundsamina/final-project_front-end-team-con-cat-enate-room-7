@@ -9,9 +9,18 @@ const SchedulePage = () => {
   return (
     <main>
       <NavBar />
-      <Image src={require("./../public/conCAT.png")} alt="Care-Full image" width={30} height={30} />
+      <Image
+          className="home-image"
+          src={require("./../public/mock_photo.jpg")}
+          alt="Picture of cat and dog"
+          layout="responsive"
+        />
       <div className="m10">
           <PetButton text="Change Pet Info" link=""/>
+          <PetButton text="View Symptoms" link="/symptomRoutes"/>
+          <PetButton text="Check Schedule" link="/schedule"/>
+          <PetButton text="View History" link=""/>
+          <PetButton text="Book Appointment" link=""/>
       </div>
     </main>
   );

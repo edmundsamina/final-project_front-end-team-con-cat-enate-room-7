@@ -2,8 +2,10 @@ import React from "react";
 
 const url = process.env.NEXT_PUBLIC_DB_URL ?? "http://localhost:3000";
 
+
 export const getStaticPaths = async () => {
-  const res = await fetch(`${url}/symptoms`);
+  const petId = "1234567890" //To be handed in as a prop
+  const res = await fetch(`${url}/symptoms/${petId}`);
   const data = await res.json();
   function removeNulls(data){
     let newArray = [];
@@ -29,20 +31,28 @@ return {
 }
 
 export const getStaticProps = async (context) => {
-  const id = context.params.id;
-  const res = await fetch(`${url}/symptoms/` + id);
+  const symptomsId = context.params.id;
+  const petId = "1234567890" //To be handed in as a prop
+  const res = await fetch(`${url}/symptoms/${petId}?symptoms_id=${symptomsId}`);
   const data = await res.json();
-
+  console.log(data.payload)
   return {
-    props: {incidents: data}
+    props: {incidents: data.payload}
   }
 }
 
 
-const Details = () => {
+const Details = ({incidents}) => {
   return (
     <div>
       <h1>Details</h1>
+      {incidents.map((card)=>{
+        return (<div key={card.incident_id}>
+          <h2>{card.description}</h2>
+          <h3>{card.date}</h3>
+          <h3>{card.time}</h3>
+        </div>)
+      })}
     </div>
   );
 }

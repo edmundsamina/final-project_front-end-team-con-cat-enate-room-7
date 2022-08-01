@@ -229,3 +229,26 @@ h4{
    position:relative;
    left:20px;
 }
+
+.form-style {
+  padding: 20px;
+}
+
+.form-style > input{
+  border: none;
+  border-bottom: 2px solid var(--main-color);
+  border-radius: 0px;
+  margin-bottom: 1em;
+  margin-top: 1em;
+}
+
+.form-style > div > select{
+  padding-left: 15px;
+  margin-bottom: 1em;
+  margin-top: 1em;
+}
+
+.form-style > input:focus-visible,.form-style > div > select:focus-visible {
+ border-color: var(--second-color);
+ box-shadow: none;
+}

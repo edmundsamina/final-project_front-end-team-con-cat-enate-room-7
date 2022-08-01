@@ -14,10 +14,11 @@ const SymptomPage = () => {
 
 	const [data, setData] = useState();
 	const [newData, setNewData] = useState();
+	const pet_id = "1234567890" //To be passed in as a prop/context
 	useEffect(() => {
 		// declare the data fetching function
 		const fetchData = async () => {
-			const response = await fetch(`${url}/symptoms`);
+			const response = await fetch(`${url}/symptoms/${pet_id}`);
 			const data = await response.json();
 			setData(data.payload);
 		};

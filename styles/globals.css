@@ -180,3 +180,17 @@ h4{
     background: black;
   }
 }
+
+.home-image {
+  width: 100%;
+}
+
+.pet-card {
+  border: 3px solid var(--second-color);
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 10px 10px 20px;
+  margin-bottom: 20px;
+}

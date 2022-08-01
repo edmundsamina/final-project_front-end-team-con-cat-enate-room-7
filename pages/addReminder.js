@@ -80,8 +80,8 @@ console.log(submission)
         <FormLabel>Add Reminder</FormLabel>
             <Input placeholder='Reminder' name="task" value={submission.task} onChange={handleChange}/>
             <Input placeholder='Date' type="date" name="date" value={submission.date} onChange={handleChange}/>
-            <Checkbox value={submission.repeated} isChecked={submission.repeated}
-      onChange={(e) => setSubmission({ repeated: e.target.checked, ...submission})}>Repeated</Checkbox>
+            <Checkbox value={submission.repeated} isChecked={submission.repeated===true}
+      onChange={(e) => setSubmission({ ...submission,repeated: !submission.repeated})}>Repeated</Checkbox>
             {/* <Input placeholder='Frequency' name="frequency" value={submission.frequency} onChange={handleChange}/> */}
             <Select placeholder='Select frequency'>
   <option value="1" >Daily</option>

@@ -4,6 +4,7 @@ import AddButton from "../Components/addButton.js";
 import ScheduleCard from "../Components/scheduleCard";
 import CompletedTaskCard from "../Components/completedTaskCard.js";
 import { useEffect, useState } from "react";
+import { nanoid } from "nanoid/non-secure";
 
 const url = process.env.NEXT_PUBLIC_DB_URL ?? "http://localhost:3000";
 
@@ -23,6 +24,7 @@ const SchedulePage = () => {
       // make sure to catch any error
       .catch(console.error);
   }, []);
+
 
   useEffect(() => {
     // declare the data fetching function
@@ -45,8 +47,8 @@ const SchedulePage = () => {
   /*
   need to add a post method to this function to create a copy of the card going into completed, but generate a new reminder_id, and perform an update on the date based on frequency chosen at inital creation
   */
-  async function onClick(id) {
-    await fetch(`${url}/reminders/${id}`, {
+  async function patchFunction(data) {
+    await fetch(`${url}/reminders/${data.reminder_id}`, {
       method: "PATCH",
       headers: {
         "Content-Type": "application/json",
@@ -58,10 +60,33 @@ const SchedulePage = () => {
       .then(() => {
         setStateCount((c) => c + 1);
       });
-  }
+    }
 
-  async function onDelete(id) {
-    await fetch(`${url}/reminders/${id}`, {
+    async function postFunction(data) {
+      await fetch(`${url}/reminders`, {
+        method: "POST",
+        body: JSON.stringify({
+          user_id: data.user_id,
+                  pet_id: data.pet_id,
+                  reminder_id: nanoid(10),
+                  task: data.task,
+                  date: "?????",
+                  completed: false,
+                  repeated: true,
+                  frequency: data.frequency
+                  }),
+        headers: {
+          "Content-Type": "application/json",
+      },
+    })}
+
+    function onClick(data) {
+      patchFunction(data);
+      postFunction(data);
+    }
+
+  async function onDelete(data) {
+    await fetch(`${url}/reminders/${data.reminder_id}`, {
       method: "DELETE",
       headers: {
         "Content-Type": "application/json",
@@ -84,9 +109,7 @@ const SchedulePage = () => {
           .map((filteredData) => (
             <ScheduleCard
               key={filteredData.reminder_id}
-              id={filteredData.reminder_id}
-              title={filteredData.task}
-              date={filteredData.date}
+              data={filteredData}
               onClick={onClick}
               onDelete={onDelete}
             />
@@ -99,9 +122,7 @@ const SchedulePage = () => {
           .map((filteredData) => (
             <CompletedTaskCard
               key={filteredData.reminder_id}
-              title={filteredData.task}
-              date={filteredData.date}
-              id={filteredData.reminder_id}
+              data={filteredData}
               onDelete={onDelete}
             />
           ))}

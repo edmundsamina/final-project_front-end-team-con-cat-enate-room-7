@@ -2,14 +2,14 @@ import React from 'react'
 import DoneButton from './doneButton'
 import DeleteButton from '../Components/deleteButton'
 
-const ScheduleCard = ({onClick, title, date, id, onDelete}) => {
+const ScheduleCard = ({onClick, onDelete, data}) => {
     return (
-        <div className='schedulecard' id={id}>
-            <DeleteButton onDelete={()=>onDelete(id)}/>
-            <h2>{title}</h2>
-            <p>Due: {date}</p>
+        <div className='schedulecard' data={data}>
+            <DeleteButton onDelete={()=>onDelete(data)}/>
+            <h2>{data.task}</h2>
+            <p>Due: {data.date}</p>
             <br/>
-            <DoneButton text="Done" onClick={()=>onClick(id)}/> 
+            <DoneButton text="Done" onClick={()=>onClick(data)}/> 
         </div>
     )
 }

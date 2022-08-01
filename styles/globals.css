@@ -3,6 +3,7 @@
   --second-color:#B2D1FF;
   --white:#fff;
   --lightgrey:#D9D9D9;
+  --h1-size:4em;
   --h2-size:2em;
   --h4-size:0.75em;
   --p-size:1em;
@@ -33,6 +34,12 @@ a {
 
 * {
   box-sizing: border-box;
+}
+
+h1{
+  font-weight: 500 !important;
+  font-size: var(--h1-size) !important;
+  color:var(--main-color);
 }
 
 
@@ -206,4 +213,14 @@ h4{
 
 .flex > div{
   flex: 48%;
+}
+
+.not-fund{
+  text-align: center;
+  margin-top: 10em;
+}
+
+.not-fund img{
+   position:relative;
+   left:20px;
 }

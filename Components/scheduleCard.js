@@ -1,17 +1,21 @@
-import React from 'react'
-import DoneButton from './doneButton'
-import DeleteButton from '../Components/deleteButton'
+import React from "react";
+import DoneButton from "./doneButton";
+import DeleteButton from "../Components/deleteButton";
 
-const ScheduleCard = ({onClick, onDelete, data}) => {
-    return (
-        <div className='schedulecard' data={data}>
-            <DeleteButton onDelete={()=>onDelete(data)}/>
-            <h2>{data.task}</h2>
-            <p>Due: {data.date}</p>
-            <br/>
-            <DoneButton text="Done" onClick={()=>onClick(data)}/> 
-        </div>
-    )
-}
+const ScheduleCard = ({ onClick, onDelete, data }) => {
+	const dateString = data.date;
+    console.log(typeof(dateString))
+	const [year, month, day] = dateString.split("-" || "/");
 
-export default ScheduleCard
+	return (
+		<div className="schedulecard" data={data}>
+			<DeleteButton onDelete={() => onDelete(data)} />
+			<h2>{data.task}</h2>
+			<p>Due: {`${day}/${month}/${year}`}</p>
+			<br />
+			<DoneButton text="Done" onClick={() => onClick(data)} />
+		</div>
+	);
+};
+
+export default ScheduleCard;

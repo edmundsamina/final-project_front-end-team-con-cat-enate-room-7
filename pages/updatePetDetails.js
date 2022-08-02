@@ -83,8 +83,9 @@ const UpdatePetDetails = () => {
 					<option value={false}>Dog</option>
 				</Select>
 
-                <Input data-testid="age" type="number" placeholder='Age' name="age" value={submission.age} onChange={handleChange}/>
-                <Input type = "number" placeholder='Weight' name="weight" value={submission.weight} onChange={handleChange}/>
+                <Input data-testid="age" type="number" placeholder='Age' name="age" value={submission.age} onChange={handleChange} min={0}/>
+                <Input type = "number" placeholder='Weight' name="weight" value={submission.weight} onChange={handleChange} min={0}/>
+                <div className='formtext'>kg</div>
             </FormControl>
             {noEmptyFields && <LinkButton  text="Update" link="/pets" onClick={handlePost}/>}
         </div>

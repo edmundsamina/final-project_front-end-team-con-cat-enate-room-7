@@ -229,3 +229,39 @@ h4{
    position:relative;
    left:20px;
 }
+
+.form-style {
+  padding: 20px;
+}
+
+.form-style > input{
+  border: none;
+  border-bottom: 2px solid var(--main-color);
+  border-radius: 0px;
+  margin-bottom: 1em;
+  margin-top: 1em;
+}
+
+.form-style > div > select{
+  padding-left: 15px;
+  margin-bottom: 1em;
+  margin-top: 1em;
+}
+
+.form-style > input:focus-visible,.form-style > div > select:focus-visible {
+ border-color: var(--second-color);
+ box-shadow: none;
+}
+
+.formtext {
+  float: right;
+  margin-top: -3em;
+  margin-right: 1em;
+  color: var(--main-color);
+}
+
+.form-style  .css-zj2dqk{
+  font-size: 2.2rem;
+  color: var(--main-color);
+  width: 2.2rem;
+}

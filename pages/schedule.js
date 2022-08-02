@@ -11,9 +11,14 @@ const url = process.env.NEXT_PUBLIC_DB_URL ?? "http://localhost:3000";
 const SchedulePage = () => {
 	const [stateCount, setStateCount] = useState(0);
 	const [data, setData] = useState();
+
+	const delay = ms => new Promise(
+		resolve => setTimeout(resolve, ms)
+	  );
 	useEffect(() => {
 		// declare the data fetching function
 		const fetchData = async () => {
+			await delay(500)
 			const response = await fetch(`${url}/reminders`);
 			const data = await response.json();
 			setData(data.payload);

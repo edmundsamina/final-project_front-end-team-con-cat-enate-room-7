@@ -16,11 +16,11 @@ const SchedulePage = () => {
           layout="responsive"
         />
       <div className="m10">
-          <PetButton text="Change Pet Info" link=""/>
-          <PetButton text="View Symptoms" link="/symptomRoutes"/>
+          <PetButton text="Change Pet Info" link="/updatePetDetails"/>
+          <PetButton text="View Symptoms" link="/symptoms"/>
           <PetButton text="Check Schedule" link="/schedule"/>
-          <PetButton text="View History" link=""/>
-          <PetButton text="Book Appointment" link=""/>
+          <PetButton text="View History" link="/history"/>
+          <PetButton text="Book Appointment" link="/404"/>
       </div>
     </main>
   );

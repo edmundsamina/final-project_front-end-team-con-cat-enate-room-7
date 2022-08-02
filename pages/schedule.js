@@ -63,11 +63,14 @@ const SchedulePage = () => {
 
 	async function postFunction(data) {
 		const dateString = data.date;
-    console.log(dateString)
-    console.log(typeof(dateString))
+		console.log(dateString);
+		console.log(typeof dateString);
 		const frequency = data.frequency;
-    const numberFrequency = Number(frequency)
-		const [day, month, year] = dateString.split("/");
+		const numberFrequency = Number(frequency);
+		const [year, month, day] = dateString.split("-");
+		console.log(day);
+		console.log(month);
+		console.log(year);
 		const newDate = addDays(
 			numberFrequency,
 			new Date(`${year}/${month}/${day}`)

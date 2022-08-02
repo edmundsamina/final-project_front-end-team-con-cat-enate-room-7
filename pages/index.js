@@ -7,12 +7,13 @@ import Image from "next/image";
 import PetCard from "../Components/PetCard";
 import { useEffect, useState } from "react";
 import { useUser } from "@auth0/nextjs-auth0";
+import Router from "next/router";
 
 const url = process.env.NEXT_PUBLIC_DB_URL ?? "http://localhost:3000";
 
 export default function Home() {
   //Logic for login/logout with auth0
-  //   const { user, error, isLoading } = useUser();
+  const { user, error, isLoading } = useUser();
   //   if (user) {
   //     return (
   //       <>
@@ -42,30 +43,34 @@ export default function Home() {
   if (!data) {
     return <p>is loading</p>;
   }
-
-  return (
-    <main>
-      <NavBar />
-      <div className={styles.container}>
-        <Image
-          className="home-image"
-          src={require("./../public/mock_photo.jpg")}
-          alt="Picture of cat and dog"
-          layout="responsive"
-        />
-        <div className="m10 flex">
-          {data.map((item, index) => {
-            let images = "";
-            if (item.species == true) {
-              images = "pet-card-cat.png";
-            } else {
-              images = "pet-card-dog.png";
-            }
-            return <PetCard key={index} name={item.name} image={images} />;
-          })}
+  if (user) {
+    return (
+      <main>
+        <NavBar />
+        <div className={styles.container}>
+          <Image
+            className="home-image"
+            src={require("./../public/mock_photo.jpg")}
+            alt="Picture of cat and dog"
+            layout="responsive"
+          />
+          <div className="m10 flex">
+            {data.map((item, index) => {
+              let images = "";
+              if (item.species == true) {
+                images = "pet-card-cat.png";
+              } else {
+                images = "pet-card-dog.png";
+              }
+              return <PetCard key={index} name={item.name} image={images} />;
+            })}
+          </div>
+          <AddButton text="Add Pet" href="/petDetails" />
         </div>
-        <AddButton text="Add Pet" href="/petDetails" />
-      </div>
-    </main>
-  );
+      </main>
+    );
+  }
+  if (!user) {
+    return Router.push("/api/auth/login");
+  }
 }

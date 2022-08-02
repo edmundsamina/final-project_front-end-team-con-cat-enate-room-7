@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import {
 	FormControl,
 	FormLabel,
@@ -28,20 +28,46 @@ const AddIncident = () => {
 		description: "",
 	});
 
-	const [noEmptyFields, setNoEmptyFields] = useState(false);
+	// const [noEmptyFields, setNoEmptyFields] = useState(false);
 
-	function handleChange(e) {
-		let value = e.target.value.toString();
+	// function handleChange(e) {
+	// 	let value = e.target.value.toString();
+	// 	setNewIncident({ ...newIncident, [e.target.name]: value });
+	// 	let entries = Object.values(newIncident);
+	// 	for (let i = 0; i < entries.length; i++) {
+	// 		if (entries[i] === "" || entries[i] === undefined) {
+	// 			setNoEmptyFields(false);
+	// 			return;
+	// 		}
+	// 	}
+	// 	setNoEmptyFields(true);
+	// }
+
+	const [noEmptyFields, setNoEmptyFields] = useState(false)
+
+    useEffect(() => {
+        const checkFields = async () => {
+            let entries = Object.values(newIncident);
+            for (let i = 0; i < entries.length; i++) {
+              if (entries[i] === "" || entries[i] === undefined || entries[i] === null) {
+                setNoEmptyFields(false)
+                return
+              } 
+            
+            }
+            setNoEmptyFields(true)
+        };
+    
+        // call the function
+        checkFields()
+          // make sure to catch any error
+          .catch(console.error);
+      }, [newIncident]);
+
+	  function handleChange(e){
+        let value = (e.target.value)
 		setNewIncident({ ...newIncident, [e.target.name]: value });
-		let entries = Object.values(newIncident);
-		for (let i = 0; i < entries.length; i++) {
-			if (entries[i] === "" || entries[i] === undefined) {
-				setNoEmptyFields(false);
-				return;
-			}
-		}
-		setNoEmptyFields(true);
-	}
+     }
 
 	async function handlePost() {
 		const response = await fetch(`${url}/symptoms`, {
@@ -58,8 +84,8 @@ const AddIncident = () => {
 	return (
 		<div>
 			<NavBar />
-			<FormControl>
-				<FormLabel>{symptoms}</FormLabel>
+			<FormControl className='form-style'>
+				<FormLabel><h2>{symptoms}</h2></FormLabel>
                 
 
 				<Input

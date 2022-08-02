@@ -40,6 +40,7 @@ const AddPets = () => {
             }
             setNoEmptyFields(true)
         };
+    
         // call the function
         checkFields()
           // make sure to catch any error
@@ -47,7 +48,7 @@ const AddPets = () => {
       }, [submission]);
 
      function handleChange(e){
-        let value = (e.target.value).toString()
+        let value = (e.target.value)
         setSubmission({ ...submission, [e.target.name]: value });
      }
 
@@ -70,18 +71,19 @@ const AddPets = () => {
     return (
         <div>
             <NavBar />
-            <FormControl>
-            <FormLabel>Add Pet</FormLabel>
-                <Input placeholder='Name' name="name" value={submission.name} onChange={handleChange}/>
+            <FormControl className='form-style'>
+            <FormLabel><h2>Pet Details</h2></FormLabel>
+            <Input placeholder='Name' name="name" value={submission.name} onChange={handleChange}/>
                 <Input placeholder='Breed' name="breed" value={submission.breed} onChange={handleChange}/>
 
-				<Select data-testid="Species" onChange={selectChange} placeholder="Species">
+				<Select data-testid="Species" onChange={selectChange} placeholder="Species" variant='flushed' borderColor='var(--main-color)' borderBottom="2px">
 					<option value={true}>Cat</option>
 					<option value={false}>Dog</option>
 				</Select>
 
-                <Input data-testid="age" type="number" placeholder='Age' name="age" value={submission.age} onChange={handleChange}/>
-                <Input type ="number" placeholder='Weight' name="weight" value={submission.weight} onChange={handleChange}/>
+                <Input data-testid="age" type="number" placeholder='Age' name="age" value={submission.age} onChange={handleChange} min={0}/>
+                <Input type = "number" placeholder='Weight' name="weight" value={submission.weight} onChange={handleChange} min={0}/>
+                <div className='formtext'>kg</div>
             </FormControl>
             {noEmptyFields && <LinkButton text="Add" link="/" onClick={handlePost}/>}
         </div>

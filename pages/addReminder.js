@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import {
 	FormControl,
 	FormLabel,
@@ -43,21 +43,47 @@ const AddReminder = () => {
 
 	//Needs to be refactored
   // Conditional render happens without noEmptyFields check
-	const [noEmptyFields, setNoEmptyFields] = useState(false);
+	// const [noEmptyFields, setNoEmptyFields] = useState(false);
 
-	function handleChange(e) {
-		console.log(submission.date)
-		let value = e.target.value.toString();
-		setSubmission({ ...submission, [e.target.name]: value });
-		let entries = Object.values(submission);
-		for (let i = 0; i < entries.length; i++) {
-			if (entries[i] === "" || entries[i] === undefined) {
-				setNoEmptyFields(false);
-				return;
-			}
-		}
-		setNoEmptyFields(true);
-	}
+	// function handleChange(e) {
+	// 	console.log(submission.date)
+	// 	let value = e.target.value.toString();
+	// 	setSubmission({ ...submission, [e.target.name]: value });
+	// 	let entries = Object.values(submission);
+	// 	for (let i = 0; i < entries.length; i++) {
+	// 		if (entries[i] === "" || entries[i] === undefined) {
+	// 			setNoEmptyFields(false);
+	// 			return;
+	// 		}
+	// 	}
+	// 	setNoEmptyFields(true);
+	// }
+
+	const [noEmptyFields, setNoEmptyFields] = useState(false)
+
+    useEffect(() => {
+        const checkFields = async () => {
+            let entries = Object.values(submission);
+            for (let i = 0; i < entries.length; i++) {
+              if (entries[i] === "" || entries[i] === undefined || entries[i] === null) {
+                setNoEmptyFields(false)
+                return
+              } 
+            
+            }
+            setNoEmptyFields(true)
+        };
+    
+        // call the function
+        checkFields()
+          // make sure to catch any error
+          .catch(console.error);
+      }, [submission]);
+
+     function handleChange(e){
+        let value = (e.target.value)
+        setSubmission({ ...submission, [e.target.name]: value });
+     }
 
 	async function handlePost() {
 		const response = await fetch(`${url}/reminders`, {
@@ -78,8 +104,8 @@ const AddReminder = () => {
 	return (
 		<div>
 			<NavBar />
-			<FormControl>
-				<FormLabel>Add Reminder</FormLabel>
+			<FormControl className='form-style'>
+				<FormLabel><h2>Add Reminder</h2></FormLabel>
 				<Input
 					placeholder="Reminder"
 					name="task"
@@ -99,11 +125,12 @@ const AddReminder = () => {
 					onChange={(e) =>
 						setSubmission({ ...submission, repeated: !submission.repeated })
 					}
+					size='lg' colorScheme='twitter' className="mt1"
 				>
 					Repeated
 				</Checkbox>
         {submission.repeated === true &&
-				<Select onChange={selectChange} placeholder="Select frequency">
+				<Select onChange={selectChange} placeholder="Select frequency" variant='flushed' borderColor='var(--main-color)' borderBottom="2px">
 					<option value={1}>Daily</option>
 					<option value={7}>Weekly</option>
 					<option value={30}>Monthly</option>

@@ -72,7 +72,7 @@ const SchedulePage = () => {
                   task: data.task,
                   date: "?????",
                   completed: false,
-                  repeated: true,
+                  repeated: data.repeated,
                   frequency: data.frequency
                   }),
         headers: {

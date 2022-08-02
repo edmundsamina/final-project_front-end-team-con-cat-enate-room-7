@@ -11,9 +11,17 @@ import { useUser } from "@auth0/nextjs-auth0";
 const url = process.env.NEXT_PUBLIC_DB_URL ?? "http://localhost:3000";
 
 export default function Home() {
-  const { user, error, isLoading } = useUser();
-
-  console.log(user);
+  //Logic for login/logout with auth0
+  //   const { user, error, isLoading } = useUser();
+  //   if (user) {
+  //     return (
+  //       <>
+  //         <h1>Welcome {user.name}!</h1>
+  //         <a href="/api/auth/logout">Logout</a>
+  //       </>
+  //     )
+  //   }
+  //   return <a href="/api/auth/login">Login</a>;
 
   const [data, setData] = useState();
   const user_id = "1234567890"; //To be passed in as a prop/context

@@ -137,19 +137,6 @@ const SchedulePage = () => {
 						/>
 					))}
 			</div>
-			<div className="m10">
-				<h2 className="text-center">Completed Tasks</h2>
-				{data
-					.filter((object) => object.completed === true)
-					.map((filteredData) => (
-						<CompletedTaskCard
-							key={filteredData.reminder_id}
-							data={filteredData}
-							onDelete={onDelete}
-						/>
-					))}
-			</div>
-
 			<AddButton text="Add Reminder" href="/addReminder" />
 		</main>
 	);

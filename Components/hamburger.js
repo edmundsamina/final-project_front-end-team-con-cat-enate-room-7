@@ -19,7 +19,7 @@ const Hamburger = () => {
   <Link href= "/pets">
     <MenuItem>Home</MenuItem>
   </Link>
-  <Link href= "/404">
+  <Link href= "/updatePetDetails">
     <MenuItem>Change Pet Info</MenuItem>
   </Link>
   <Link href= "/symptoms">

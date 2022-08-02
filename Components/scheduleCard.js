@@ -4,9 +4,7 @@ import DeleteButton from "../Components/deleteButton";
 
 const ScheduleCard = ({ onClick, onDelete, data }) => {
 	const dateString = data.date;
-    console.log(typeof(dateString))
 	const [year, month, day] = dateString.split("-" || "/");
-
 	return (
 		<div className="schedulecard" data={data}>
 			<DeleteButton onDelete={() => onDelete(data)} />

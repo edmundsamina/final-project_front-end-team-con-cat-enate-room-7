@@ -61,27 +61,23 @@ const SchedulePage = () => {
 			});
 	}
 
+  function padTo2Digits(num) {
+    return num.toString().padStart(2, '0');
+  }
+
 	async function postFunction(data) {
 		const dateString = data.date;
-		console.log(dateString);
-		console.log(typeof dateString);
 		const frequency = data.frequency;
 		const numberFrequency = Number(frequency);
-		const [year, month, day] = dateString.split("-");
-		console.log(day);
-		console.log(month);
-		console.log(year);
+		const [year, month, day] = dateString.split("-" || "/");
+    const numDay = Number(day);
+    const numMonth = Number(month);
+    const numYear = Number(year);
 		const newDate = addDays(
 			numberFrequency,
-			new Date(`${year}/${month}/${day}`)
+			new Date(`${numYear}/${numMonth}/${numDay}`)
 		);
-		console.log(newDate);
-		const newDateString =
-			newDate.getDate() +
-			"/" +
-			(newDate.getMonth() + 1) +
-			"/" +
-			newDate.getFullYear();
+    const newDateString = [newDate.getFullYear(), padTo2Digits(newDate.getMonth() + 1), padTo2Digits(newDate.getDate())].join('-');
 		await fetch(`${url}/reminders`, {
 			method: "POST",
 			body: JSON.stringify({

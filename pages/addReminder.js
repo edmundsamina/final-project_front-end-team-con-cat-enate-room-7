@@ -47,7 +47,7 @@ const AddReminder = () => {
 
 	function handleChange(e) {
 		console.log(submission.date)
-		let value = e.target.value;
+		let value = e.target.value.toString();
 		setSubmission({ ...submission, [e.target.name]: value });
 		let entries = Object.values(submission);
 		for (let i = 0; i < entries.length; i++) {

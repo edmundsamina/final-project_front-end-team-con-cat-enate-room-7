@@ -28,7 +28,7 @@ const Hamburger = () => {
   <Link href= "/schedule">
     <MenuItem>Check Schedule</MenuItem>
   </Link>
-  <Link href= "/404">
+  <Link href= "/history">
     <MenuItem>View History</MenuItem>
   </Link>
   <Link href= "/404">

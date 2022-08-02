@@ -3,6 +3,7 @@
   --second-color:#B2D1FF;
   --white:#fff;
   --lightgrey:#D9D9D9;
+  --h1-size:4em;
   --h2-size:2em;
   --h4-size:0.75em;
   --p-size:1em;
@@ -33,6 +34,12 @@ a {
 
 * {
   box-sizing: border-box;
+}
+
+h1{
+  font-weight: 500 !important;
+  font-size: var(--h1-size) !important;
+  color:var(--main-color);
 }
 
 
@@ -169,6 +176,11 @@ h4{
 .petbutton button{
   width: 100%;
   border: 3px solid var(--second-color);
+  background-color: #fff;
+  padding: 1.5em;
+  font-size: 1.5em;
+  color: var(--main-color);
+  margin-bottom: 10px;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -179,4 +191,82 @@ h4{
     color: white;
     background: black;
   }
+}
+
+.home-image {
+  width: 100%;
+}
+
+.pet-card {
+  border: 3px solid var(--second-color);
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 10px 10px 20px;
+}
+
+.pet-card img {
+  max-height: 100px !important;
+}
+
+.flex{
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.flex > div{
+  flex: 48%;
+}
+
+.not-fund{
+  text-align: center;
+  margin-top: 10em;
+}
+
+.not-fund img{
+   position:relative;
+   left:20px;
+}
+
+
+.history-card{
+  margin: 1em;
+}
+
+.form-style {
+  padding: 20px;
+}
+
+.form-style > input{
+  border: none;
+  border-bottom: 2px solid var(--main-color);
+  border-radius: 0px;
+  margin-bottom: 1em;
+  margin-top: 1em;
+}
+
+.form-style > div > select{
+  padding-left: 15px;
+  margin-bottom: 1em;
+  margin-top: 1em;
+}
+
+.form-style > input:focus-visible,.form-style > div > select:focus-visible {
+ border-color: var(--second-color);
+ box-shadow: none;
+}
+
+.formtext {
+  float: right;
+  margin-top: -3em;
+  margin-right: 1em;
+  color: var(--main-color);
+}
+
+.form-style  .css-zj2dqk{
+  font-size: 2.2rem;
+  color: var(--main-color);
+  width: 2.2rem;
 }

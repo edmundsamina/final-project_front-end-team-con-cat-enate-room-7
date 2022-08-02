@@ -1,12 +1,14 @@
 import React from "react";
 import DeleteButton from "../Components/deleteButton";
 
-const CompletedTaskCard = ({ title, date, id, onDelete }) => {
+const CompletedTaskCard = ({ onDelete, data }) => {
+	const dateString = data.date;
+	const [year, month, day] = dateString.split("-" || "/");
 	return (
-		<div className="completedtaskcard" id={id}>
-			<DeleteButton onDelete={()=>onDelete(id)}/>
-			<h2>{title}</h2>
-			<p>Due: {date}</p>
+		<div className="completedtaskcard">
+			<DeleteButton onDelete={()=>onDelete(data)}/>
+			<h2>{data.task}</h2>
+			<p>Due: {`${day}/${month}/${year}`}</p>
 			<br />
 			
 		</div>

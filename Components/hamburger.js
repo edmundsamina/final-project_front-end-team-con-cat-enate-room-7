@@ -33,7 +33,7 @@ const Hamburger = () => {
           <Link href="/404">
             <MenuItem>Book Appointment</MenuItem>
           </Link>
-          <Link href="/">
+          <Link href="/api/auth/logout">
             <MenuItem>Sign Out</MenuItem>
           </Link>
         </MenuList>

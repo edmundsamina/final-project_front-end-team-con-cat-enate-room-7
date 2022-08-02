@@ -55,7 +55,7 @@ export default function Home() {
 				})}
 
         </div>
-        <AddButton text="Add Pet" href="/petDetails" />
+        <AddButton text="Add Pet" href="/addPet" />
       </div>
     </main>
   );

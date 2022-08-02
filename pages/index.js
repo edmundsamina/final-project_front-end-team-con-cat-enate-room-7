@@ -6,6 +6,7 @@ import LinkButton from "../Components/linkButton";
 import Image from "next/image";
 import PetCard from "../Components/PetCard";
 import { useEffect, useState } from "react";
+import Link from "next/link";
 
 const url = process.env.NEXT_PUBLIC_DB_URL ?? "http://localhost:3000";
 
@@ -13,9 +14,14 @@ export default function Home() {
 
   const [data, setData] = useState();
 	const user_id = "1234567890" //To be passed in as a prop/context
+  const delay = ms => new Promise(
+    resolve => setTimeout(resolve, ms)
+  );
+
 	useEffect(() => {
 		// declare the data fetching function
 		const fetchData = async () => {
+      await delay(500)
 			const response = await fetch(`${url}/pets`);
 			const data = await response.json();
 			setData(data.payload);
@@ -51,7 +57,13 @@ export default function Home() {
             images = "pet-card-cat.png"}
             else{
             images = "pet-card-dog.png"}
-					return <PetCard key={index} name={item.name} image={images}/>;
+					return(
+            <Link href="/pets" key={index}>
+            <a>
+            <PetCard key={index} name={item.name} image={images}/>
+            </a>
+            </Link>)
+          
 				})}
 
         </div>

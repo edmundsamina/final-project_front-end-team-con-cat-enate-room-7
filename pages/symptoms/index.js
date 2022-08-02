@@ -15,10 +15,14 @@ const SymptomPage = () => {
   const [data, setData] = useState();
   const [newData, setNewData] = useState();
 
+  const delay = ms => new Promise(
+    resolve => setTimeout(resolve, ms)
+  );
 
   useEffect(() => {
     // declare the data fetching function
     const fetchData = async () => {
+      await delay(500)
       const response = await fetch(`${url}/symptoms`);
       const data = await response.json();
       setData(data.payload);

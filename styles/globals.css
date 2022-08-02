@@ -229,3 +229,7 @@ h4{
    position:relative;
    left:20px;
 }
+
+.history-card{
+  margin: 1em;
+}

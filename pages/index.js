@@ -9,6 +9,7 @@ import { useEffect, useState } from "react";
 import { useUser, useAuth0 } from "@auth0/nextjs-auth0";
 import Router from "next/router";
 import Link from "next/link";
+import Loader from "../Components/loader";
 
 
 const url = process.env.NEXT_PUBLIC_DB_URL ?? "http://localhost:3000";
@@ -41,7 +42,7 @@ export default function Home() {
 
 
 	if (!data) {
-		return <p>is loading</p>;
+		return <Loader/>;
 	}
 
   if (user) {
@@ -67,6 +68,7 @@ export default function Home() {
               return <PetCard key={index} name={item.name} image={images} />;
             })}
           </div>
+          
           <AddButton text="Add Pet" href="/petDetails" />
         </div>
       </main>

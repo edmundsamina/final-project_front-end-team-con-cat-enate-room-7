@@ -3,6 +3,7 @@ import NavBar from '../Components/navBar';
 import CompletedTaskCard from '../Components/completedTaskCard';
 import { useEffect, useState } from 'react';
 import { withPageAuthRequired } from '@auth0/nextjs-auth0';
+import Loader from '../Components/loader';
 
 const url = process.env.NEXT_PUBLIC_DB_URL ?? "http://localhost:3000";
 
@@ -53,7 +54,7 @@ export default withPageAuthRequired (function HistoryPage() {
 	}
 
     if (!data) {
-		return <p>is loading</p>;
+		return <Loader/>;
 	}
 
     return (

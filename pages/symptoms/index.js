@@ -5,6 +5,7 @@ import Link from "next/link";
 import SymptomCard from "../../Components/symptomCard";
 import { useEffect, useState } from "react";
 import { withPageAuthRequired } from "@auth0/nextjs-auth0";
+import Loader from "../../Components/loader.js";
 
 const url = process.env.NEXT_PUBLIC_DB_URL ?? "http://localhost:3000";
 
@@ -88,7 +89,7 @@ export default withPageAuthRequired (function SymptomPage() {
 	}
 
   if (!data || !newData) {
-    return <p>is loading</p>;
+    return <Loader/>;
   }
 
   return (

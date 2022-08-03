@@ -4,6 +4,7 @@ import SymptomDetailsCard from '../../Components/symptomDetailsCard'
 import NavBar from "../../Components/navBar.js";
 
 
+
 const url = process.env.NEXT_PUBLIC_DB_URL ?? "http://localhost:3000";
 
 
@@ -47,18 +48,26 @@ export const getStaticProps = async (context) => {
 
 const Details = ({incidents}) => {
   return (
-    <main> 
-    <NavBar />
-    <div className="m10">
-    <h2 className="text-center">{incidents[0].symptoms}</h2>
-      {incidents.map((card)=>{
-        return (
-          <SymptomDetailsCard key={card.incident_id} date={card.date} time={card.time} description={card.description}/>)
-      })}
-      <LinkButton text="Add incident" link="/addIncident"/> 
-    </div>
-    </main>
-  );
+		<main>
+			<NavBar />
+			<div className="m10">
+				<h2 className="text-center">{incidents[0].symptoms}</h2>
+				{incidents.map((card) => {
+					return (
+						<SymptomDetailsCard
+							key={card.incident_id}
+							date={card.date}
+							time={card.time}
+							description={card.description}
+						/>
+					);
+          
+				}
+        )}		
+				<LinkButton text="Add incident" link="/addIncident" />
+			</div>
+		</main>
+	);
 }
 
 export default Details;

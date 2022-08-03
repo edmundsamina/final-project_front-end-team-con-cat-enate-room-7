@@ -8,6 +8,8 @@ import PetCard from "../Components/PetCard";
 import { useEffect, useState } from "react";
 import { useUser } from "@auth0/nextjs-auth0";
 import Router from "next/router";
+import Link from "next/link";
+
 
 const url = process.env.NEXT_PUBLIC_DB_URL ?? "http://localhost:3000";
 
@@ -25,24 +27,32 @@ export default function Home() {
   //   return <a href="/api/auth/login">Login</a>;
 
   const [data, setData] = useState();
-  const user_id = "1234567890"; //To be passed in as a prop/context
-  useEffect(() => {
-    // declare the data fetching function
-    const fetchData = async () => {
-      const response = await fetch(`${url}/pets`);
-      const data = await response.json();
-      setData(data.payload);
-    };
 
-    // call the function
-    fetchData()
-      // make sure to catch any error
-      .catch(console.error);
-  }, []);
+	const user_id = "1234567890" //To be passed in as a prop/context
+  const delay = ms => new Promise(
+    resolve => setTimeout(resolve, ms)
+  );
 
-  if (!data) {
-    return <p>is loading</p>;
-  }
+	useEffect(() => {
+		// declare the data fetching function
+		const fetchData = async () => {
+      await delay(500)
+			const response = await fetch(`${url}/pets`);
+			const data = await response.json();
+			setData(data.payload);
+		};
+
+		// call the function
+		fetchData()
+			// make sure to catch any error
+			.catch(console.error);
+	}, []);
+
+
+	if (!data) {
+		return <p>is loading</p>;
+	}
+
   if (user) {
     return (
       <main>

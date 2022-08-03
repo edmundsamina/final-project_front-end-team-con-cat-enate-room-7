@@ -12,13 +12,14 @@ import LinkButton from '../Components/linkButton'
 import { nanoid } from 'nanoid/non-secure'
 
 const url = process.env.NEXT_PUBLIC_DB_URL
-const AddPets = () => {
+const UpdatePetDetails = () => {
 
-    const user_id = "1234567890"
+    const user_id = "3"
+    const pet_id ="5"
 
     const [submission,setSubmission] = useState({
         user_id: user_id,
-        pet_id: nanoid(10),
+        pet_id: pet_id,
         name: "",
         species: true,
         breed: "",
@@ -40,6 +41,7 @@ const AddPets = () => {
             }
             setNoEmptyFields(true)
         };
+    
         // call the function
         checkFields()
           // make sure to catch any error
@@ -47,13 +49,13 @@ const AddPets = () => {
       }, [submission]);
 
      function handleChange(e){
-        let value = (e.target.value).toString()
+        let value = (e.target.value)
         setSubmission({ ...submission, [e.target.name]: value });
      }
 
     async function handlePost(){
-        const response = await fetch(`${url}/pets`, {
-            method: "POST",
+        const response = await fetch(`${url}/pets/${pet_id}`, {
+            method: "PUT",
             body: JSON.stringify(submission),
             headers: {
                 'Content-Type': 'application/json'
@@ -70,22 +72,24 @@ const AddPets = () => {
     return (
         <div>
             <NavBar />
-            <FormControl>
-            <FormLabel>Add Pet</FormLabel>
+
+            <FormControl className='form-style'>
+            <FormLabel><h2>Pet Details</h2></FormLabel>
                 <Input placeholder='Name' name="name" value={submission.name} onChange={handleChange}/>
                 <Input placeholder='Breed' name="breed" value={submission.breed} onChange={handleChange}/>
 
-				<Select data-testid="Species" onChange={selectChange} placeholder="Species">
+				<Select data-testid="Species" onChange={selectChange} placeholder="Species" variant='flushed' borderColor='var(--main-color)' borderBottom="2px">
 					<option value={true}>Cat</option>
 					<option value={false}>Dog</option>
 				</Select>
 
-                <Input data-testid="age" type="number" placeholder='Age' name="age" value={submission.age} onChange={handleChange}/>
-                <Input type ="number" placeholder='Weight' name="weight" value={submission.weight} onChange={handleChange}/>
+                <Input data-testid="age" type="number" placeholder='Age' name="age" value={submission.age} onChange={handleChange} min={0}/>
+                <Input type = "number" placeholder='Weight' name="weight" value={submission.weight} onChange={handleChange} min={0}/>
+                <div className='formtext'>kg</div>
             </FormControl>
-            {noEmptyFields && <LinkButton text="Add" link="/" onClick={handlePost}/>}
+            {noEmptyFields && <LinkButton  text="Update" link="/pets" onClick={handlePost}/>}
         </div>
     )
 }
 
-export default AddPets
+export default UpdatePetDetails

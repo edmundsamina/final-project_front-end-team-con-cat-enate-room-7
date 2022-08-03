@@ -46,6 +46,7 @@ const AddReminder = () => {
 	const [noEmptyFields, setNoEmptyFields] = useState(false);
 
 	function handleChange(e) {
+		console.log(submission.date)
 		let value = e.target.value.toString();
 		setSubmission({ ...submission, [e.target.name]: value });
 		let entries = Object.values(submission);
@@ -66,8 +67,8 @@ const AddReminder = () => {
 				"Content-Type": "application/json",
 			},
 		});
-		const data = response.json();
-		console.log(data.rows);
+		// const data = response.json();
+		// console.log(data.rows);
 	}
 
 	function selectChange(e) {

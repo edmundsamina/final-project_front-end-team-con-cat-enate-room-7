@@ -19,9 +19,8 @@ export default function Home() {
   const { user, error, isLoading } = useUser();
 
   const [data, setData] = useState();
-
-  const user_id = "1234567890"; //To be passed in as a prop/context;
-
+  const [userID, setUserID] = useState("");
+  
   const delay = ms => new Promise(
 		resolve => setTimeout(resolve, ms)
 	  );
@@ -29,16 +28,30 @@ export default function Home() {
 		// declare the data fetching function
 		const fetchData = async () => {
       await delay(500)
-			const response = await fetch(`${url}/pets`);
-			const data = await response.json();
-			setData(data.payload);
+      if (userID){
+        const response = await fetch(`${url}/pets/${userID}`);
+        const data = await response.json();
+        setData(data.payload);
+      }
 		};
 
 		// call the function
 		fetchData()
 			// make sure to catch any error
 			.catch(console.error);
-	}, []);
+	}, [userID]);
+
+  useEffect(() => {
+		function getId(user) {
+			if (user) {
+				let string = user.sub;
+				let splitarray = string.split("|");
+				console.log(splitarray);
+				setUserID(splitarray[1]);
+			}
+		}
+		getId(user);
+	}, [user]);
 
 
 	if (!data) {
@@ -69,7 +82,7 @@ export default function Home() {
             })}
           </div>
           
-          <AddButton text="Add Pet" href="/petDetails" />
+          <AddButton text="Add Pet" href="/addPet" />
         </div>
       </main>
     );

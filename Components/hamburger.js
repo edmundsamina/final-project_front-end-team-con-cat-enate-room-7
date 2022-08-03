@@ -11,7 +11,7 @@ const Hamburger = () => {
         <Menu>
   <MenuButton as={Button} rightIcon={<HamburgerIcon />} className={styles.menubutton}/>
   <MenuList className={styles.menu}>
-  <Link href= "/home">
+  <Link href= "/">
     <MenuItem>Home</MenuItem>
   </Link>
   <Link href= "/updatePetDetails">

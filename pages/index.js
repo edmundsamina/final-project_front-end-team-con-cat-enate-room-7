@@ -6,7 +6,7 @@ import LinkButton from "../Components/linkButton";
 import Image from "next/image";
 import PetCard from "../Components/PetCard";
 import { useEffect, useState } from "react";
-import { useUser } from "@auth0/nextjs-auth0";
+import { useUser, useAuth0 } from "@auth0/nextjs-auth0";
 import Router from "next/router";
 import Link from "next/link";
 
@@ -16,23 +16,14 @@ const url = process.env.NEXT_PUBLIC_DB_URL ?? "http://localhost:3000";
 export default function Home() {
   //Logic for login/logout with auth0
   const { user, error, isLoading } = useUser();
-  //   if (user) {
-  //     return (
-  //       <>
-  //         <h1>Welcome {user.name}!</h1>
-  //         <a href="/api/auth/logout">Logout</a>
-  //       </>
-  //     )
-  //   }
-  //   return <a href="/api/auth/login">Login</a>;
 
   const [data, setData] = useState();
 
-	const user_id = "1234567890" //To be passed in as a prop/context
-  const delay = ms => new Promise(
-    resolve => setTimeout(resolve, ms)
-  );
+  const user_id = "1234567890"; //To be passed in as a prop/context;
 
+  const delay = ms => new Promise(
+		resolve => setTimeout(resolve, ms)
+	  );
 	useEffect(() => {
 		// declare the data fetching function
 		const fetchData = async () => {
@@ -54,6 +45,7 @@ export default function Home() {
 	}
 
   if (user) {
+    console.log(user.sub);
     return (
       <main>
         <NavBar />

@@ -3,8 +3,9 @@ import React from "react";
 import NavBar from "../Components/navBar.js";
 import Image from "next/image.js";
 import PetButton from "../Components/petButton"
+import { withPageAuthRequired } from "@auth0/nextjs-auth0";
 
-const SchedulePage = () => {
+export default withPageAuthRequired (function SchedulePage() {
  
   return (
     <main>
@@ -24,7 +25,8 @@ const SchedulePage = () => {
       </div>
     </main>
   );
-};
+}
+)
 
-export default SchedulePage;
+
 

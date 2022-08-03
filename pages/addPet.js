@@ -10,9 +10,10 @@ import {
 import NavBar from '../Components/navBar'
 import LinkButton from '../Components/linkButton'
 import { nanoid } from 'nanoid/non-secure'
+import { withPageAuthRequired } from "@auth0/nextjs-auth0";
 
 const url = process.env.NEXT_PUBLIC_DB_URL
-const AddPets = () => {
+export default withPageAuthRequired (function AddPets() {
 
     const user_id = "1234567890"
 
@@ -25,7 +26,7 @@ const AddPets = () => {
         breed: "",
         age: 0,
         weight: 0
-    })
+    });
 
     const [noEmptyFields, setNoEmptyFields] = useState(false)
 
@@ -79,5 +80,4 @@ const AddPets = () => {
         </div>
     )
 }
-
-export default AddPets
+)

@@ -78,7 +78,7 @@ export default function Home() {
               } else {
                 images = "pet-card-dog.png";
               }
-              return <PetCard key={index} name={item.name} image={images} />;
+              return <PetCard key={index} name={item.name} image={images} petId={item.pet_id} />;
             })}
           </div>
           

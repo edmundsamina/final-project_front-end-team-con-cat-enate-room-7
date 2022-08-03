@@ -11,6 +11,7 @@ import {
 import NavBar from "../Components/navBar";
 import LinkButton from "../Components/linkButton";
 import { nanoid } from "nanoid/non-secure";
+import { withPageAuthRequired } from "@auth0/nextjs-auth0";
 
 /*
 user_id - handed in as state
@@ -24,7 +25,7 @@ frequency - number
 */
 
 const url = process.env.NEXT_PUBLIC_DB_URL;
-const AddReminder = () => {
+export default withPageAuthRequired (function AddReminder() {
 	const user_id = "1234567890";
 	const pet_id = "1234567890"; // These ids need to be handed in as state/context
 
@@ -144,6 +145,5 @@ const AddReminder = () => {
 			)}
 		</div>
 	);
-};
-
-export default AddReminder;
+}
+)

@@ -4,10 +4,11 @@ import AddButton from "../../Components/addButton.js";
 import Link from "next/link";
 import SymptomCard from "../../Components/symptomCard";
 import { useEffect, useState } from "react";
+import { withPageAuthRequired } from "@auth0/nextjs-auth0";
 
 const url = process.env.NEXT_PUBLIC_DB_URL ?? "http://localhost:3000";
 
-const SymptomPage = () => {
+export default withPageAuthRequired (function SymptomPage() {
   // const array = [{"symptoms":"Dodgy foot","symptoms_id":"1234567890","date":"120722"},
   //                {"symptoms":"Red hand","symptoms_id":"122124112","date":"230722"},
   //                {"symptoms":"Small Head","symptoms_id":"12314410","date":"220822"}]
@@ -15,10 +16,14 @@ const SymptomPage = () => {
   const [data, setData] = useState();
   const [newData, setNewData] = useState();
 
+  const delay = ms => new Promise(
+    resolve => setTimeout(resolve, ms)
+  );
 
   useEffect(() => {
     // declare the data fetching function
     const fetchData = async () => {
+      await delay(500)
       const response = await fetch(`${url}/symptoms`);
       const data = await response.json();
       setData(data.payload);
@@ -107,6 +112,5 @@ const SymptomPage = () => {
       <AddButton text="Add Symptom" href="/addSymptom" />
     </main>
   );
-};
-
-export default SymptomPage;
+}
+)

@@ -10,9 +10,10 @@ import {
 import NavBar from '../Components/navBar'
 import LinkButton from '../Components/linkButton'
 import { nanoid } from 'nanoid/non-secure'
+import { withPageAuthRequired } from "@auth0/nextjs-auth0";
 
 const url = process.env.NEXT_PUBLIC_DB_URL
-const UpdatePetDetails = () => {
+export default withPageAuthRequired (function UpdatePetDetails() {
 
     const user_id = "3"
     const pet_id ="5"
@@ -92,5 +93,4 @@ const UpdatePetDetails = () => {
         </div>
     )
 }
-
-export default UpdatePetDetails
+)

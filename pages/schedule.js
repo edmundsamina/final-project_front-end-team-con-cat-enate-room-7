@@ -5,15 +5,22 @@ import ScheduleCard from "../Components/scheduleCard";
 import CompletedTaskCard from "../Components/completedTaskCard.js";
 import { useEffect, useState } from "react";
 import { nanoid } from "nanoid/non-secure";
+import { withPageAuthRequired } from "@auth0/nextjs-auth0";
+
 
 const url = process.env.NEXT_PUBLIC_DB_URL ?? "http://localhost:3000";
 
-const SchedulePage = () => {
-	const [stateCount, setStateCount] = useState(0);
-	const [data, setData] = useState();
+export default withPageAuthRequired (function SchedulePage() {
+  const [stateCount, setStateCount] = useState(0);
+  const [data, setData] = useState();
+  
+	const delay = ms => new Promise(
+		resolve => setTimeout(resolve, ms)
+	  );
 	useEffect(() => {
 		// declare the data fetching function
 		const fetchData = async () => {
+			await delay(500)
 			const response = await fetch(`${url}/reminders`);
 			const data = await response.json();
 			setData(data.payload);
@@ -140,6 +147,5 @@ const SchedulePage = () => {
 			<AddButton text="Add Reminder" href="/addReminder" />
 		</main>
 	);
-};
-
-export default SchedulePage;
+}
+)

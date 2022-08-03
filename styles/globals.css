@@ -79,8 +79,9 @@ h4{
   flex-direction: column;
   align-items: center;
   width: 100%;
-  position: fixed;
+  /* position: fixed; */
   bottom: 0px;
+  margin-bottom: 1%;
 }
 
 .addButton >button{
@@ -326,6 +327,7 @@ h4{
   width: 2.2rem;
 }
 
+
 .mt1{
   margin-top: 1em;
 }
@@ -340,3 +342,4 @@ h4{
   .logo-box{
     max-width: 200px;
   }
+

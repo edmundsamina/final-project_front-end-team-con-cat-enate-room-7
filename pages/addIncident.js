@@ -1,32 +1,34 @@
 import React, { useState, useEffect } from "react";
 import {
-	FormControl,
-	FormLabel,
-	FormErrorMessage,
-	FormHelperText,
-	Input,
+  FormControl,
+  FormLabel,
+  FormErrorMessage,
+  FormHelperText,
+  Input,
 } from "@chakra-ui/react";
 import NavBar from "../Components/navBar";
 import LinkButton from "../Components/linkButton";
 import { nanoid } from "nanoid/non-secure";
+import { withPageAuthRequired } from "@auth0/nextjs-auth0";
 
 const url = process.env.NEXT_PUBLIC_DB_URL;
-const AddIncident = () => {
-	const user_id = "1234567890";
-	const pet_id = "1234567890"; // These ids need to be handed in as state/context
-    const symptoms_id = "1234567890"
-    const symptoms = "Holding symptom";
+export default withPageAuthRequired(function AddIncident() {
+  const user_id = "1234567890";
+  const pet_id = "1234567890"; // These ids need to be handed in as state/context
+  const symptoms_id = "1234567890";
+  const symptoms = "Holding symptom";
 
-	const [newIncident, setNewIncident] = useState({
-		user_id: user_id,
-		pet_id: pet_id,
-		incident_id: nanoid(10),
-		symptoms: symptoms,
-		symptoms_id: symptoms_id,
-		date: "",
-		time: "",
-		description: "",
-	});
+  const [newIncident, setNewIncident] = useState({
+    user_id: user_id,
+    pet_id: pet_id,
+    incident_id: nanoid(10),
+    symptoms: symptoms,
+    symptoms_id: symptoms_id,
+    date: "",
+    time: "",
+    description: "",
+  });
+
 
 	// const [noEmptyFields, setNoEmptyFields] = useState(false);
 
@@ -69,17 +71,19 @@ const AddIncident = () => {
 		setNewIncident({ ...newIncident, [e.target.name]: value });
      }
 
-	async function handlePost() {
-		const response = await fetch(`${url}/symptoms`, {
-			method: "POST",
-			body: JSON.stringify(newIncident),
-			headers: {
-				"Content-Type": "application/json",
-			},
-		});
-		const data = response.json();
-		console.log(data.rows);
-	}
+
+  async function handlePost() {
+    const response = await fetch(`${url}/symptoms`, {
+      method: "POST",
+      body: JSON.stringify(newIncident),
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+    const data = response.json();
+    console.log(data.rows);
+  }
+
 
 	return (
 		<div>
@@ -118,3 +122,4 @@ const AddIncident = () => {
 };
 
 export default AddIncident;
+

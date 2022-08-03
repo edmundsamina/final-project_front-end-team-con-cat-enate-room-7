@@ -1,14 +1,9 @@
-import React from 'react'
-import {HamburgerIcon} from '@chakra-ui/icons'
-import { Button } from '@chakra-ui/react'
-import {
-    Menu,
-    MenuButton,
-    MenuList,
-    MenuItem
-  } from '@chakra-ui/react'
-import Link from 'next/link'
-import styles from '../styles/Burger.module.css'
+import React from "react";
+import { HamburgerIcon } from "@chakra-ui/icons";
+import { Button } from "@chakra-ui/react";
+import { Menu, MenuButton, MenuList, MenuItem } from "@chakra-ui/react";
+import Link from "next/link";
+import styles from "../styles/Burger.module.css";
 
 const Hamburger = () => {
     return (
@@ -16,10 +11,10 @@ const Hamburger = () => {
         <Menu>
   <MenuButton as={Button} rightIcon={<HamburgerIcon />} className={styles.menubutton}/>
   <MenuList className={styles.menu}>
-  <Link href= "/pets">
+  <Link href= "/">
     <MenuItem>Home</MenuItem>
   </Link>
-  <Link href= "/404">
+  <Link href= "/updatePetDetails">
     <MenuItem>Change Pet Info</MenuItem>
   </Link>
   <Link href= "/symptoms">
@@ -43,4 +38,4 @@ const Hamburger = () => {
     )
 }
 
-export default Hamburger
+export default Hamburger;

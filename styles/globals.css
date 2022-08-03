@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Dosis:wght@400;700&family=Roboto:wght@300;700&display=swap');
+
 :root {
   --main-color: #448FFF;
   --second-color:#B2D1FF;
@@ -19,12 +21,13 @@
   background: var(--main-color);
 }
 
+
 html,
 body {
   padding: 0;
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
-    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+  font-family: 'Dosis', 'Roboto', -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
+    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif !important;
 }
 
 a {
@@ -37,14 +40,14 @@ a {
 }
 
 h1{
-  font-weight: 500 !important;
+  font-weight: 700 !important;
   font-size: var(--h1-size) !important;
   color:var(--main-color);
 }
 
 
 h2{
-  font-weight: 500 !important;
+  font-weight: 700 !important;
   font-size: var(--h2-size) !important;
   color:var(--main-color);
 }
@@ -153,7 +156,7 @@ h4{
   border-radius: 20px;
 }
 
-.schedulecard{
+/* .schedulecard{
   border: 3px solid var(--second-color);
   width: 100%;
   display: flex;
@@ -161,9 +164,33 @@ h4{
   align-items: center;
   padding: 10px 10px 20px;
   margin-bottom: 20px;
+} */
+
+.schedulecard{
+  border: 3px solid var(--second-color);
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: var(--main-color);
+  margin-bottom: 20px;
 }
 
-.completedtaskcard{
+.schedulecard h2{
+  color: #fff !important;
+  margin-bottom: 0.75em;
+}
+
+.schedulecard > :last-child{
+  background-color: #fff;
+  color: var(--main-color);
+  width: 100%;
+  text-align: center;
+  padding: 0.5em 1em 1em;
+  line-height: 2em;
+}
+
+/* .completedtaskcard{
   border: 3px solid var(--second-color);
   background-color: var(--lightgrey);
   width: 100%;
@@ -172,6 +199,34 @@ h4{
   align-items: center;
   padding: 10px 10px 20px;
   margin-bottom: 20px;
+} */
+
+.completedtaskcard{
+  border: 3px solid var(--lightgrey);
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: var(--lightgrey);
+  margin-bottom: 20px;
+}
+
+.completedtaskcard button{
+  background-color: var(--lightgrey);
+}
+
+.completedtaskcard  h2{
+  color: #fff !important;
+  margin-bottom: 0.75em;
+}
+
+.completedtaskcard > :last-child{
+  background-color: #fff;
+  color: var(--lightgrey);
+  width: 100%;
+  text-align: center;
+  padding: 0.5em 1em 1em;
+  line-height: 2em;
 }
 
 .petbutton button{
@@ -217,7 +272,7 @@ h4{
   flex-wrap: wrap;
 }
 
-.flex > div{
+.flex > .pet-card{
   flex: 48%;
 }
 
@@ -271,3 +326,20 @@ h4{
   color: var(--main-color);
   width: 2.2rem;
 }
+
+
+.mt1{
+  margin-top: 1em;
+}
+
+.form-remind{ 
+  margin-left: 1.25em;
+  color: white;
+  background-color: var(--main-color);
+  width: fit-content;
+  padding: 0px 20px;}
+
+  .logo-box{
+    max-width: 200px;
+  }
+

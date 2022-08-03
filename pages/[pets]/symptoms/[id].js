@@ -1,7 +1,7 @@
 import React from "react";
-import LinkButton from '../../Components/linkButton'
-import SymptomDetailsCard from '../../Components/symptomDetailsCard'
-import NavBar from "../../Components/navBar.js";
+import LinkButton from '../../../Components/linkButton'
+import SymptomDetailsCard from '../../../Components/symptomDetailsCard'
+import NavBar from "../../../Components/navBar.js";
 import { useUser } from "@auth0/nextjs-auth0";
 import { withPageAuthRequired } from "@auth0/nextjs-auth0";
 

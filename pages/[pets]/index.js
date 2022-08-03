@@ -30,7 +30,7 @@ export default withPageAuthRequired (function SchedulePage({pet}) {
           layout="responsive"
         />
       <div className="m10">
-          <PetButton text="Change Pet Info" link="/updatePetDetails"/>
+          <PetButton text="Change Pet Info" link={`${pet.pet_id}/updatePetDetails`} />
           <PetButton text="View Symptoms" link="/symptoms"/>
           <PetButton text="Check Schedule" link="/schedule"/>
           <PetButton text="View History" link="/history"/>

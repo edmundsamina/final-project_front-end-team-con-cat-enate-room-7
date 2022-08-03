@@ -7,25 +7,35 @@ import {
     Input,
     Select
   } from '@chakra-ui/react'
-import NavBar from '../Components/navBar'
-import LinkButton from '../Components/linkButton'
+import NavBar from '../../Components/navBar'
+import LinkButton from '../../Components/linkButton'
 import { nanoid } from 'nanoid/non-secure'
 import { withPageAuthRequired } from "@auth0/nextjs-auth0";
 
-const url = process.env.NEXT_PUBLIC_DB_URL
-export default withPageAuthRequired (function UpdatePetDetails() {
+const url = process.env.NEXT_PUBLIC_DB_URL ?? "http://localhost:3000"
 
-    const user_id = "3"
-    const pet_id ="5"
+
+export async function getServerSideProps(context){
+    const id = context.params.pets
+    console.log(id)
+  const response = await fetch(`http://localhost:3000/pets?pet_id=${id}`)
+    const data = await response.json()
+  console.log(data)
+   return {props:{pet:data.payload[0]}}
+    }
+
+
+export default withPageAuthRequired (function UpdatePetDetails({pet}) {
+
 
     const [submission,setSubmission] = useState({
-        user_id: user_id,
-        pet_id: pet_id,
-        name: "",
-        species: true,
-        breed: "",
-        age: "",
-        weight: ""
+        user_id: pet.user_id,
+        pet_id: pet.pet_id,
+        name: pet.name,
+        species: pet.species,
+        breed: pet.breed,
+        age: pet.age,
+        weight: pet.weight
     })
 
     const [noEmptyFields, setNoEmptyFields] = useState(false)
@@ -55,7 +65,8 @@ export default withPageAuthRequired (function UpdatePetDetails() {
      }
 
     async function handlePost(){
-        const response = await fetch(`${url}/pets/${pet_id}`, {
+        console.log(pet.pet_id)
+        const response = await fetch(`${url}/pets/${pet.pet_id}`, {
             method: "PUT",
             body: JSON.stringify(submission),
             headers: {
@@ -89,7 +100,7 @@ export default withPageAuthRequired (function UpdatePetDetails() {
                 <div className='formtext'>kg</div>
             </FormControl>
             {!noEmptyFields && <p className='form-remind'>* Please fill all</p>}
-            {noEmptyFields && <LinkButton  text="Update" link="/pets" onClick={handlePost}/>}
+            {noEmptyFields && <LinkButton  text="Update" link={`/${pet.pet_id}`} onClick={handlePost}/>}
         </div>
     )
 }

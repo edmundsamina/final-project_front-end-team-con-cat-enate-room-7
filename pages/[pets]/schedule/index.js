@@ -1,12 +1,12 @@
 import React from "react";
-import NavBar from "../Components/navBar.js";
-import AddButton from "../Components/addButton.js";
-import ScheduleCard from "../Components/scheduleCard";
-import CompletedTaskCard from "../Components/completedTaskCard.js";
+import NavBar from "../../../Components/navBar.js";
+import AddButton from "../../../Components/addButton.js";
+import ScheduleCard from "../../../Components/scheduleCard";
+import CompletedTaskCard from "../../../Components/completedTaskCard.js";
 import { useEffect, useState } from "react";
 import { nanoid } from "nanoid/non-secure";
 import { withPageAuthRequired } from "@auth0/nextjs-auth0";
-import Loader from "../Components/loader.js";
+import Loader from "../../../Components/loader.js";
 
 
 const url = process.env.NEXT_PUBLIC_DB_URL ?? "http://localhost:3000";

@@ -1,9 +1,9 @@
 import React from 'react';
-import NavBar from '../Components/navBar';
-import CompletedTaskCard from '../Components/completedTaskCard';
+import NavBar from '../../Components/navBar';
+import CompletedTaskCard from '../../Components/completedTaskCard';
 import { useEffect, useState } from 'react';
 import { withPageAuthRequired } from '@auth0/nextjs-auth0';
-import Loader from '../Components/loader';
+import Loader from '../../Components/loader';
 
 const url = process.env.NEXT_PUBLIC_DB_URL ?? "http://localhost:3000";
 

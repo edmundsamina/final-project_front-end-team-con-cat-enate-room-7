@@ -6,6 +6,7 @@ import CompletedTaskCard from "../Components/completedTaskCard.js";
 import { useEffect, useState } from "react";
 import { nanoid } from "nanoid/non-secure";
 
+
 const url = process.env.NEXT_PUBLIC_DB_URL ?? "http://localhost:3000";
 
 const SchedulePage = () => {

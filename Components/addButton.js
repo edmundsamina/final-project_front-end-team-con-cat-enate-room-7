@@ -16,7 +16,7 @@ const AddButton = ({ text, href }) => {
           width="15vw"
         />
       </Link>
-      <h3 className="addText">{text}</h3>
+      {/* <h3 className="addText">{text}</h3> */}
     </div>
   );
 };

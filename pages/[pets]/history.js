@@ -7,7 +7,16 @@ import Loader from '../../Components/loader';
 
 const url = process.env.NEXT_PUBLIC_DB_URL ?? "http://localhost:3000";
 
-export default withPageAuthRequired (function HistoryPage() {
+export async function getServerSideProps(context){
+
+	const id = context.params.pets
+  const response = await fetch(`http://localhost:3000/pets?pet_id=${id}`)
+	const data = await response.json()
+   return {props:{pet:data.payload[0]}}
+	}
+  
+
+export default withPageAuthRequired (function HistoryPage({pet}) {
     const [stateCount, setStateCount] = useState(0);
 	const [data, setData] = useState();
 
@@ -18,7 +27,7 @@ export default withPageAuthRequired (function HistoryPage() {
 		
 		const fetchData = async () => {
 			// await delay()
-			const response = await fetch(`${url}/reminders`);
+			const response = await fetch(`${url}/reminders?pet_id=${pet.pet_id}`);
 			const data = await response.json();
 			setData(data.payload);
 		};
@@ -30,7 +39,7 @@ export default withPageAuthRequired (function HistoryPage() {
     useEffect(() => {
 		
 		const fetchData = async () => {
-			const response = await fetch(`${url}/reminders`);
+			const response = await fetch(`${url}/reminders?pet_id=${pet.pet_id}`);
 			const data = await response.json();
 			setData(data.payload);
 		};

@@ -9,10 +9,8 @@ import { withPageAuthRequired } from "@auth0/nextjs-auth0";
 export async function getServerSideProps(context){
 
   const id = context.params.pets
-  console.log(id)
 const response = await fetch(`http://localhost:3000/pets?pet_id=${id}`)
   const data = await response.json()
-console.log(data)
  return {props:{pet:data.payload[0]}}
   }
 
@@ -33,7 +31,7 @@ export default withPageAuthRequired (function SchedulePage({pet}) {
           <PetButton text="Change Pet Info" link={`${pet.pet_id}/updatePetDetails`} />
           <PetButton text="View Symptoms" link="/symptoms"/>
           <PetButton text="Check Schedule" link="/schedule"/>
-          <PetButton text="View History" link="/history"/>
+          <PetButton text="View History" link={`${pet.pet_id}/history`}/>
           <PetButton text="Book Appointment" link="/404"/>
       </div>
     </main>

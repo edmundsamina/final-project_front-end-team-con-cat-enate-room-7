@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState,useEffect } from 'react'
 import {
     FormControl,
     FormLabel,
@@ -28,20 +28,46 @@ export default withPageAuthRequired (function AddSymptom() {
         description: ""
     })
 
+    // const [noEmptyFields, setNoEmptyFields] = useState(false)
+
+    //  function handleChange(e){
+    //     let value = (e.target.value).toString()
+    //     setSubmission({ ...submission, [e.target.name]: value });
+    //     let entries = Object.values(submission);
+    //     for (let i = 0; i < entries.length; i++) {
+    //       if (entries[i] === "" || entries[i] === undefined) {
+    //         setNoEmptyFields(false)
+    //         return
+    //       } 
+        
+    //     }
+    //     setNoEmptyFields(true)
+    //  }
+
     const [noEmptyFields, setNoEmptyFields] = useState(false)
 
+    useEffect(() => {
+        const checkFields = async () => {
+            let entries = Object.values(submission);
+            for (let i = 0; i < entries.length; i++) {
+              if (entries[i] === "" || entries[i] === undefined || entries[i] === null) {
+                setNoEmptyFields(false)
+                return
+              } 
+            
+            }
+            setNoEmptyFields(true)
+        };
+    
+        // call the function
+        checkFields()
+          // make sure to catch any error
+          .catch(console.error);
+      }, [submission]);
+
      function handleChange(e){
-        let value = (e.target.value).toString()
+        let value = (e.target.value)
         setSubmission({ ...submission, [e.target.name]: value });
-        let entries = Object.values(submission);
-        for (let i = 0; i < entries.length; i++) {
-          if (entries[i] === "" || entries[i] === undefined) {
-            setNoEmptyFields(false)
-            return
-          } 
-        
-        }
-        setNoEmptyFields(true)
      }
 
     async function handlePost(){
@@ -59,13 +85,14 @@ export default withPageAuthRequired (function AddSymptom() {
     return (
         <div>
             <NavBar />
-            <FormControl>
-            <FormLabel>Add Symptom</FormLabel>
+            <FormControl className='form-style'>
+            <FormLabel><h2>Add Symptom</h2></FormLabel>
                 <Input placeholder='Symptom' name="symptoms" value={submission.symptoms} onChange={handleChange}/>
                 <Input placeholder='Date' type="date" name="date" value={submission.date} onChange={handleChange}/>
                 <Input placeholder='Time' type="time" name="time" value={submission.time} onChange={handleChange}/>
                 <Input placeholder='Description' name="description" value={submission.description} onChange={handleChange}/>
             </FormControl>
+            {!noEmptyFields && <p className='form-remind'>* Please fill all</p>}
             {noEmptyFields && <LinkButton text="Add" link="/symptoms" onClick={handlePost}/>}
         </div>
     )

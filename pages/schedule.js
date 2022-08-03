@@ -6,6 +6,7 @@ import CompletedTaskCard from "../Components/completedTaskCard.js";
 import { useEffect, useState } from "react";
 import { nanoid } from "nanoid/non-secure";
 import { withPageAuthRequired } from "@auth0/nextjs-auth0";
+import Loader from "../Components/loader.js";
 
 
 const url = process.env.NEXT_PUBLIC_DB_URL ?? "http://localhost:3000";
@@ -47,7 +48,7 @@ export default withPageAuthRequired (function SchedulePage() {
 	}, [stateCount]);
 
 	if (!data) {
-		return <p>is loading</p>;
+		return <Loader/>;
 	}
 
 	/*

@@ -5,6 +5,7 @@ import Link from "next/link";
 import SymptomCard from "../../Components/symptomCard";
 import { useEffect, useState } from "react";
 import { withPageAuthRequired } from "@auth0/nextjs-auth0";
+import Loader from "../../Components/loader.js";
 
 const url = process.env.NEXT_PUBLIC_DB_URL ?? "http://localhost:3000";
 
@@ -63,12 +64,9 @@ export default withPageAuthRequired (function SymptomPage() {
             uniqueSymptoms.push(data[i].symptoms)
           }
        }
-       console.log(uniqueSymptomsId)
-       console.log(uniqueSymptoms)
        let unique = []
        for (let i = 0; i < uniqueSymptomsId.length; i++){
         unique.push({symptoms_id:uniqueSymptomsId[i],symptoms:uniqueSymptoms[i]})
-        console.log(unique)
        }
        setNewData(unique)
       }
@@ -76,8 +74,22 @@ export default withPageAuthRequired (function SymptomPage() {
     removeDuplicates();
   }, [data]);
 
+  async function onDelete(data) {
+		await fetch(`${url}/reminders/${data.symptoms_id}`, {
+			method: "DELETE",
+			headers: {
+				"Content-Type": "application/json",
+			},
+		})
+			.then((res) => res.json)
+			.then((data) => console.log(data))
+			.then(() => {
+				setStateCount((c) => c + 1);
+			});
+	}
+
   if (!data || !newData) {
-    return <p>is loading</p>;
+    return <Loader/>;
   }
 
   return (
@@ -86,12 +98,13 @@ export default withPageAuthRequired (function SymptomPage() {
 
       <div className="m10">
         {newData.map((item) => {
-          console.log(item);
           return (
             <SymptomCard
               key={item.symptoms_id}
               name={item.symptoms}
               link={"/symptoms/" + item.symptoms_id}
+              data={item}
+              onDelete={onDelete}
             />
           );
         })}

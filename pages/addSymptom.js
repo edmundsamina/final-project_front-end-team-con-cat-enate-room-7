@@ -9,9 +9,10 @@ import {
 import NavBar from '../Components/navBar'
 import LinkButton from '../Components/linkButton'
 import { nanoid } from 'nanoid/non-secure'
+import { withPageAuthRequired } from "@auth0/nextjs-auth0";
 
 const url = process.env.NEXT_PUBLIC_DB_URL
-const AddSymptom = () => {
+export default withPageAuthRequired (function AddSymptom() {
 
     const user_id = "1234567890"
     const pet_id = "1234567890"// These ids need to be handed in as state/context
@@ -69,5 +70,4 @@ const AddSymptom = () => {
         </div>
     )
 }
-
-export default AddSymptom
+)

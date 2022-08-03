@@ -85,6 +85,7 @@ const AddPets = () => {
                 <Input type = "number" placeholder='Weight' name="weight" value={submission.weight} onChange={handleChange} min={0}/>
                 <div className='formtext'>kg</div>
             </FormControl>
+            {!noEmptyFields && <p className='form-remind'>* Please fill all</p>}
             {noEmptyFields && <LinkButton text="Add" link="/" onClick={handlePost}/>}
         </div>
     )

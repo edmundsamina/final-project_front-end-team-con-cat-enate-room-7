@@ -109,6 +109,7 @@ const AddIncident = () => {
 					onChange={handleChange}
 				/>
 			</FormControl>
+			{!noEmptyFields && <p className='form-remind'>* Please fill all</p>}
 			{noEmptyFields && (
 				<LinkButton text="Submit" link="/symptoms" onClick={handlePost} />
 			)}

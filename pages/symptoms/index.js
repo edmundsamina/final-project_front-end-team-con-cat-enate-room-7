@@ -58,18 +58,29 @@ const SymptomPage = () => {
             uniqueSymptoms.push(data[i].symptoms)
           }
        }
-       console.log(uniqueSymptomsId)
-       console.log(uniqueSymptoms)
        let unique = []
        for (let i = 0; i < uniqueSymptomsId.length; i++){
         unique.push({symptoms_id:uniqueSymptomsId[i],symptoms:uniqueSymptoms[i]})
-        console.log(unique)
        }
        setNewData(unique)
       }
     }
     removeDuplicates();
   }, [data]);
+
+  async function onDelete(data) {
+		await fetch(`${url}/reminders/${data.symptoms_id}`, {
+			method: "DELETE",
+			headers: {
+				"Content-Type": "application/json",
+			},
+		})
+			.then((res) => res.json)
+			.then((data) => console.log(data))
+			.then(() => {
+				setStateCount((c) => c + 1);
+			});
+	}
 
   if (!data || !newData) {
     return <p>is loading</p>;
@@ -81,12 +92,13 @@ const SymptomPage = () => {
 
       <div className="m10">
         {newData.map((item) => {
-          console.log(item);
           return (
             <SymptomCard
               key={item.symptoms_id}
               name={item.symptoms}
               link={"/symptoms/" + item.symptoms_id}
+              data={item}
+              onDelete={onDelete}
             />
           );
         })}

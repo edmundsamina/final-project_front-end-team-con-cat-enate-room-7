@@ -138,6 +138,7 @@ const AddReminder = () => {
 				</Select>
         }
 			</FormControl>
+			{!noEmptyFields && <p className='form-remind'>* Please fill all</p>}
 			{submission.task && submission.date && (
 				<LinkButton text="Add" link="/schedule" onClick={handlePost} />
 			)}

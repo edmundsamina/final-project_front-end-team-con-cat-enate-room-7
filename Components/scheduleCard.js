@@ -7,11 +7,14 @@ const ScheduleCard = ({ onClick, onDelete, data }) => {
 	const [year, month, day] = dateString.split("-" || "/");
 	return (
 		<div className="schedulecard" data={data}>
-			<DeleteButton onDelete={() => onDelete(data)} />
+		   <DeleteButton onDelete={() => onDelete(data)} />
+		   <div>
 			<h2>{data.task}</h2>
+		   </div>
+		   <div>
 			<p>Due: {`${day}/${month}/${year}`}</p>
-			<br />
 			<DoneButton text="Done" onClick={() => onClick(data)} />
+		   </div>
 		</div>
 	);
 };

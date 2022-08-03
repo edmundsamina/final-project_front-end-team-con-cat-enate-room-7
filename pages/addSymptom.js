@@ -91,6 +91,7 @@ const AddSymptom = () => {
                 <Input placeholder='Time' type="time" name="time" value={submission.time} onChange={handleChange}/>
                 <Input placeholder='Description' name="description" value={submission.description} onChange={handleChange}/>
             </FormControl>
+            {!noEmptyFields && <p className='form-remind'>* Please fill all</p>}
             {noEmptyFields && <LinkButton text="Add" link="/symptoms" onClick={handlePost}/>}
         </div>
     )

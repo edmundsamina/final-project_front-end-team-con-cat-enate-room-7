@@ -24,16 +24,23 @@ repeated - boolean
 frequency - number
 */
 
-const url = process.env.NEXT_PUBLIC_DB_URL;
-export default withPageAuthRequired (function AddReminder() {
-	const user_id = "1234567890";
-	const pet_id = "1234567890"; // These ids need to be handed in as state/context
+const url = process.env.NEXT_PUBLIC_DB_URL ?? "http://localhost:3000";
+
+export async function getServerSideProps(context){
+
+	const id = context.params.pets
+  const response = await fetch(`${url}/pets?pet_id=${id}`)
+	const data = await response.json()
+   return {props:{pet:data.payload[0]}}
+	}
+
+export default withPageAuthRequired (function AddReminder({pet}) {
 
 	// const [checkbox, setCheckbox] = useState(false);
 
 	const [submission, setSubmission] = useState({
-		user_id: user_id,
-		pet_id: pet_id,
+		user_id: pet.user_id,
+		pet_id: pet.pet_id,
 		reminder_id: nanoid(10),
 		task: "",
 		date: "",
@@ -141,7 +148,7 @@ export default withPageAuthRequired (function AddReminder() {
 			</FormControl>
 			{!noEmptyFields && <p className='form-remind'>* Please fill all</p>}
 			{submission.task && submission.date && (
-				<LinkButton text="Add" link="/schedule" onClick={handlePost} />
+				<LinkButton text="Add" link={{pathname:`./`, query:{pets:`${pet.pet_id}`}}} onClick={handlePost} />
 			)}
 		</div>
 	);

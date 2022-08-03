@@ -29,8 +29,8 @@ export default withPageAuthRequired (function SchedulePage({pet}) {
         />
       <div className="m10">
           <PetButton text="Change Pet Info" link={`${pet.pet_id}/updatePetDetails`} />
-          <PetButton text="View Symptoms" link="/symptoms"/>
-          <PetButton text="Check Schedule" link="/schedule"/>
+          <PetButton text="View Symptoms" link={`${pet.pet_id}/symptoms`}/>
+          <PetButton text="Check Schedule" link={`${pet.pet_id}/schedule`}/>
           <PetButton text="View History" link={`${pet.pet_id}/history`}/>
           <PetButton text="Book Appointment" link="/404"/>
       </div>

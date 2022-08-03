@@ -78,6 +78,7 @@ h4{
   width: 100%;
   /* position: fixed; */
   bottom: 0px;
+  margin-bottom: 1%;
 }
 
 .addButton >button{

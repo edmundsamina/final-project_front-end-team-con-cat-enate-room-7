@@ -5,7 +5,7 @@ import { useEffect, useState } from 'react';
 
 const url = process.env.NEXT_PUBLIC_DB_URL ?? "http://localhost:3000";
 
-const HistoryPage = () => {
+export default withPageAuthRequired (function HistoryPage() {
     const [stateCount, setStateCount] = useState(0);
 	const [data, setData] = useState();
 
@@ -73,5 +73,4 @@ const HistoryPage = () => {
         </main>
     )
 }
-
-export default HistoryPage
+)

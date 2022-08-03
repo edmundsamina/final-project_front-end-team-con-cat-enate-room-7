@@ -12,7 +12,7 @@ import LinkButton from '../Components/linkButton'
 import { nanoid } from 'nanoid/non-secure'
 
 const url = process.env.NEXT_PUBLIC_DB_URL
-const UpdatePetDetails = () => {
+export default withPageAuthRequired (function UpdatePetDetails() {
 
     const user_id = "3"
     const pet_id ="5"
@@ -91,5 +91,4 @@ const UpdatePetDetails = () => {
         </div>
     )
 }
-
-export default UpdatePetDetails
+)

@@ -7,17 +7,18 @@ import Image from "next/image";
 import PetCard from "../Components/PetCard";
 import { useEffect, useState } from "react";
 import { useUser, useAuth0 } from "@auth0/nextjs-auth0";
-import Router from "next/router";
+import {useRouter} from "next/router";
 import Link from "next/link";
 import Loader from "../Components/loader";
 
 
 const url = process.env.NEXT_PUBLIC_DB_URL ?? "http://localhost:3000";
 
+
 export default function Home() {
   //Logic for login/logout with auth0
   const { user, error, isLoading } = useUser();
-
+  const router = useRouter()
   const [data, setData] = useState();
   const [userID, setUserID] = useState("");
   
@@ -54,6 +55,16 @@ export default function Home() {
 	}, [user]);
 
 
+  if (!user) {
+    return(
+      <main>
+      <h2>Welcome to The Care-Full App</h2>
+      <Link href="/api/auth/login">
+        <a>Please Log In</a>
+      </Link>
+      </main>
+    ) 
+  }
 	if (!data) {
 		return <Loader/>;
 	}
@@ -87,7 +98,5 @@ export default function Home() {
       </main>
     );
   }
-  if (!user) {
-    return Router.push("/api/auth/login");
-  }
+  
 }

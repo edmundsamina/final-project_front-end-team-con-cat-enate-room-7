@@ -33,7 +33,7 @@ const Hamburger = ({pet}) => {
   <Link href= "/404">
     <MenuItem>Book Appointment</MenuItem>
   </Link>
-  <Link href= "/">
+  <Link href= "/api/auth/logout">
     <MenuItem>Sign Out</MenuItem>
   </Link>
   </MenuList>
@@ -47,7 +47,7 @@ else{
     <Menu>
     <MenuButton as={Button} rightIcon={<HamburgerIcon />} className={styles.menubutton}/>
     <MenuList className={styles.menu}>
-  <Link href= "/">
+  <Link href= "/api/auth/logout">
   <MenuItem>Sign Out</MenuItem>
 </Link>
   </MenuList>

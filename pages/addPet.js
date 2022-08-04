@@ -107,8 +107,8 @@ export default withPageAuthRequired (function AddPets() {
             <NavBar />
             <FormControl className='form-style'>
             <FormLabel><h2>Pet Details</h2></FormLabel>
-                <Input placeholder='Name' name="name" type="text" value={submission.name} pattern="^[a-zA-Z]*$" onChange={handleChange} maxlength="16"/>
-                <Input placeholder='Breed' name="breed" value={submission.breed} pattern="^[a-zA-Z]*$" onChange={handleChange} maxlength="16"/>
+                <Input placeholder='Name' name="name" type="text" value={submission.name} pattern="^[a-zA-Z ]*$" onChange={handleChange} maxlength="16"/>
+                <Input placeholder='Breed' name="breed" value={submission.breed} pattern="^[a-zA-Z ]*$" onChange={handleChange} maxlength="50"/>
 
 				<Select data-testid="Species" onChange={selectChange} placeholder="Species" variant='flushed' borderColor='var(--main-color)' borderBottom="2px">
 					<option value={true}>Cat</option>

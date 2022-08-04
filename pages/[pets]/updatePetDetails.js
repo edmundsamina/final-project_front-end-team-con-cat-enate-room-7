@@ -86,8 +86,8 @@ export default withPageAuthRequired (function UpdatePetDetails({pet}) {
 
             <FormControl className='form-style'>
             <FormLabel><h2>Pet Details</h2></FormLabel>
-                <Input placeholder='Name' type="text" name="name" value={submission.name} pattern="^[a-zA-Z]*$" onChange={handleChange} maxlength="16"/>
-                <Input placeholder='Breed' type="text" name="breed" value={submission.breed} pattern="^[a-zA-Z]*$" onChange={handleChange} maxlength="16"/>
+                <Input placeholder='Name' type="text" name="name" value={submission.name} pattern="^[a-zA-Z ]*$" onChange={handleChange} maxlength="16"/>
+                <Input placeholder='Breed' type="text" name="breed" value={submission.breed} pattern="^[a-zA-Z ]*$" onChange={handleChange} maxlength="50"/>
 
 				<Select data-testid="Species" onChange={selectChange} placeholder="Species" variant='flushed' borderColor='var(--main-color)' borderBottom="2px">
 					<option value={true}>Cat</option>

@@ -12,10 +12,10 @@ const url = process.env.NEXT_PUBLIC_DB_URL ?? "http://localhost:3000"
 export async function getServerSideProps(context){
 
   const id = context.params.pets
-const response = await fetch(`${url}/pets?pet_id=${id}`)
+  const response = await fetch(`${url}/pets?pet_id=${id}`)
   const data = await response.json()
- return {props:{pet:data.payload[0]}}
-  }
+     return {props:{pet:data.payload[0]}}
+}
 
 export default withPageAuthRequired (function SymptomPage({pet}) {
   // const array = [{"symptoms":"Dodgy foot","symptoms_id":"1234567890","date":"120722"},
@@ -24,6 +24,7 @@ export default withPageAuthRequired (function SymptomPage({pet}) {
 
   const [data, setData] = useState();
   const [newData, setNewData] = useState();
+  const [stateCount, setStateCount] = useState(0);
 
   const delay = ms => new Promise(
     resolve => setTimeout(resolve, ms)
@@ -43,6 +44,21 @@ export default withPageAuthRequired (function SymptomPage({pet}) {
       // make sure to catch any error
       .catch(console.error);
   }, []);
+
+  useEffect(() => {
+    // declare the data fetching function
+    const fetchData = async () => {
+      await delay(500)
+      const response = await fetch(`${url}/symptoms/${pet.pet_id}`);
+      const data = await response.json();
+      setData(data.payload);
+    };
+
+    // call the function
+    fetchData()
+      // make sure to catch any error
+      .catch(console.error);
+  }, [stateCount]);
 
   // useEffect(() => {
   //   function removeDuplicates() {
@@ -83,7 +99,7 @@ export default withPageAuthRequired (function SymptomPage({pet}) {
   }, [data]);
 
   async function onDelete(data) {
-		await fetch(`${url}/reminders/${data.symptoms_id}`, {
+		await fetch(`${url}/symptoms/${data.symptoms_id}`, {
 			method: "DELETE",
 			headers: {
 				"Content-Type": "application/json",

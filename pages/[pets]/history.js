@@ -5,15 +5,16 @@ import { useEffect, useState } from 'react';
 import { withPageAuthRequired } from '@auth0/nextjs-auth0';
 import Loader from '../../Components/loader';
 
-const url = process.env.NEXT_PUBLIC_DB_URL ?? "http://localhost:3000";
+const url = process.env.NEXT_PUBLIC_DB_URL ?? "http://localhost:3000"
+
 
 export async function getServerSideProps(context){
-
-	const id = context.params.pets
-  const response = await fetch(`http://localhost:3000/pets?pet_id=${id}`)
-	const data = await response.json()
+    const id = context.params.pets
+  const response = await fetch(`${url}/pets?pet_id=${id}`)
+    const data = await response.json()
    return {props:{pet:data.payload[0]}}
-	}
+    }
+
   
 
 export default withPageAuthRequired (function HistoryPage({pet}) {

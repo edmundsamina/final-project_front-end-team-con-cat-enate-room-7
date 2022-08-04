@@ -6,8 +6,8 @@ import {
   FormHelperText,
   Input,
 } from "@chakra-ui/react";
-import NavBar from "../../../Components/navBar";
-import LinkButton from "../../../Components/linkButton";
+import NavBar from "../../../../Components/navBar";
+import LinkButton from "../../../../Components/linkButton";
 import { nanoid } from "nanoid/non-secure";
 import { withPageAuthRequired } from "@auth0/nextjs-auth0";
 

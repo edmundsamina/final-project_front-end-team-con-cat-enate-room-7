@@ -17,10 +17,8 @@ const url = process.env.NEXT_PUBLIC_DB_URL ?? "http://localhost:3000"
 
 export async function getServerSideProps(context){
     const id = context.params.pets
-    console.log(id)
-  const response = await fetch(`http://localhost:3000/pets?pet_id=${id}`)
+  const response = await fetch(`${url}/pets?pet_id=${id}`)
     const data = await response.json()
-  console.log(data)
    return {props:{pet:data.payload[0]}}
     }
 

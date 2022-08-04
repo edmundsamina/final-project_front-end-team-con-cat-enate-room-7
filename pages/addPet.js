@@ -11,14 +11,26 @@ import NavBar from '../Components/navBar'
 import LinkButton from '../Components/linkButton'
 import { nanoid } from 'nanoid/non-secure'
 import { withPageAuthRequired } from "@auth0/nextjs-auth0";
+import { useUser, useAuth0 } from "@auth0/nextjs-auth0";
 
-const url = process.env.NEXT_PUBLIC_DB_URL
+const url = process.env.NEXT_PUBLIC_DB_URL ?? "http://localhost:3000";
 export default withPageAuthRequired (function AddPets() {
 
-    const user_id = "1234567890"
+    const { user, error, isLoading } = useUser();
+
+    const [userID, setUserID] = useState("");
+
+    function getId(user) {
+        if (user) {
+            let string = user.sub;
+            let splitarray = string.split("|");
+            console.log(splitarray);
+            return(splitarray[1]);
+        }
+    }
 
     const [submission,setSubmission] = useState({
-        user_id: user_id,
+        user_id: getId(user),
         pet_id: nanoid(10),
         name: "",
         species: true,
@@ -68,6 +80,18 @@ export default withPageAuthRequired (function AddPets() {
     function selectChange(e) {
 		setSubmission({ ...submission, species: e.target.value });
 	}
+
+    useEffect(() => {
+		async function getId(user) {
+			if (user) {
+				let string = user.sub;
+				let splitarray = string.split("|");
+				console.log(splitarray);
+				setUserID(splitarray[1]);
+			}
+		}
+		getId(user);
+	}, [user]);
 
     return (
         <div>

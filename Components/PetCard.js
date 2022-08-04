@@ -1,11 +1,19 @@
 import React from "react";
 import Image from "next/image";
+import { useRouter } from "next/router";
 
-function PetCard({ image, name }) {
+function PetCard({ image, name, petId }) {
+  const router = useRouter();
+  function handleClick(e) {
+    const petDataId = e.target.getAttribute("data-petid")
+    router.push(`/${petDataId}`)
+  }
+
+
   return (
-    <div className="pet-card">
-      <Image src={require(`./../public/${image}`)} alt="Care-Full Logo" />
-      <h2>{name}</h2>
+    <div className="pet-card" data-petid={petId} onClick={handleClick}>
+      <Image src={require(`./../public/${image}`)} alt="Care-Full Logo" data-petid={petId} onClick={handleClick} />
+      <h2 data-petid={petId} onClick={handleClick}>{name}</h2>
     </div>
   );
 }

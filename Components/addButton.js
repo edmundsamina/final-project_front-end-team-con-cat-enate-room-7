@@ -2,8 +2,11 @@ import React from "react";
 import { AddIcon } from "@chakra-ui/icons";
 import { IconButton } from "@chakra-ui/react";
 import Link from "next/link";
+import { useRouter } from "next/router";
 
 const AddButton = ({ text, href }) => {
+
+  
   return (
     <div className="addButton">
       <Link href={href}>

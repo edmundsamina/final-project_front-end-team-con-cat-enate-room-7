@@ -6,20 +6,27 @@ import {
     FormHelperText,
     Input,
   } from '@chakra-ui/react'
-import NavBar from '../Components/navBar'
-import LinkButton from '../Components/linkButton'
+import NavBar from '../../../Components/navBar'
+import LinkButton from '../../../Components/linkButton'
 import { nanoid } from 'nanoid/non-secure'
 import { withPageAuthRequired } from "@auth0/nextjs-auth0";
 
-const url = process.env.NEXT_PUBLIC_DB_URL
-export default withPageAuthRequired (function AddSymptom() {
+const url = process.env.NEXT_PUBLIC_DB_URL ?? "http://localhost:3000"
 
-    const user_id = "1234567890"
-    const pet_id = "1234567890"// These ids need to be handed in as state/context
+export async function getServerSideProps(context){
+
+  const id = context.params.pets
+const response = await fetch(`${url}/pets?pet_id=${id}`)
+  const data = await response.json()
+ return {props:{pet:data.payload[0]}}
+  }
+
+export default withPageAuthRequired (function AddSymptom({pet}) {
+
 
     const [submission,setSubmission] = useState({
-        user_id: user_id,
-        pet_id: pet_id,
+        user_id: pet.user_id,
+        pet_id: pet.pet_id,
         incident_id: nanoid(10),
         symptoms: "",
         symptoms_id: nanoid(10),
@@ -84,7 +91,7 @@ export default withPageAuthRequired (function AddSymptom() {
 
     return (
         <div>
-            <NavBar />
+            <NavBar pet={pet}/>
             <FormControl className='form-style'>
             <FormLabel><h2>Add Symptom</h2></FormLabel>
                 <Input placeholder='Symptom' name="symptoms" value={submission.symptoms} onChange={handleChange}/>
@@ -93,7 +100,7 @@ export default withPageAuthRequired (function AddSymptom() {
                 <Input placeholder='Description' name="description" value={submission.description} onChange={handleChange}/>
             </FormControl>
             {!noEmptyFields && <p className='form-remind'>* Please fill all</p>}
-            {noEmptyFields && <LinkButton text="Add" link="/symptoms" onClick={handlePost}/>}
+            {noEmptyFields && <LinkButton text="Add" link={{pathname:`./`, query:{pets:`${pet.pet_id}`}}} onClick={handlePost}/>}
         </div>
     )
 }

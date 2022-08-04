@@ -1,15 +1,23 @@
 import React from "react";
-import NavBar from "../../Components/navBar.js";
-import AddButton from "../../Components/addButton.js";
+import NavBar from "../../../Components/navBar.js";
+import AddButton from "../../../Components/addButton.js";
 import Link from "next/link";
-import SymptomCard from "../../Components/symptomCard";
+import SymptomCard from "../../../Components/symptomCard";
 import { useEffect, useState } from "react";
 import { withPageAuthRequired } from "@auth0/nextjs-auth0";
-import Loader from "../../Components/loader.js";
+import Loader from "../../../Components/loader.js";
 
-const url = process.env.NEXT_PUBLIC_DB_URL ?? "http://localhost:3000";
+const url = process.env.NEXT_PUBLIC_DB_URL ?? "http://localhost:3000"
 
-export default withPageAuthRequired (function SymptomPage() {
+export async function getServerSideProps(context){
+
+  const id = context.params.pets
+const response = await fetch(`${url}/pets?pet_id=${id}`)
+  const data = await response.json()
+ return {props:{pet:data.payload[0]}}
+  }
+
+export default withPageAuthRequired (function SymptomPage({pet}) {
   // const array = [{"symptoms":"Dodgy foot","symptoms_id":"1234567890","date":"120722"},
   //                {"symptoms":"Red hand","symptoms_id":"122124112","date":"230722"},
   //                {"symptoms":"Small Head","symptoms_id":"12314410","date":"220822"}]
@@ -25,7 +33,7 @@ export default withPageAuthRequired (function SymptomPage() {
     // declare the data fetching function
     const fetchData = async () => {
       await delay(500)
-      const response = await fetch(`${url}/symptoms`);
+      const response = await fetch(`${url}/symptoms/${pet.pet_id}`);
       const data = await response.json();
       setData(data.payload);
     };
@@ -110,7 +118,7 @@ export default withPageAuthRequired (function SymptomPage() {
         })}
       </div>
 
-      <AddButton text="Add Symptom" href="/addSymptom" />
+      <AddButton text="Add Symptom" href={{pathname:`symptoms/addSymptom`, query:{pets:`${pet.pet_id}`}}} />
     </main>
   );
 }

@@ -12,7 +12,6 @@ import LinkButton from '../Components/linkButton'
 import { nanoid } from 'nanoid/non-secure'
 import { withPageAuthRequired } from "@auth0/nextjs-auth0";
 import { useUser, useAuth0 } from "@auth0/nextjs-auth0";
-// import isNumberKey from '../Utils/isNumberKey'
 
 const url = process.env.NEXT_PUBLIC_DB_URL ?? "http://localhost:3000";
 export default withPageAuthRequired (function AddPets() {

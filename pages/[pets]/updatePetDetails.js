@@ -81,7 +81,7 @@ export default withPageAuthRequired (function UpdatePetDetails({pet}) {
 
     return (
         <div>
-            <NavBar />
+            <NavBar pet={pet}/>
 
             <FormControl className='form-style'>
             <FormLabel><h2>Pet Details</h2></FormLabel>

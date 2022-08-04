@@ -91,7 +91,7 @@ export default withPageAuthRequired (function AddSymptom({pet}) {
 
     return (
         <div>
-            <NavBar />
+            <NavBar pet={pet}/>
             <FormControl className='form-style'>
             <FormLabel><h2>Add Symptom</h2></FormLabel>
                 <Input placeholder='Symptom' name="symptoms" value={submission.symptoms} onChange={handleChange}/>

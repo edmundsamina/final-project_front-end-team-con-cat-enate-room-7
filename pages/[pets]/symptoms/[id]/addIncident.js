@@ -94,7 +94,7 @@ export default withPageAuthRequired(function AddIncident({incidents}) {
 
 	return (
 		<div>
-			<NavBar />
+			<NavBar pet={incidents}/>
 			<FormControl className='form-style'>
 				<FormLabel><h2>{incidents.symptoms}</h2></FormLabel>
                 

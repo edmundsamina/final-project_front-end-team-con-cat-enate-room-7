@@ -62,7 +62,7 @@ export default function Home() {
     console.log(user.sub);
     return (
       <main>
-        <NavBar />
+        <NavBar pet={false}/>
         <div className={styles.container}>
           <Image
             className="home-image"

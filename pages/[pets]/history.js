@@ -69,7 +69,7 @@ export default withPageAuthRequired (function HistoryPage({pet}) {
 
     return (
         <main>
-        <NavBar />     
+        <NavBar pet={pet}/>     
         <div className="history-card">
 				<h2 className="text-center">Reminder History</h2>
 				{data

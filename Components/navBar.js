@@ -4,7 +4,7 @@ import Image from "next/image.js";
 import IndexPage from "../Components/head"
 import Link from "next/link";
 
-export default function NavBar() {
+export default function NavBar({pet}) {
   return (
     <div className="navbar">
       <IndexPage text="Care-Full"/>
@@ -15,7 +15,7 @@ export default function NavBar() {
           <Image src={require("./../public/clear_logo.png")} alt="Care-Full Logo" />
         </div>
       </Link>
-      <Hamburger />
+      <Hamburger pet={pet}/>
     </div>
   );
 }

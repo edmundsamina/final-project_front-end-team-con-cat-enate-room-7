@@ -139,9 +139,9 @@ export default withPageAuthRequired (function SchedulePage({pet}) {
 
 	return (
 		<main>
-			<NavBar />
+			<NavBar pet={pet}/>
 			<h2>{pet.name}</h2>
-			<h3>{pet.pet_id}</h3>
+			{/* <h3>{pet.pet_id}</h3> */}
 			<div className="m10">
 				<h2 className="text-center">Check Schedule</h2>
 				{data

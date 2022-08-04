@@ -111,7 +111,7 @@ export default withPageAuthRequired (function AddReminder({pet}) {
 
 	return (
 		<div>
-			<NavBar />
+			<NavBar pet={pet}/>
 			<FormControl className='form-style'>
 				<FormLabel><h2>Add Reminder</h2></FormLabel>
 				<Input

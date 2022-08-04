@@ -24,7 +24,7 @@ export default withPageAuthRequired (function Details({incidents}) {
   console.log(user.sub)
   return (
 		<main>
-			<NavBar />
+			<NavBar pet={incidents[0]}/>
 			<div className="m10">
 				<h2 className="text-center">{incidents[0].symptoms}</h2>
 				{incidents.map((card) => {

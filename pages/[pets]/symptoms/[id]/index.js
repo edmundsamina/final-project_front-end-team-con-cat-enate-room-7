@@ -10,18 +10,15 @@ import { withPageAuthRequired } from "@auth0/nextjs-auth0";
 const url = process.env.NEXT_PUBLIC_DB_URL ?? "http://localhost:3000"
 
 export async function getServerSideProps(context){
-  console.log(context)
   const id = context.params.pets
 const response = await fetch(`${url}/symptoms/${id}`)
   const data = await response.json()
-console.log(data.payload)
  return {props:{incidents:data.payload}}
   }
 
 
 export default withPageAuthRequired (function Details({incidents}) {
   const { user, error, isLoading } = useUser();
-  console.log(user.sub)
   return (
 		<main>
 			<NavBar pet={incidents[0]}/>

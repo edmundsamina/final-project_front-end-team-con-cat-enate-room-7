@@ -7,45 +7,16 @@ import { withPageAuthRequired } from "@auth0/nextjs-auth0";
 
 
 
-const url = process.env.NEXT_PUBLIC_DB_URL ?? "http://localhost:3000";
+const url = process.env.NEXT_PUBLIC_DB_URL ?? "http://localhost:3000"
 
-
-export const getStaticPaths = async () => {
-  const petId = "1234567890" //To be handed in as a prop
-  const res = await fetch(`${url}/symptoms/${petId}`);
-  const data = await res.json();
-  function removeNulls(data){
-    let newArray = [];
-    for(let i = 0; i<data.length; i++){
-      let valuesArray = Object.values(data[i]);
-      if (!valuesArray.includes(null) && !valuesArray.includes(undefined)){
-        newArray.push(data[i])
-      }
-    }
-    return newArray
+export async function getServerSideProps(context){
+  console.log(context)
+  const id = context.params.pets
+const response = await fetch(`${url}/symptoms/${id}`)
+  const data = await response.json()
+console.log(data.payload)
+ return {props:{incidents:data.payload}}
   }
-  let validData = removeNulls(data.payload)
-  const paths = validData.map(symptoms => {
-      return {
-  params: { id: symptoms.symptoms_id.toString() }
-}
-})
-
-return {
-  paths,
-  fallback: false
-}
-}
-
-export const getStaticProps = async (context) => {
-  const symptomsId = context.params.id;
-  const petId = "1234567890" //To be handed in as a prop
-  const res = await fetch(`${url}/symptoms/${petId}?symptoms_id=${symptomsId}`);
-  const data = await res.json();
-  return {
-    props: {incidents: data.payload}
-  }
-}
 
 
 export default withPageAuthRequired (function Details({incidents}) {
@@ -68,9 +39,47 @@ export default withPageAuthRequired (function Details({incidents}) {
           
 				}
         )}		
-				<LinkButton text="Add incident" link="/addIncident" />
+				<LinkButton text="Add incident" link={{pathname:`${incidents[0].symptoms_id}/addIncident`, query:{pets:`${incidents[0].pet_id}`,}}} />
 			</div>
 		</main>
 	);
 }
 )
+
+
+// export const getStaticPaths = async () => {
+//   const petId = "1234567890" //To be handed in as a prop
+//   const res = await fetch(`${url}/symptoms/${petId}`);
+//   const data = await res.json();
+//   function removeNulls(data){
+//     let newArray = [];
+//     for(let i = 0; i<data.length; i++){
+//       let valuesArray = Object.values(data[i]);
+//       if (!valuesArray.includes(null) && !valuesArray.includes(undefined)){
+//         newArray.push(data[i])
+//       }
+//     }
+//     return newArray
+//   }
+//   let validData = removeNulls(data.payload)
+//   const paths = validData.map(symptoms => {
+//       return {
+//   params: { id: symptoms.symptoms_id.toString() }
+// }
+// })
+
+// return {
+//   paths,
+//   fallback: false
+// }
+// }
+
+// export const getStaticProps = async (context) => {
+//   const symptomsId = context.params.id;
+//   const petId = "1234567890" //To be handed in as a prop
+//   const res = await fetch(`${url}/symptoms/${petId}?symptoms_id=${symptomsId}`);
+//   const data = await res.json();
+//   return {
+//     props: {incidents: data.payload}
+//   }
+// }

@@ -110,7 +110,7 @@ export default withPageAuthRequired (function SymptomPage({pet}) {
             <SymptomCard
               key={item.symptoms_id}
               name={item.symptoms}
-              link={"/symptoms/" + item.symptoms_id}
+              link={{pathname:`symptoms/${item.symptoms_id}`, query:{pets:`${pet.pet_id}`}}}
               data={item}
               onDelete={onDelete}
             />

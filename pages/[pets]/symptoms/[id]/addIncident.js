@@ -11,19 +11,26 @@ import LinkButton from "../../../../Components/linkButton";
 import { nanoid } from "nanoid/non-secure";
 import { withPageAuthRequired } from "@auth0/nextjs-auth0";
 
-const url = process.env.NEXT_PUBLIC_DB_URL;
-export default withPageAuthRequired(function AddIncident() {
-  const user_id = "1234567890";
-  const pet_id = "1234567890"; // These ids need to be handed in as state/context
-  const symptoms_id = "1234567890";
-  const symptoms = "Holding symptom";
+const url = process.env.NEXT_PUBLIC_DB_URL ?? "http://localhost:3000"
+
+export async function getServerSideProps(context){
+  const pet_id = context.params.pets
+  const symptoms_id = context.params.id
+const response = await fetch(`${url}/symptoms/${pet_id}?symptoms_id=${symptoms_id}`)
+  const data = await response.json()
+console.log(data.payload)
+ return {props:{incidents:data.payload[0]}}
+  }
+
+export default withPageAuthRequired(function AddIncident({incidents}) {
+
 
   const [newIncident, setNewIncident] = useState({
-    user_id: user_id,
-    pet_id: pet_id,
+    user_id: incidents.user_id,
+    pet_id: incidents.pet_id,
     incident_id: nanoid(10),
-    symptoms: symptoms,
-    symptoms_id: symptoms_id,
+    symptoms: incidents.symptoms,
+    symptoms_id: incidents.symptoms_id,
     date: "",
     time: "",
     description: "",
@@ -89,7 +96,7 @@ export default withPageAuthRequired(function AddIncident() {
 		<div>
 			<NavBar />
 			<FormControl className='form-style'>
-				<FormLabel><h2>{symptoms}</h2></FormLabel>
+				<FormLabel><h2>{incidents.symptoms}</h2></FormLabel>
                 
 
 				<Input
@@ -115,7 +122,7 @@ export default withPageAuthRequired(function AddIncident() {
 			</FormControl>
 			{!noEmptyFields && <p className='form-remind'>* Please fill all</p>}
 			{noEmptyFields && (
-				<LinkButton text="Submit" link="/symptoms" onClick={handlePost} />
+				<LinkButton text="Submit" link={{pathname:`./`, query:{pets:`${incidents.pet_id}`,id:`${incidents.symptoms_id}`}}} onClick={handlePost} />
 			)}
 		</div>
 	);

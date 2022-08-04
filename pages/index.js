@@ -10,6 +10,7 @@ import { useUser, useAuth0 } from "@auth0/nextjs-auth0";
 import {useRouter} from "next/router";
 import Link from "next/link";
 import Loader from "../Components/loader";
+import SignInOut from "../Components/signInOut.js";
 
 
 const url = process.env.NEXT_PUBLIC_DB_URL ?? "http://localhost:3000";
@@ -58,10 +59,7 @@ export default function Home() {
   if (!user) {
     return(
       <main>
-      <h2>Welcome to The Care-Full App</h2>
-      <Link href="/api/auth/login">
-        <a>Please Log In</a>
-      </Link>
+        <SignInOut/>
       </main>
     ) 
   }

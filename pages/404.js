@@ -6,7 +6,7 @@ const pageNotFound = () => {
         <div className='not-fund'>
           <Image
               className="home-image"
-              src={require("./../public/conCAT.png")}
+              src={require("./../public/test.GIF")}
               alt="Picture of cat and dog"
 
               />

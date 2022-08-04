@@ -58,8 +58,9 @@ export default withPageAuthRequired (function UpdatePetDetails({pet}) {
       }, [submission]);
 
      function handleChange(e){
-        let value = (e.target.value)
-        setSubmission({ ...submission, [e.target.name]: value });
+        // let value = (e.target.value)
+        // setSubmission({ ...submission, [e.target.name]: value });
+        setSubmission((v)=> (e.target.validity.valid ? { ...submission, [e.target.name]: e.target.value  }: v));
      }
 
     async function handlePost(){
@@ -85,16 +86,16 @@ export default withPageAuthRequired (function UpdatePetDetails({pet}) {
 
             <FormControl className='form-style'>
             <FormLabel><h2>Pet Details</h2></FormLabel>
-                <Input placeholder='Name' name="name" value={submission.name} onChange={handleChange}/>
-                <Input placeholder='Breed' name="breed" value={submission.breed} onChange={handleChange}/>
+                <Input placeholder='Name' type="text" name="name" value={submission.name} pattern="^[a-zA-Z]*$" onChange={handleChange} maxlength="16"/>
+                <Input placeholder='Breed' type="text" name="breed" value={submission.breed} pattern="^[a-zA-Z]*$" onChange={handleChange} maxlength="16"/>
 
 				<Select data-testid="Species" onChange={selectChange} placeholder="Species" variant='flushed' borderColor='var(--main-color)' borderBottom="2px">
 					<option value={true}>Cat</option>
 					<option value={false}>Dog</option>
 				</Select>
 
-                <Input data-testid="age" type="number" placeholder='Age' name="age" value={submission.age} onChange={handleChange} min={0}/>
-                <Input type = "number" placeholder='Weight' name="weight" value={submission.weight} onChange={handleChange} min={0}/>
+                <Input data-testid="age" type="number" placeholder='Age' name="age" value={submission.age} pattern="[0-9]*" onChange={handleChange} min={0} max={99}/>
+                <Input type = "number" placeholder='Weight' name="weight" value={submission.weight} pattern="[0-9]*" onChange={handleChange} min={0} max={100} step={0.01} />
                 <div className='formtext'>kg</div>
             </FormControl>
             {!noEmptyFields && <p className='form-remind'>* Please fill all</p>}

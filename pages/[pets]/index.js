@@ -6,6 +6,7 @@ import PetButton from "../../Components/petButton"
 import { withPageAuthRequired } from "@auth0/nextjs-auth0";
 
 
+
 const url = process.env.NEXT_PUBLIC_DB_URL ?? "http://localhost:3000"
 
 export async function getServerSideProps(context){

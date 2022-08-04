@@ -250,7 +250,8 @@ h4{
 }
 
 .home-image {
-  width: 100%;
+  width: 80%;
+  object-fit: contain;
 }
 
 .pet-card {
@@ -284,6 +285,7 @@ h4{
 .not-fund img{
    position:relative;
    left:20px;
+   width: 80% !important;
 }
 
 

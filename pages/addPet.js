@@ -39,6 +39,13 @@ export default withPageAuthRequired (function AddPets() {
         weight: ""
     })
 
+    function isNumberKey(evt){
+        var charCode = (evt.which) ? evt.which : evt.keyCode
+        if (charCode > 31 && (charCode < 48 || charCode > 57))
+            return false;
+        return true;
+    }
+
     const [noEmptyFields, setNoEmptyFields] = useState(false)
 
     useEffect(() => {
@@ -61,8 +68,9 @@ export default withPageAuthRequired (function AddPets() {
       }, [submission]);
 
      function handleChange(e){
-        let value = (e.target.value)
-        setSubmission({ ...submission, [e.target.name]: value });
+        // let value = (e.target.value)
+        // setSubmission({ ...submission, [e.target.name]: value });
+        setSubmission((v)=> (e.target.validity.valid ? { ...submission, [e.target.name]: e.target.value  }: v));
      }
 
     async function handlePost(){
@@ -78,7 +86,8 @@ export default withPageAuthRequired (function AddPets() {
     }
 
     function selectChange(e) {
-		setSubmission({ ...submission, species: e.target.value });
+
+		setSubmission((v)=> (e.target.validity.valid ? { ...submission, species: e.target.value  }: v));
 	}
 
     useEffect(() => {
@@ -98,16 +107,16 @@ export default withPageAuthRequired (function AddPets() {
             <NavBar />
             <FormControl className='form-style'>
             <FormLabel><h2>Pet Details</h2></FormLabel>
-            <Input placeholder='Name' name="name" value={submission.name} onChange={handleChange}/>
-                <Input placeholder='Breed' name="breed" value={submission.breed} onChange={handleChange}/>
+                <Input placeholder='Name' name="name" type="text" value={submission.name} pattern="^[a-zA-Z]*$" onChange={handleChange} maxlength="16"/>
+                <Input placeholder='Breed' name="breed" value={submission.breed} pattern="^[a-zA-Z]*$" onChange={handleChange} maxlength="16"/>
 
 				<Select data-testid="Species" onChange={selectChange} placeholder="Species" variant='flushed' borderColor='var(--main-color)' borderBottom="2px">
 					<option value={true}>Cat</option>
 					<option value={false}>Dog</option>
 				</Select>
 
-                <Input data-testid="age" type="number" placeholder='Age' name="age" value={submission.age} onChange={handleChange} min={0}/>
-                <Input type = "number" placeholder='Weight' name="weight" value={submission.weight} onChange={handleChange} min={0}/>
+                <Input data-testid="age"  placeholder='Age' type="number" name="age" value={submission.age} pattern="[0-9]*" onChange={handleChange} max={99} min={0}/>
+                <Input placeholder='Weight' name="weight" type="number" value={submission.weight} pattern="[0-9]*" onChange={handleChange} min={0} step={0.01} max={100}/>
                 <div className='formtext'>kg</div>
             </FormControl>
             {!noEmptyFields && <p className='form-remind'>* Please fill all</p>}

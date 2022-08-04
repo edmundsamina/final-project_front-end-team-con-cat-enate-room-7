@@ -1,5 +1,5 @@
 import AddButton from "../Components/addButton";
-import NavBar from "../Components/navBar";
+import PetNavBar from "../Components/petNavBar";
 import styles from "../styles/Home.module.css";
 import SymptomCard from "../Components/symptomCard";
 import LinkButton from "../Components/linkButton";
@@ -10,6 +10,7 @@ import { useUser, useAuth0 } from "@auth0/nextjs-auth0";
 import {useRouter} from "next/router";
 import Link from "next/link";
 import Loader from "../Components/loader";
+import SignInOut from "../Components/signInOut.js";
 
 
 const url = process.env.NEXT_PUBLIC_DB_URL ?? "http://localhost:3000";
@@ -58,10 +59,7 @@ export default function Home() {
   if (!user) {
     return(
       <main>
-      <h2>Welcome to The Care-Full App</h2>
-      <Link href="/api/auth/login">
-        <a>Please Log In</a>
-      </Link>
+        <SignInOut/>
       </main>
     ) 
   }
@@ -73,7 +71,7 @@ export default function Home() {
     console.log(user.sub);
     return (
       <main>
-        <NavBar pet={false}/>
+        <PetNavBar pet={false}/>
         <div className={styles.container}>
           <Image
             className="home-image"

@@ -119,6 +119,7 @@ export default withPageAuthRequired (function AddReminder({pet}) {
 					name="task"
 					value={submission.task}
 					onChange={handleChange}
+					maxlength="30"
 				/>
 				<Input
 					placeholder="Date"

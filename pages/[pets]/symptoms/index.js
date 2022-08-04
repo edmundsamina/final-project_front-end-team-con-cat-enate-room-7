@@ -119,7 +119,7 @@ export default withPageAuthRequired (function SymptomPage({pet}) {
   return (
     <main>
       <NavBar pet={pet}/>
-
+      <h2>{pet.name}</h2>
       <div className="m10">
         {newData.map((item) => {
           return (

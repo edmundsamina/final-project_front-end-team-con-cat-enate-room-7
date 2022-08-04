@@ -1,5 +1,5 @@
 import AddButton from "../Components/addButton";
-import NavBar from "../Components/navBar";
+import PetNavBar from "../Components/petNavBar";
 import styles from "../styles/Home.module.css";
 import SymptomCard from "../Components/symptomCard";
 import LinkButton from "../Components/linkButton";
@@ -73,7 +73,7 @@ export default function Home() {
     console.log(user.sub);
     return (
       <main>
-        <NavBar pet={false}/>
+        <PetNavBar pet={false}/>
         <div className={styles.container}>
           <Image
             className="home-image"

@@ -1,17 +1,28 @@
 import React from "react";
-import NavBar from "../Components/navBar.js";
-import AddButton from "../Components/addButton.js";
-import ScheduleCard from "../Components/scheduleCard";
-import CompletedTaskCard from "../Components/completedTaskCard.js";
+import NavBar from "../../../Components/navBar.js";
+import AddButton from "../../../Components/addButton.js";
+import ScheduleCard from "../../../Components/scheduleCard";
+import CompletedTaskCard from "../../../Components/completedTaskCard.js";
 import { useEffect, useState } from "react";
 import { nanoid } from "nanoid/non-secure";
+import { withPageAuthRequired } from "@auth0/nextjs-auth0";
+import Loader from "../../../Components/loader.js";
 
-const url = process.env.NEXT_PUBLIC_DB_URL ?? "http://localhost:3000";
 
-const SchedulePage = () => {
-	const [stateCount, setStateCount] = useState(0);
-	const [data, setData] = useState();
+const url = process.env.NEXT_PUBLIC_DB_URL ?? "http://localhost:3000"
 
+
+export async function getServerSideProps(context){
+    const id = context.params.pets
+  const response = await fetch(`${url}/pets?pet_id=${id}`)
+    const data = await response.json()
+   return {props:{pet:data.payload[0]}}
+    }
+  
+export default withPageAuthRequired (function SchedulePage({pet}) {
+  const [stateCount, setStateCount] = useState(0);
+  const [data, setData] = useState();
+  
 	const delay = ms => new Promise(
 		resolve => setTimeout(resolve, ms)
 	  );
@@ -19,7 +30,7 @@ const SchedulePage = () => {
 		// declare the data fetching function
 		const fetchData = async () => {
 			await delay(500)
-			const response = await fetch(`${url}/reminders`);
+			const response = await fetch(`${url}/reminders?pet_id=${pet.pet_id}`);
 			const data = await response.json();
 			setData(data.payload);
 		};
@@ -33,7 +44,7 @@ const SchedulePage = () => {
 	useEffect(() => {
 		// declare the data fetching function
 		const fetchData = async () => {
-			const response = await fetch(`${url}/reminders`);
+			const response = await fetch(`${url}/reminders?pet_id=${pet.pet_id}`);
 			const data = await response.json();
 			setData(data.payload);
 		};
@@ -45,7 +56,7 @@ const SchedulePage = () => {
 	}, [stateCount]);
 
 	if (!data) {
-		return <p>is loading</p>;
+		return <Loader/>;
 	}
 
 	/*
@@ -128,7 +139,9 @@ const SchedulePage = () => {
 
 	return (
 		<main>
-			<NavBar />
+			<NavBar pet={pet}/>
+			<h2>{pet.name}</h2>
+			{/* <h3>{pet.pet_id}</h3> */}
 			<div className="m10">
 				<h2 className="text-center">Check Schedule</h2>
 				{data
@@ -142,9 +155,8 @@ const SchedulePage = () => {
 						/>
 					))}
 			</div>
-			<AddButton text="Add Reminder" href="/addReminder" />
+			<AddButton text="Add Reminder" href={{pathname:`schedule/addReminder`, query:{pets:`${pet.pet_id}`}}} />
 		</main>
 	);
-};
-
-export default SchedulePage;
+}
+)

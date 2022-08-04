@@ -2,8 +2,11 @@ import React from "react";
 import { AddIcon } from "@chakra-ui/icons";
 import { IconButton } from "@chakra-ui/react";
 import Link from "next/link";
+import { useRouter } from "next/router";
 
 const AddButton = ({ text, href }) => {
+
+  
   return (
     <div className="addButton">
       <Link href={href}>
@@ -16,7 +19,7 @@ const AddButton = ({ text, href }) => {
           width="15vw"
         />
       </Link>
-      <h3 className="addText">{text}</h3>
+      {/* <h3 className="addText">{text}</h3> */}
     </div>
   );
 };

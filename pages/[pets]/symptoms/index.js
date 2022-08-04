@@ -1,13 +1,23 @@
 import React from "react";
-import NavBar from "../../Components/navBar.js";
-import AddButton from "../../Components/addButton.js";
+import NavBar from "../../../Components/navBar.js";
+import AddButton from "../../../Components/addButton.js";
 import Link from "next/link";
-import SymptomCard from "../../Components/symptomCard";
+import SymptomCard from "../../../Components/symptomCard";
 import { useEffect, useState } from "react";
+import { withPageAuthRequired } from "@auth0/nextjs-auth0";
+import Loader from "../../../Components/loader.js";
 
-const url = process.env.NEXT_PUBLIC_DB_URL ?? "http://localhost:3000";
+const url = process.env.NEXT_PUBLIC_DB_URL ?? "http://localhost:3000"
 
-const SymptomPage = () => {
+export async function getServerSideProps(context){
+
+  const id = context.params.pets
+const response = await fetch(`${url}/pets?pet_id=${id}`)
+  const data = await response.json()
+ return {props:{pet:data.payload[0]}}
+  }
+
+export default withPageAuthRequired (function SymptomPage({pet}) {
   // const array = [{"symptoms":"Dodgy foot","symptoms_id":"1234567890","date":"120722"},
   //                {"symptoms":"Red hand","symptoms_id":"122124112","date":"230722"},
   //                {"symptoms":"Small Head","symptoms_id":"12314410","date":"220822"}]
@@ -23,7 +33,7 @@ const SymptomPage = () => {
     // declare the data fetching function
     const fetchData = async () => {
       await delay(500)
-      const response = await fetch(`${url}/symptoms`);
+      const response = await fetch(`${url}/symptoms/${pet.pet_id}`);
       const data = await response.json();
       setData(data.payload);
     };
@@ -62,12 +72,9 @@ const SymptomPage = () => {
             uniqueSymptoms.push(data[i].symptoms)
           }
        }
-       console.log(uniqueSymptomsId)
-       console.log(uniqueSymptoms)
        let unique = []
        for (let i = 0; i < uniqueSymptomsId.length; i++){
         unique.push({symptoms_id:uniqueSymptomsId[i],symptoms:uniqueSymptoms[i]})
-        console.log(unique)
        }
        setNewData(unique)
       }
@@ -75,30 +82,44 @@ const SymptomPage = () => {
     removeDuplicates();
   }, [data]);
 
+  async function onDelete(data) {
+		await fetch(`${url}/reminders/${data.symptoms_id}`, {
+			method: "DELETE",
+			headers: {
+				"Content-Type": "application/json",
+			},
+		})
+			.then((res) => res.json)
+			.then((data) => console.log(data))
+			.then(() => {
+				setStateCount((c) => c + 1);
+			});
+	}
+
   if (!data || !newData) {
-    return <p>is loading</p>;
+    return <Loader/>;
   }
 
   return (
     <main>
-      <NavBar />
+      <NavBar pet={pet}/>
 
       <div className="m10">
         {newData.map((item) => {
-          console.log(item);
           return (
             <SymptomCard
               key={item.symptoms_id}
               name={item.symptoms}
-              link={"/symptoms/" + item.symptoms_id}
+              link={{pathname:`symptoms/${item.symptoms_id}`, query:{pets:`${pet.pet_id}`}}}
+              data={item}
+              onDelete={onDelete}
             />
           );
         })}
       </div>
 
-      <AddButton text="Add Symptom" href="/addSymptom" />
+      <AddButton text="Add Symptom" href={{pathname:`symptoms/addSymptom`, query:{pets:`${pet.pet_id}`}}} />
     </main>
   );
-};
-
-export default SymptomPage;
+}
+)

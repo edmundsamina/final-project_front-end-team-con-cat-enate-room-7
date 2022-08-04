@@ -7,9 +7,13 @@ const CompletedTaskCard = ({ onDelete, data }) => {
 	return (
 		<div className="completedtaskcard">
 			<DeleteButton onDelete={()=>onDelete(data)}/>
+			<div>
 			<h2>{data.task}</h2>
+			</div>
+			<div>
 			<p>Due: {`${day}/${month}/${year}`}</p>
-			<br />
+			</div>
+			
 			
 		</div>
 	);

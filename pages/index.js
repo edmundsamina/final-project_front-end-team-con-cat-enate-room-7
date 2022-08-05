@@ -80,7 +80,7 @@ export default function Home() {
           alt="Picture of cat and dog"
           layout="responsive"
         />
-        <div className="m10 flex">
+        <div className="m10-1 flex">
           <NoDataCard text="You haven't added any pets yet. Click the Add Button below to get started"/>
         </div>        
         <AddButton text="Add Pet" href="/addPet" />
@@ -101,7 +101,7 @@ export default function Home() {
             alt="Picture of cat and dog"
             layout="responsive"
           />
-          <div className="m10 flex">
+          <div className="m10-1 flex">
             {data.map((item, index) => {
               let images = "";
               if (item.species == true) {

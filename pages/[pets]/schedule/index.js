@@ -8,6 +8,7 @@ import { nanoid } from "nanoid/non-secure";
 import { withPageAuthRequired } from "@auth0/nextjs-auth0";
 import Loader from "../../../Components/loader.js";
 import InfoModal from "../../../Components/modal.js";
+import NoDataCard from "../../../Components/noDataCard.js";
 
 
 const url = process.env.NEXT_PUBLIC_DB_URL ?? "http://localhost:3000"
@@ -136,6 +137,22 @@ export default withPageAuthRequired (function SchedulePage({pet}) {
 			.then(() => {
 				setStateCount((c) => c + 1);
 			});
+	}
+
+	if (data.length === 0) {
+		return (
+			<main>
+			<NavBar pet={pet}/>
+			{/* <h3>{pet.pet_id}</h3> */}
+			<div className="m10">
+			<InfoModal title="Schedule Page- Info" text="Welcome to your pet's Schedule Page. Here you can keep track of anything your pet needs during care. Start by pressing the Add Button (+) and filling out the form, after this you will be re-directed back to this page. Anytime you have done the reminder you have added simply press Done where the date will update to the next time you need to repeat this task and a log of what you have already done will be kept in the View History section"/>
+				<h2 className="text-center">Check Schedule</h2>
+			      <h2>{pet.name}</h2>
+						<NoDataCard text="You haven't added any reminders yet. Click the Add Button below to get started" />
+			</div>
+			<AddButton text="Add Reminder" href={{pathname:`schedule/addReminder`, query:{pets:`${pet.pet_id}`}}} />
+		</main>
+		)
 	}
 
 	return (

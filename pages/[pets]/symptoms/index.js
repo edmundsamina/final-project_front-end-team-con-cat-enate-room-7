@@ -6,6 +6,7 @@ import SymptomCard from "../../../Components/symptomCard";
 import { useEffect, useState } from "react";
 import { withPageAuthRequired } from "@auth0/nextjs-auth0";
 import Loader from "../../../Components/loader.js";
+import InfoModal from "../../../Components/modal.js";
 
 const url = process.env.NEXT_PUBLIC_DB_URL ?? "http://localhost:3000"
 
@@ -119,6 +120,8 @@ export default withPageAuthRequired (function SymptomPage({pet}) {
   return (
     <main>
       <NavBar pet={pet}/>
+      <h2>Symtpoms</h2>
+      <InfoModal text="Here is the symptoms page, you can add any symptom your pet has displayed by pressing the add button and filling out the form. Add more incidents of the same symptom by presseing 'Details' to keep track of how your pet is doing"/>
       <h2>{pet.name}</h2>
       <div className="m10">
         {newData.map((item) => {

@@ -7,6 +7,7 @@ import { useEffect, useState } from "react";
 import { withPageAuthRequired } from "@auth0/nextjs-auth0";
 import Loader from "../../../Components/loader.js";
 import InfoModal from "../../../Components/modal.js";
+import NoDataCard from "../../../Components/noDataCard.js";
 
 const url = process.env.NEXT_PUBLIC_DB_URL ?? "http://localhost:3000"
 
@@ -37,7 +38,6 @@ export default withPageAuthRequired (function SymptomPage({pet}) {
       await delay(500)
       const response = await fetch(`${url}/symptoms/${pet.pet_id}`);
       const data = await response.json();
-      console.log(data.payload)
       setData(data.payload);
     };
 
@@ -126,7 +126,7 @@ export default withPageAuthRequired (function SymptomPage({pet}) {
             <h2 className="text-center">Symtpoms</h2>
             <h2>{pet.name}</h2>
               <div>
-                <p>data test</p>
+                <NoDataCard text="You haven't added any symptoms yet. Press the Add Button below to get started"/>
               </div>
          <AddButton text="Add Symptom" href={{pathname:`symptoms/addSymptom`, query:{pets:`${pet.pet_id}`}}} />
        </main>

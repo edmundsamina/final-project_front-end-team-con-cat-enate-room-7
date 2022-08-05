@@ -118,12 +118,11 @@ export default withPageAuthRequired (function SymptomPage({pet}) {
   }
 
   return (
-    <main>
+    <main className="m10">
       <NavBar pet={pet}/>
-      <h2>Symtpoms</h2>
-      <InfoModal text="Here is the symptoms page, you can add any symptom your pet has displayed by pressing the add button and filling out the form. Add more incidents of the same symptom by presseing 'Details' to keep track of how your pet is doing"/>
-      <h2>{pet.name}</h2>
-      <div className="m10">
+      <InfoModal title="Symptoms Info" text="Here is the symptoms page, you can add any symptom your pet has displayed by pressing the add button and filling out the form. Add more incidents of the same symptom by presseing 'Details' to keep track of how your pet is doing"/>
+      <h2>{pet.name} - Symtpoms</h2>
+      <div>
         {newData.map((item) => {
           return (
             <SymptomCard

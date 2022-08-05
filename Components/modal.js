@@ -13,23 +13,23 @@ import {
   import { InfoIcon } from '@chakra-ui/icons';
   import { IconButton } from "@chakra-ui/react";
 
-  function InfoModal({text}) {
+  function InfoModal({title,text}) {
     const { isOpen, onOpen, onClose } = useDisclosure()
     return (
       <div className="info-modal">
-        <IconButton onClick={onOpen} icon={<InfoIcon color="roots.100"/>} bgColor={"white"}/>
+        <IconButton className="modal-icon" onClick={onOpen} icon={<InfoIcon color="roots.100"/>} bgColor={"white"}/>
   
-        <Modal isOpen={isOpen} onClose={onClose}>
+        <Modal isOpen={isOpen} onClose={onClose} size={"sm"}>
           <ModalOverlay />
           <ModalContent>
-            <ModalHeader>Modal Title</ModalHeader>
+            <ModalHeader>{title}</ModalHeader>
             <ModalCloseButton />
             <ModalBody>
               {text}
             </ModalBody>
   
             <ModalFooter>
-              <Button colorScheme='blue' mr={3} onClick={onClose}>
+              <Button bgColor={'roots.100'} color={"white"} mr={3} onClick={onClose}>
                 Close
               </Button>
             </ModalFooter>

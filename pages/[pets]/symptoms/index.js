@@ -120,8 +120,9 @@ export default withPageAuthRequired (function SymptomPage({pet}) {
   
   if (newData.length === 0) {
     return (
-      <main className="m10">
+      <main>
         <NavBar pet={pet}/>
+        <div className="m10">
           <InfoModal title="Symptoms Info" text="Here is the symptoms page, you can add any symptom your pet has displayed by pressing the Add Button (+) and filling out the form. Add more incidents of the same symptom by pressing 'Details' to keep track of how your pet is doing"/>
             <h2 className="text-center">Symtpoms</h2>
             <h2>{pet.name}</h2>
@@ -129,6 +130,7 @@ export default withPageAuthRequired (function SymptomPage({pet}) {
                 <NoDataCard text="You haven't added any symptoms yet. Press the Add Button below to get started"/>
               </div>
          <AddButton text="Add Symptom" href={{pathname:`symptoms/addSymptom`, query:{pets:`${pet.pet_id}`}}} />
+         </div>
        </main>
     )
   }
@@ -136,6 +138,7 @@ export default withPageAuthRequired (function SymptomPage({pet}) {
   return (
     <main className="m10">
       <NavBar pet={pet}/>
+      <div className="m10">
       <InfoModal title="Symptoms Info" text="Here is the symptoms page, you can add any symptom your pet has displayed by pressing the Add Button (+) and filling out the form. Add more incidents of the same symptom by pressing 'Details' to keep track of how your pet is doing"/>
       <h2 className="text-center">Symtpoms</h2>
       <h2>{pet.name}</h2>
@@ -154,6 +157,7 @@ export default withPageAuthRequired (function SymptomPage({pet}) {
       </div>
 
       <AddButton text="Add Symptom" href={{pathname:`symptoms/addSymptom`, query:{pets:`${pet.pet_id}`}}} />
+      </div>
     </main>
   );
 }

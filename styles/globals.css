@@ -244,6 +244,8 @@ h4{
   margin-bottom: 10px;
 }
 
+.ml10{margin-left: 10px;}
+
 @media (prefers-color-scheme: dark) {
   html {
     color-scheme: dark;

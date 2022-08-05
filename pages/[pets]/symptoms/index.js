@@ -136,7 +136,7 @@ export default withPageAuthRequired (function SymptomPage({pet}) {
   }
 
   return (
-    <main className="m10">
+    <main>
       <NavBar pet={pet}/>
       <div className="m10">
       <InfoModal title="Symptoms Info" text="Here is the symptoms page, you can add any symptom your pet has displayed by pressing the Add Button (+) and filling out the form. Add more incidents of the same symptom by pressing 'Details' to keep track of how your pet is doing"/>

@@ -429,7 +429,7 @@ h4{
   }
 
   .modal-icon{
-    float: left;
+    float: right;
     margin-top: 6px;}
   
   @-webkit-keyframes rotating {

@@ -5,7 +5,19 @@ line-height: 3em;
 width: 50vh;
 border: none;
 z-index: 100;
+
+
 }
+
+.menu > button:hover{
+  text-decoration: underline;
+}
+
+.menu > button:active{
+  background-color: var(--second-color)!important;
+}
+
+
 
 .menubutton{
     background-color: var(--white) !important;

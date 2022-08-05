@@ -102,9 +102,16 @@ h4{
 }
 
 .addButton >button:hover{
-  color: white;
-  background-color: var(--second-color);
+  color: var(--main-color);
+  background-color: white;
+  border: solid 3px var(--main-color);
 }
+
+.addButton >button:hover>svg{
+  color: var(--main-color);
+ 
+}
+
 
 .addButton >button:active{
   color: white;
@@ -270,6 +277,14 @@ h4{
   flex-direction: column;
   align-items: center;
   padding: 10px 10px 20px;
+  cursor: pointer;
+}
+
+.pet-card:hover {
+  box-shadow: 1px 1px 1px 1px var(--second-color);
+  opacity: 1;
+  background-color: #b2d1ff40;
+ 
 }
 
 .pet-card img {
@@ -352,6 +367,7 @@ h4{
 
   .logo-box{
     max-width: 200px;
+    cursor: pointer;
   }
 
   /* Loading part */

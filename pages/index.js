@@ -11,6 +11,7 @@ import {useRouter} from "next/router";
 import Link from "next/link";
 import Loader from "../Components/loader";
 import SignInOut from "../Components/signInOut.js";
+import NoDataCard from "../Components/noDataCard";
 
 
 const url = process.env.NEXT_PUBLIC_DB_URL ?? "http://localhost:3000";
@@ -33,6 +34,7 @@ export default function Home() {
       if (userID){
         const response = await fetch(`${url}/pets/${userID}`);
         const data = await response.json();
+        console.log(data.payload)
         setData(data.payload);
       }
 		};
@@ -66,6 +68,26 @@ export default function Home() {
 	if (!data) {
 		return <Loader/>;
 	}
+
+  if (data.length === 0) {
+    return (
+      <main>
+      <PetNavBar pet={false}/>
+      <div className={styles.container}>
+        <Image
+          className="home-image"
+          src={require("./../public/mock_photo.jpg")}
+          alt="Picture of cat and dog"
+          layout="responsive"
+        />
+        <div className="m10 flex">
+          <NoDataCard text="You haven't added any pets yet. Click the Add Button below to get started"/>
+        </div>        
+        <AddButton text="Add Pet" href="/addPet" />
+      </div>
+    </main>
+    )
+  }
 
   if (user) {
     console.log(user.sub);

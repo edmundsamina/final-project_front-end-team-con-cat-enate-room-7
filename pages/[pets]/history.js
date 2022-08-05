@@ -5,6 +5,7 @@ import { useEffect, useState } from 'react';
 import { withPageAuthRequired } from '@auth0/nextjs-auth0';
 import Loader from '../../Components/loader';
 import InfoModal from '../../Components/modal';
+import NoDataCard from '../../Components/noDataCard';
 
 const url = process.env.NEXT_PUBLIC_DB_URL ?? "http://localhost:3000"
 
@@ -66,6 +67,20 @@ export default withPageAuthRequired (function HistoryPage({pet}) {
 
     if (!data) {
 		return <Loader/>;
+	}
+
+	if (data.length === 0) {
+		return (
+			<main>
+			<NavBar pet={pet}/>     
+			<div className="history-card">
+			<InfoModal title="Reminder History- Info" text="Welcome to the History Page. Here is a record of all the reminders you have completed in order for you keep a track of things easier. There isn't much to do on this page, it is only here to help keep things easier for any vet appointments you may have." />
+					<h2 className="text-center">Reminder History</h2>
+					<h2>{pet.name}</h2>
+					<NoDataCard text="You haven't completed anything in the Check Schedule page yet. Once you have pressed Done on some of your reminders you will see them here" />
+			</div>       
+			</main>
+		)
 	}
 
     return (

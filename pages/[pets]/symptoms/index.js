@@ -7,6 +7,7 @@ import { useEffect, useState } from "react";
 import { withPageAuthRequired } from "@auth0/nextjs-auth0";
 import Loader from "../../../Components/loader.js";
 import InfoModal from "../../../Components/modal.js";
+import NoDataCard from "../../../Components/noDataCard.js";
 
 const url = process.env.NEXT_PUBLIC_DB_URL ?? "http://localhost:3000"
 
@@ -115,6 +116,21 @@ export default withPageAuthRequired (function SymptomPage({pet}) {
 
   if (!data || !newData) {
     return <Loader/>;
+  }
+  
+  if (newData.length === 0) {
+    return (
+      <main className="m10">
+        <NavBar pet={pet}/>
+          <InfoModal title="Symptoms Info" text="Here is the symptoms page, you can add any symptom your pet has displayed by pressing the Add Button (+) and filling out the form. Add more incidents of the same symptom by pressing 'Details' to keep track of how your pet is doing"/>
+            <h2 className="text-center">Symtpoms</h2>
+            <h2>{pet.name}</h2>
+              <div>
+                <NoDataCard text="You haven't added any symptoms yet. Press the Add Button below to get started"/>
+              </div>
+         <AddButton text="Add Symptom" href={{pathname:`symptoms/addSymptom`, query:{pets:`${pet.pet_id}`}}} />
+       </main>
+    )
   }
 
   return (

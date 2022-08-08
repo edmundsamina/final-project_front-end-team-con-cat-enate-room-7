@@ -10,7 +10,7 @@ const UsefulLinkCard = ({src, alt, text, title, href}) => {
 							className="link-image"
 							width="280vw"
 							height="200vh"
-							layout="intrinsic"
+							
 							src={src}
 							alt={alt}
 						/>

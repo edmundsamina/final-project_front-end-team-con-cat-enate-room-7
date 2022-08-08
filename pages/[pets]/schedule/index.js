@@ -34,7 +34,8 @@ export default withPageAuthRequired (function SchedulePage({pet}) {
 			await delay(500)
 			const response = await fetch(`${url}/reminders?pet_id=${pet.pet_id}`);
 			const data = await response.json();
-			setData(data.payload);
+			let newArray = data.payload.filter((object) => object.completed === false)
+			setData(newArray);
 		};
 
 		// call the function
@@ -48,7 +49,8 @@ export default withPageAuthRequired (function SchedulePage({pet}) {
 		const fetchData = async () => {
 			const response = await fetch(`${url}/reminders?pet_id=${pet.pet_id}`);
 			const data = await response.json();
-			setData(data.payload);
+			let newArray = data.payload.filter((object) => object.completed === false)
+			setData(newArray);
 		};
 
 		// call the function
@@ -151,7 +153,6 @@ export default withPageAuthRequired (function SchedulePage({pet}) {
 			      <h2>{pet.name}</h2>
 				{!data[0] && <NoDataCard text="You haven't added any reminders yet. Click the Add Button below to get started" />}
 				{data
-					.filter((object) => object.completed === false)
 					.map((filteredData) => (
 						<ScheduleCard
 							key={filteredData.reminder_id}

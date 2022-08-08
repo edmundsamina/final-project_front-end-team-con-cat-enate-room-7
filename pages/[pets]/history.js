@@ -32,7 +32,8 @@ export default withPageAuthRequired (function HistoryPage({pet}) {
 			// await delay()
 			const response = await fetch(`${url}/reminders?pet_id=${pet.pet_id}`);
 			const data = await response.json();
-			setData(data.payload);
+			let newArray = data.payload.filter((object) => object.completed === true)
+			setData(newArray);
 		};
 
 		fetchData()
@@ -80,9 +81,7 @@ export default withPageAuthRequired (function HistoryPage({pet}) {
 				<h2 className="text-center">Reminder History</h2>
 				<h2>{pet.name}</h2>
 				{!data[0] && <NoDataCard text="You haven't completed anything in the Check Schedule page yet. Once you have pressed Done on some of your reminders you will see them here" />}
-				{data
-					.filter((object) => object.completed === true)
-					.map((filteredData) => (
+				{data.map((filteredData) => (
 						<CompletedTaskCard
 							key={filteredData.reminder_id}
 							data={filteredData}

@@ -23,6 +23,7 @@ export default withPageAuthRequired (function SchedulePage({pet}) {
   return (
     <main>
       <NavBar pet={pet} />
+      <div className="m10"></div>
       <h2 className="ml10">{pet.name}</h2>
       <Image
           className="home-image"

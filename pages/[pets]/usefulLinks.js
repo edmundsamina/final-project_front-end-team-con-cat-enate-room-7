@@ -2,7 +2,7 @@ import React from "react";
 import NavBar from "../../Components/navBar.js";
 import { withPageAuthRequired } from "@auth0/nextjs-auth0";
 import UsefulLinkCard from "../../Components/usefulLinkCard.js";
-import Image from "next/image";
+import InfoModal from '../../Components/modal.js'
 
 const url = process.env.NEXT_PUBLIC_DB_URL ?? "http://localhost:3000";
 
@@ -62,7 +62,7 @@ export default withPageAuthRequired(function UsefulLinks({ pet }) {
 			},
 			{
 				title: "Find a Dog Sitter",
-				link: "https://www.borrowmydoggy.com/doggypedia/local-dog-sitting-boarding/affordable-dog-sitting-at-home-dog-boarding-manchester",
+				link: "https://www.borrowmydoggy.com/doggypedia/local-dog-sitting-boarding",
 				text: "Click here to find dog sitter in your area.",
 				alt: "cat sitter with dog",
 				image: "/../public/dogSitter.jpeg",
@@ -76,12 +76,14 @@ export default withPageAuthRequired(function UsefulLinks({ pet }) {
 			},
 		];
 
-	console.log(catUsefulLinks);
   if (pet.species === true) {
 	return (
 		<main className="links-page">
 			<NavBar pet={pet} />
 			<div>
+      <InfoModal title="Useful Links- Info" text="Here you can find a selection of useful links for your pet if you are looking for a new vet, or a dog/cat sitter or even if you are worried about some symptoms they have displayed."/>
+      <h2 className="text-center">Useful Links</h2>
+      <h2>{pet.name}</h2>
 				{catUsefulLinks.map((link) => {
 					return (
 						<UsefulLinkCard
@@ -89,7 +91,7 @@ export default withPageAuthRequired(function UsefulLinks({ pet }) {
 							href={link.link}
 							title={link.title}
 							src={link.image}
-							alt=""
+							alt={link.alt}
 							text={link.text}
 						/>
 					);
@@ -104,6 +106,9 @@ export default withPageAuthRequired(function UsefulLinks({ pet }) {
 					<main className="links-page">
 						<NavBar pet={pet} />
 						<div>
+            <InfoModal title="Useful Links- Info" text="Here you can find a selection of useful links for your pet if you are looking for a new vet, or a dog/cat sitter or even if you are worried about some symptoms they have displayed."/>
+            <h2 className="text-center">Useful Links</h2>
+            <h2>{pet.name}</h2>
 							{dogUsefulLinks.map((link) => {
 								return (
 									<UsefulLinkCard
@@ -111,7 +116,7 @@ export default withPageAuthRequired(function UsefulLinks({ pet }) {
 										href={link.link}
 										title={link.title}
 										src={link.image}
-										alt=""
+										alt={link.alt}
 										text={link.text}
 									/>
 								);

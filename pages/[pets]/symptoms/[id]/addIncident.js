@@ -18,7 +18,6 @@ export async function getServerSideProps(context){
   const symptoms_id = context.params.id
 const response = await fetch(`${url}/symptoms/${pet_id}?symptoms_id=${symptoms_id}`)
   const data = await response.json()
-console.log(data.payload)
  return {props:{incidents:data.payload[0]}}
   }
 
@@ -87,13 +86,12 @@ export default withPageAuthRequired(function AddIncident({incidents}) {
         "Content-Type": "application/json",
       },
     });
-    const data = response.json();
-    console.log(data.rows);
+    const data = await response.json();
   }
 
 
 	return (
-		<div>
+		<main>
 			<NavBar pet={incidents}/>
 			<FormControl className='form-style'>
 				<FormLabel><h2>{incidents.symptoms}</h2></FormLabel>
@@ -124,7 +122,7 @@ export default withPageAuthRequired(function AddIncident({incidents}) {
 			{noEmptyFields && (
 				<LinkButton text="Submit" link={{pathname:`./`, query:{pets:`${incidents.pet_id}`,id:`${incidents.symptoms_id}`}}} onClick={handlePost} />
 			)}
-		</div>
+		</main>
 	);
 });
 

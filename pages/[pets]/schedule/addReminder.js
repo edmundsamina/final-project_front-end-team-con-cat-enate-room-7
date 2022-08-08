@@ -101,8 +101,6 @@ export default withPageAuthRequired (function AddReminder({pet}) {
 				"Content-Type": "application/json",
 			},
 		});
-		// const data = response.json();
-		// console.log(data.rows);
 	}
 
 	function selectChange(e) {
@@ -110,7 +108,7 @@ export default withPageAuthRequired (function AddReminder({pet}) {
 	}
 
 	return (
-		<div>
+		<main>
 			<NavBar pet={pet}/>
 			<FormControl className='form-style'>
 				<FormLabel><h2>Add Reminder</h2></FormLabel>
@@ -119,7 +117,7 @@ export default withPageAuthRequired (function AddReminder({pet}) {
 					name="task"
 					value={submission.task}
 					onChange={handleChange}
-					maxlength="30"
+					maxLength="30"
 				/>
 				<Input
 					placeholder="Date"
@@ -151,7 +149,7 @@ export default withPageAuthRequired (function AddReminder({pet}) {
 			{submission.task && submission.date && (
 				<LinkButton text="Add" link={{pathname:`./`, query:{pets:`${pet.pet_id}`}}} onClick={handlePost} />
 			)}
-		</div>
+		</main>
 	);
 }
 )

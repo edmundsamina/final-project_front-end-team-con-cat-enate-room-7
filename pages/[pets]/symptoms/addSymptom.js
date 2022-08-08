@@ -77,61 +77,32 @@ export default withPageAuthRequired(function AddSymptom({ pet }) {
 		setSubmission({ ...submission, [e.target.name]: value });
 	}
 
-	async function handlePost() {
-		const response = await fetch(`${url}/symptoms`, {
-			method: "POST",
-			body: JSON.stringify(submission),
-			headers: {
-				"Content-Type": "application/json",
-			},
-		});
-		const data = response.json();
-		console.log(data.rows);
-	}
 
-	return (
-		<div>
-			<NavBar pet={pet} />
-			<FormControl className="form-style">
-				<FormLabel>
-					<h2>Add Symptom</h2>
-				</FormLabel>
-				<Input
-					placeholder="Symptom"
-					name="symptoms"
-					value={submission.symptoms}
-					onChange={handleChange}
-					maxlength="30"
-				/>
-				<Input
-					placeholder="Date"
-					type="date"
-					name="date"
-					value={submission.date}
-					onChange={handleChange}
-				/>
-				<Input
-					placeholder="Time"
-					type="time"
-					name="time"
-					value={submission.time}
-					onChange={handleChange}
-				/>
-				<Input
-					placeholder="Description"
-					name="description"
-					value={submission.description}
-					onChange={handleChange}
-				/>
-			</FormControl>
-			{!noEmptyFields && <p className="form-remind">* Please fill all</p>}
-			{noEmptyFields && (
-				<LinkButton
-					text="Add"
-					link={{ pathname: `./`, query: { pets: `${pet.pet_id}` } }}
-					onClick={handlePost}
-				/>
-			)}
-		</div>
-	);
-});
+    async function handlePost(){
+        const response = await fetch(`${url}/symptoms`, {
+            method: "POST",
+            body: JSON.stringify(submission),
+            headers: {
+                'Content-Type': 'application/json'
+              }
+        })
+        const data = response.json()
+
+    }
+
+    return (
+        <main>
+            <NavBar pet={pet}/>
+            <FormControl className='form-style'>
+            <FormLabel><h2>Add Symptom</h2></FormLabel>
+                <Input placeholder='Symptom' name="symptoms" value={submission.symptoms} onChange={handleChange} maxLength="30"/>
+                <Input placeholder='Date DD-MM-YYYY' type="date" name="date" value={submission.date} onChange={handleChange}/>
+                <Input placeholder='Time' type="time" name="time" value={submission.time} onChange={handleChange}/>
+                <Input placeholder='Description' name="description" value={submission.description} onChange={handleChange}/>
+            </FormControl>
+            {!noEmptyFields && <p className='form-remind'>* Please fill all</p>}
+            {noEmptyFields && <LinkButton text="Add" link={{pathname:`./`, query:{pets:`${pet.pet_id}`}}} onClick={handlePost}/>}
+        </main>
+    )
+}
+)

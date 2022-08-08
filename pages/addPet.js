@@ -24,7 +24,6 @@ export default withPageAuthRequired (function AddPets() {
         if (user) {
             let string = user.sub;
             let splitarray = string.split("|");
-            console.log(splitarray);
             return(splitarray[1]);
         }
     }
@@ -82,7 +81,6 @@ export default withPageAuthRequired (function AddPets() {
               }
         })
         const data = response.json()
-        console.log(data.rows)
     }
 
     function selectChange(e) {
@@ -95,7 +93,6 @@ export default withPageAuthRequired (function AddPets() {
 			if (user) {
 				let string = user.sub;
 				let splitarray = string.split("|");
-				console.log(splitarray);
 				setUserID(splitarray[1]);
 			}
 		}
@@ -103,25 +100,25 @@ export default withPageAuthRequired (function AddPets() {
 	}, [user]);
 
     return (
-        <div>
+        <main>
             <NavBar />
             <FormControl className='form-style'>
             <FormLabel><h2>Pet Details</h2></FormLabel>
-                <Input placeholder='Name' name="name" type="text" value={submission.name} pattern="^[a-zA-Z ]*$" onChange={handleChange} maxlength="16"/>
-                <Input placeholder='Breed' name="breed" value={submission.breed} pattern="^[a-zA-Z ]*$" onChange={handleChange} maxlength="50"/>
+                <Input placeholder='Name' name="name" type="text" value={submission.name} pattern="^[a-zA-Z ]*$" onChange={handleChange} maxLength="16"/>
+                <Input placeholder='Breed' name="breed" value={submission.breed} pattern="^[a-zA-Z ]*$" onChange={handleChange} maxLength="50"/>
 
 				<Select data-testid="Species" onChange={selectChange} placeholder="Species" variant='flushed' borderColor='var(--main-color)' borderBottom="2px">
 					<option value={true}>Cat</option>
 					<option value={false}>Dog</option>
 				</Select>
 
-                <Input data-testid="age"  placeholder='Age' type="number" name="age" value={submission.age} pattern="[0-9]*" onChange={handleChange} max={99} min={0}/>
-                <Input placeholder='Weight' name="weight" type="number" value={submission.weight} pattern="[0-9]*" onChange={handleChange} min={0} step={0.01} max={100}/>
+                <Input data-testid="age"  placeholder='Age' name="age" value={submission.age} pattern="[0-9]*" onChange={handleChange} maxLength="2"/>
+                <Input placeholder='Weight' name="weight" value={submission.weight} pattern="[0-9.]*" onChange={handleChange}  maxLength="5"/>
                 <div className='formtext'>kg</div>
             </FormControl>
             {!noEmptyFields && <p className='form-remind'>* Please fill all</p>}
             {noEmptyFields && <LinkButton text="Add" link="/" onClick={handlePost}/>}
-        </div>
+        </main>
     )
 }
 )

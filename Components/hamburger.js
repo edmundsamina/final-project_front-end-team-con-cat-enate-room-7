@@ -11,7 +11,7 @@ const Hamburger = ({pet}) => {
 
   if(pet){
     return (
-      <div data-testid="hamburger" className='fixright'>
+      <div data-testid="hamburger">
         <Menu>
   <MenuButton as={Button} rightIcon={<HamburgerIcon />} className={styles.menubutton}/>
   <MenuList className={styles.menu}>

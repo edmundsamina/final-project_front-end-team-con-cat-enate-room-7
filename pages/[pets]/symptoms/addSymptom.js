@@ -10,6 +10,7 @@ import NavBar from "../../../Components/navBar";
 import LinkButton from "../../../Components/linkButton";
 import { nanoid } from "nanoid/non-secure";
 import { withPageAuthRequired } from "@auth0/nextjs-auth0";
+import { getMaxDate, getMinDate } from "../../../utils/getDate";
 
 const url = process.env.NEXT_PUBLIC_DB_URL ?? "http://localhost:3000";
 
@@ -96,7 +97,8 @@ export default withPageAuthRequired(function AddSymptom({ pet }) {
             <FormControl className='form-style'>
             <FormLabel><h2>Add Symptom</h2></FormLabel>
                 <Input placeholder='Symptom' name="symptoms" value={submission.symptoms} onChange={handleChange} maxLength="30"/>
-                <Input placeholder='Date DD-MM-YYYY' type="date" name="date" value={submission.date} onChange={handleChange}/>
+                <Input placeholder='Date DD-MM-YYYY' type="date" name="date" value={submission.date} onChange={handleChange} min={getMinDate()}
+					max={getMaxDate()}/>
                 <Input placeholder='Time' type="time" name="time" value={submission.time} onChange={handleChange}/>
                 <Input placeholder='Description' name="description" value={submission.description} onChange={handleChange}/>
             </FormControl>

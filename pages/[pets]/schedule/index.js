@@ -75,7 +75,7 @@ export default withPageAuthRequired (function SchedulePage({pet}) {
 			body: JSON.stringify({ completed: true }),
 		})
 			.then((res) => res.json)
-			.then((data) => console.log(data))
+			.then((data))
 			.then(() => {
 				setStateCount((c) => c + 1);
 			});
@@ -137,7 +137,7 @@ export default withPageAuthRequired (function SchedulePage({pet}) {
 			},
 		})
 			.then((res) => res.json)
-			.then((data) => console.log(data))
+			.then((data))
 			.then(() => {
 				setStateCount((c) => c + 1);
 			});

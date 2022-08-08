@@ -101,8 +101,6 @@ export default withPageAuthRequired (function AddReminder({pet}) {
 				"Content-Type": "application/json",
 			},
 		});
-		// const data = response.json();
-		// console.log(data.rows);
 	}
 
 	function selectChange(e) {

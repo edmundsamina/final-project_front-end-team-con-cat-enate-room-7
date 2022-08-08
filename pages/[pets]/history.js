@@ -61,7 +61,7 @@ export default withPageAuthRequired (function HistoryPage({pet}) {
 			},
 		})
 			.then((res) => res.json)
-			.then((data) => console.log(data))
+			.then((data))
 			.then(() => {
 				setStateCount((c) => c + 1);
 			});

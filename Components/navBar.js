@@ -17,9 +17,11 @@ export default function NavBar({pet}) {
       <h2>are-Full</h2> */}
       <BackButton/>
       <Link href="/">
+      <a>
         <div className="logo-box">
           <Image src={require("./../public/clear_logo.png")} alt="Care-Full Logo" />
         </div>
+        </a>
       </Link>
       <Hamburger pet={pet}/>
     </div>

@@ -16,25 +16,39 @@ const Hamburger = ({pet}) => {
   <MenuButton as={Button} rightIcon={<HamburgerIcon />} className={styles.menubutton}/>
   <MenuList className={styles.menu}>
   <Link href= "/">
+  <a>
     <MenuItem>Home</MenuItem>
+    </a>
   </Link>
   <Link href={`/${pet.pet_id}/updatePetDetails`}>
+  <a>
     <MenuItem>Change Pet Info</MenuItem>
+    </a>
   </Link>
   <Link href= {`/${pet.pet_id}/symptoms`}>
+  <a>
     <MenuItem>View Symptoms</MenuItem>
+    </a>
   </Link>
   <Link href= {`/${pet.pet_id}/schedule`}>
+  <a>
     <MenuItem>Check Schedule</MenuItem>
+    </a>
   </Link>
   <Link href= {`/${pet.pet_id}/history`}>
+  <a>
     <MenuItem>View History</MenuItem>
+    </a>
   </Link>
   <Link href= {`/${pet.pet_id}/usefulLinks`}>
+  <a>
     <MenuItem>Useful Links</MenuItem>
+    </a>
   </Link>
   <Link href= "/api/auth/logout">
+  <a>
     <MenuItem>Sign Out</MenuItem>
+    </a>
   </Link>
   </MenuList>
 </Menu>
@@ -48,7 +62,9 @@ else{
     <MenuButton as={Button} rightIcon={<HamburgerIcon />} className={styles.menubutton}/>
     <MenuList className={styles.menu}>
   <Link href= "/api/auth/logout">
+  <a>
   <MenuItem>Sign Out</MenuItem>
+  </a>
 </Link>
   </MenuList>
 </Menu>

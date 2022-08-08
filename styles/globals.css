@@ -476,3 +476,7 @@ h4{
     }
   }
   
+  .links-page{
+    display: flex;
+    flex-direction: column;
+  }

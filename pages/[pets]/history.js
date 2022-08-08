@@ -78,7 +78,7 @@ export default withPageAuthRequired (function HistoryPage({pet}) {
         <NavBar pet={pet}/>     
         <div className="history-card">
 		<div className="m10"> 
-		<InfoModal title="Reminder History- Info" text="Welcome to the History Page. Here is a record of all the reminders you have completed in order for you keep a track of things easier. There isn't much to do on this page, it is only here to help keep things easier for any vet appointments you may have." />
+		<InfoModal title="Reminder History- Info" text="Welcome to the History Page. Here you will find a list of all the reminders you have completed. There isn't much to do on this page, it is only here to provide an organised record for any vet appointments you may have." />
 				<h2 className="text-center">Reminder History</h2>
 				<h2>{pet.name}</h2>
 				{!data[0] && <NoDataCard text="You haven't completed anything in the Check Schedule page yet. Once you have pressed Done on some of your reminders you will see them here" />}

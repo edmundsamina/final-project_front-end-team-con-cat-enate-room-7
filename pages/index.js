@@ -34,7 +34,6 @@ export default function Home() {
       if (userID){
         const response = await fetch(`${url}/pets/${userID}`);
         const data = await response.json();
-        console.log(data.payload)
         setData(data.payload);
       }
 		};
@@ -50,7 +49,6 @@ export default function Home() {
 			if (user) {
 				let string = user.sub;
 				let splitarray = string.split("|");
-				console.log(splitarray);
 				setUserID(splitarray[1]);
 			}
 		}
@@ -90,7 +88,6 @@ export default function Home() {
   }
 
   if (user) {
-    console.log(user.sub);
     return (
       <main>
         <PetNavBar pet={false}/>

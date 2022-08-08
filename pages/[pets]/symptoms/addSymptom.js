@@ -86,7 +86,7 @@ export default withPageAuthRequired (function AddSymptom({pet}) {
               }
         })
         const data = response.json()
-        console.log(data.rows)
+
     }
 
     return (
@@ -94,8 +94,8 @@ export default withPageAuthRequired (function AddSymptom({pet}) {
             <NavBar pet={pet}/>
             <FormControl className='form-style'>
             <FormLabel><h2>Add Symptom</h2></FormLabel>
-                <Input placeholder='Symptom' name="symptoms" value={submission.symptoms} onChange={handleChange} maxlength="30"/>
-                <Input placeholder='Date' type="date" name="date" value={submission.date} onChange={handleChange}/>
+                <Input placeholder='Symptom' name="symptoms" value={submission.symptoms} onChange={handleChange} maxLength="30"/>
+                <Input placeholder='Date DD-MM-YYYY' type="date" name="date" value={submission.date} onChange={handleChange}/>
                 <Input placeholder='Time' type="time" name="time" value={submission.time} onChange={handleChange}/>
                 <Input placeholder='Description' name="description" value={submission.description} onChange={handleChange}/>
             </FormControl>

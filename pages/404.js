@@ -1,11 +1,11 @@
 import React from 'react'
 import Image from 'next/image'
-import NavBar from '../Components/navBar'
+import PetNavBar from '../Components/petNavBar';
 
 const pageNotFound = () => {
     return (
 			<main>
-				<NavBar />
+				<PetNavBar pet={false} />
 				<div className="not-fund">
 					<Image
 						className="home-image"

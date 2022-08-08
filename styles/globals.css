@@ -483,8 +483,16 @@ h4{
     }
     main {
       width: 900px;
-      border: 1px solid black;
+      min-height: 100vh;
       margin: auto;
+      margin-top: -15px;
+      background-color: white;
+      -webkit-box-shadow: 2px 3px 19px -5px rgba(0,0,0,0.71);
+      box-shadow: 2px 3px 19px -5px rgba(0,0,0,0.71);
+    }
+    body {
+      color: grey;
+      /* background-color: lightblue!important; */
     }
 
   }

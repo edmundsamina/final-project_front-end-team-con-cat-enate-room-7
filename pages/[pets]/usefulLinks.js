@@ -108,7 +108,6 @@ export default withPageAuthRequired(function UsefulLinks({ pet }) {
 			<main className="links-page">
 				<NavBar pet={pet} />
 				<div className="m10">
-					<div>
 						<InfoModal
 							title="Useful Links- Info"
 							text="Here you can find a selection of useful links for your pet if you are looking for a new vet, or a dog sitter or even if you are worried about some symptoms they have displayed."
@@ -128,7 +127,6 @@ export default withPageAuthRequired(function UsefulLinks({ pet }) {
 							);
 						})}
 					</div>
-				</div>
 			</main>
 		);
 	}

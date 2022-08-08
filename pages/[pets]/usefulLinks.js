@@ -2,7 +2,7 @@ import React from "react";
 import NavBar from "../../Components/navBar.js";
 import { withPageAuthRequired } from "@auth0/nextjs-auth0";
 import UsefulLinkCard from "../../Components/usefulLinkCard.js";
-import InfoModal from '../../Components/modal.js'
+import InfoModal from "../../Components/modal.js";
 
 const url = process.env.NEXT_PUBLIC_DB_URL ?? "http://localhost:3000";
 
@@ -45,84 +45,91 @@ export default withPageAuthRequired(function UsefulLinks({ pet }) {
 		},
 	];
 
-  	const dogUsefulLinks = [
-			{
-				title: "Find a Vet",
-				link: "https://findavet.rcvs.org.uk/home/",
-				text: "Click here to find an RCVS registered vet in your area.",
-				alt: "vet with dog",
-				image: "/../public/dogVet.jpeg",
-			},
-			{
-				title: "Emergency Symptoms Checker",
-				link: "https://vethelpdirect.com/dog-symptom-checker/",
-				text: "Click here to check if your dog needs to see a vet urgently.",
-				alt: "sick dog",
-				image: "/../public/sickDog.jpeg",
-			},
-			{
-				title: "Find a Dog Sitter",
-				link: "https://www.borrowmydoggy.com/doggypedia/local-dog-sitting-boarding",
-				text: "Click here to find dog sitter in your area.",
-				alt: "cat sitter with dog",
-				image: "/../public/dogSitter.jpeg",
-			},
-			{
-				title: "Dog Health Advice",
-				link: "https://www.dogstrust.org.uk/help-advice/dog-care/",
-				text: "Click here find general health advice provided by the Dog's Trust.",
-				alt: "happy dog",
-				image: "/../public/dog.jpeg",
-			},
-		];
+	const dogUsefulLinks = [
+		{
+			title: "Find a Vet",
+			link: "https://findavet.rcvs.org.uk/home/",
+			text: "Click here to find an RCVS registered vet in your area.",
+			alt: "vet with dog",
+			image: "/../public/dogVet.jpeg",
+		},
+		{
+			title: "Emergency Symptoms Checker",
+			link: "https://vethelpdirect.com/dog-symptom-checker/",
+			text: "Click here to check if your dog needs to see a vet urgently.",
+			alt: "sick dog",
+			image: "/../public/sickDog.jpeg",
+		},
+		{
+			title: "Find a Dog Sitter",
+			link: "https://www.borrowmydoggy.com/doggypedia/local-dog-sitting-boarding",
+			text: "Click here to find dog sitter in your area.",
+			alt: "cat sitter with dog",
+			image: "/../public/dogSitter.jpeg",
+		},
+		{
+			title: "Dog Health Advice",
+			link: "https://www.dogstrust.org.uk/help-advice/dog-care/",
+			text: "Click here find general health advice provided by the Dog's Trust.",
+			alt: "happy dog",
+			image: "/../public/dog.jpeg",
+		},
+	];
 
-  if (pet.species === true) {
-	return (
-		<main className="links-page">
-			<NavBar pet={pet} />
-			<div>
-      <InfoModal title="Useful Links- Info" text="Here you can find a selection of useful links for your pet if you are looking for a new vet, or a dog/cat sitter or even if you are worried about some symptoms they have displayed."/>
-      <h2 className="text-center">Useful Links</h2>
-      <h2>{pet.name}</h2>
-				{catUsefulLinks.map((link) => {
-					return (
-						<UsefulLinkCard
-							key={link.title}
-							href={link.link}
-							title={link.title}
-							src={link.image}
-							alt={link.alt}
-							text={link.text}
+	if (pet.species === true) {
+		return (
+			<main className="links-page">
+				<NavBar pet={pet} />
+				<div className="m10">
+					<InfoModal
+						title="Useful Links- Info"
+						text="Here you can find a selection of useful links for your pet if you are looking for a new vet, or a cat sitter or even if you are worried about some symptoms they have displayed."
+					/>
+					<h2 className="text-center">Useful Links</h2>
+					<h2>{pet.name}</h2>
+					{catUsefulLinks.map((link) => {
+						return (
+							<UsefulLinkCard
+								key={link.title}
+								href={link.link}
+								title={link.title}
+								src={link.image}
+								alt={link.alt}
+								text={link.text}
+							/>
+						);
+					})}
+				</div>
+			</main>
+		);
+	}
+	if (pet.species === false) {
+		return (
+			<main className="links-page">
+				<NavBar pet={pet} />
+				<div className="m10">
+					<div>
+						<InfoModal
+							title="Useful Links- Info"
+							text="Here you can find a selection of useful links for your pet if you are looking for a new vet, or a dog sitter or even if you are worried about some symptoms they have displayed."
 						/>
-					);
-				})}
-			</div>
-		</main>
-  
-	);
-      }
-      if (pet.species === false) {
-				return (
-					<main className="links-page">
-						<NavBar pet={pet} />
-						<div>
-            <InfoModal title="Useful Links- Info" text="Here you can find a selection of useful links for your pet if you are looking for a new vet, or a dog/cat sitter or even if you are worried about some symptoms they have displayed."/>
-            <h2 className="text-center">Useful Links</h2>
-            <h2>{pet.name}</h2>
-							{dogUsefulLinks.map((link) => {
-								return (
-									<UsefulLinkCard
-										key={link.title}
-										href={link.link}
-										title={link.title}
-										src={link.image}
-										alt={link.alt}
-										text={link.text}
-									/>
-								);
-							})}
-						</div>
-					</main>
-				);
-			}
+						<h2 className="text-center">Useful Links</h2>
+						<h2>{pet.name}</h2>
+						{dogUsefulLinks.map((link) => {
+							return (
+								<UsefulLinkCard
+									key={link.title}
+									href={link.link}
+									title={link.title}
+									src={link.image}
+									alt={link.alt}
+									text={link.text}
+								/>
+							);
+						})}
+					</div>
+				</div>
+			</main>
+		);
+	}
 });

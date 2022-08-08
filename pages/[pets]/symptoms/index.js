@@ -113,7 +113,7 @@ export default withPageAuthRequired (function SymptomPage({pet}) {
       <h2 className="text-center">Symptoms</h2>
       <h2>{pet.name}</h2>
       <div>
-      {!newData[0] && <NoDataCard text="You haven't added any symptoms yet. Press the Add Button below to get started"/> }
+      {!newData[0] && <NoDataCard text="You haven't added any symptoms yet. Press the Add Button below to get started."/> }
         {newData.map((item) => {
           return (
             <SymptomCard

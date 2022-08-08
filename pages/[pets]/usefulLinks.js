@@ -1,6 +1,7 @@
 import React from 'react';
 import NavBar from '../../Components/navBar.js';
 import { withPageAuthRequired } from "@auth0/nextjs-auth0";
+import UsefulLinkCard from '../../Components/usefulLinkCard.js';
 
 const url = process.env.NEXT_PUBLIC_DB_URL ?? "http://localhost:3000"
 
@@ -16,6 +17,7 @@ export default withPageAuthRequired (function UsefulLinks({pet}) {
   return (
         <main className='links-page'>
             <NavBar pet={pet}/>
+            <UsefulLinkCard link='' title='Test' href='' alt='' text='Testing'/>
         </main>
     )
 }

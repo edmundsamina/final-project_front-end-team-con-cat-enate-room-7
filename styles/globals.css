@@ -480,3 +480,21 @@ h4{
     display: flex;
     flex-direction: column;
   }
+
+  .link-card{
+    border: 3px solid var(--second-color);
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 10px 10px 20px;
+    margin-bottom: 20px;
+    margin-top: 30vh;
+  }
+
+  .link-card h2 {
+    display: flex;
+    font-weight: 500;
+    font-size:  var(--h2-size);
+    color:var(--main-color);
+  }

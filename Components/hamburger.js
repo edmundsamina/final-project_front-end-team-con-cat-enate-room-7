@@ -30,8 +30,8 @@ const Hamburger = ({pet}) => {
   <Link href= {`/${pet.pet_id}/history`}>
     <MenuItem>View History</MenuItem>
   </Link>
-  <Link href= "/404">
-    <MenuItem>Book Appointment</MenuItem>
+  <Link href= {`${pet.pet_id}/usefulLinks`}>
+    <MenuItem>Useful Links</MenuItem>
   </Link>
   <Link href= "/api/auth/logout">
     <MenuItem>Sign Out</MenuItem>

@@ -476,6 +476,37 @@ h4{
     }
   }
 
+  
+  .links-page{
+    display: flex;
+    flex-direction: column;
+  }
+
+  .link-card{
+    border: 3px solid var(--second-color);
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 10px 10px 20px;
+    margin-bottom: 20px;
+    margin-top: 2vh;
+  }
+
+  .link-card h2 {
+    display: flex;
+    font-weight: 500;
+    font-size:  var(--h2-size);
+    color:var(--main-color);
+  }
+
+.link-card:hover{
+  box-shadow: 1px 1px 1px 1px var(--second-color);
+  opacity: 1;
+  background-color: #b2d1ff40;
+}
+
+
   @media screen and (min-width: 900px) {
     .navbar {
       max-width: 900px;

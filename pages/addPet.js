@@ -103,7 +103,7 @@ export default withPageAuthRequired (function AddPets() {
 	}, [user]);
 
     return (
-        <div>
+        <main>
             <NavBar />
             <FormControl className='form-style'>
             <FormLabel><h2>Pet Details</h2></FormLabel>
@@ -121,7 +121,7 @@ export default withPageAuthRequired (function AddPets() {
             </FormControl>
             {!noEmptyFields && <p className='form-remind'>* Please fill all</p>}
             {noEmptyFields && <LinkButton text="Add" link="/" onClick={handlePost}/>}
-        </div>
+        </main>
     )
 }
 )

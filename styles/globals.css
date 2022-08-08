@@ -59,7 +59,7 @@ h4{
 .navbar {
   display: flex;
   flex-flow: row;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
   position: fixed;
   z-index: 10;
@@ -74,14 +74,14 @@ h4{
 }
 
 .fixright{
-  position: fixed;
+  position: sticky;
   right: 0px;
   z-index: 10;}
 
-  .backButton{
-    position: fixed;
+  /* .backButton{ */
+    /* position: sticky;
     left: 0px;
-    z-index: 10;}
+    z-index: 10;} */
 
 .addButton {
   display: flex;
@@ -475,4 +475,18 @@ h4{
       transform: rotate(0turn);
     }
   }
+
+  @media screen and (min-width: 900px) {
+    .navbar {
+      max-width: 900px;
+
+    }
+    main {
+      width: 900px;
+      border: 1px solid black;
+      margin: auto;
+    }
+
+  }
+
   

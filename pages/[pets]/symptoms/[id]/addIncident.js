@@ -93,7 +93,7 @@ export default withPageAuthRequired(function AddIncident({incidents}) {
 
 
 	return (
-		<div>
+		<main>
 			<NavBar pet={incidents}/>
 			<FormControl className='form-style'>
 				<FormLabel><h2>{incidents.symptoms}</h2></FormLabel>
@@ -124,7 +124,7 @@ export default withPageAuthRequired(function AddIncident({incidents}) {
 			{noEmptyFields && (
 				<LinkButton text="Submit" link={{pathname:`./`, query:{pets:`${incidents.pet_id}`,id:`${incidents.symptoms_id}`}}} onClick={handlePost} />
 			)}
-		</div>
+		</main>
 	);
 });
 

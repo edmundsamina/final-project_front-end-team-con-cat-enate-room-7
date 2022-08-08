@@ -4,7 +4,7 @@ import NavBar from '../Components/navBar'
 
 const pageNotFound = () => {
     return (
-			<div>
+			<main>
 				<NavBar />
 				<div className="not-fund">
 					<Image
@@ -14,7 +14,7 @@ const pageNotFound = () => {
 					/>
 					<h1>404</h1>
 				</div>
-			</div>
+			</main>
 		);
 }
 

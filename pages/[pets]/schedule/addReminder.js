@@ -110,7 +110,7 @@ export default withPageAuthRequired (function AddReminder({pet}) {
 	}
 
 	return (
-		<div>
+		<main>
 			<NavBar pet={pet}/>
 			<FormControl className='form-style'>
 				<FormLabel><h2>Add Reminder</h2></FormLabel>
@@ -151,7 +151,7 @@ export default withPageAuthRequired (function AddReminder({pet}) {
 			{submission.task && submission.date && (
 				<LinkButton text="Add" link={{pathname:`./`, query:{pets:`${pet.pet_id}`}}} onClick={handlePost} />
 			)}
-		</div>
+		</main>
 	);
 }
 )

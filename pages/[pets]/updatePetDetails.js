@@ -81,7 +81,7 @@ export default withPageAuthRequired (function UpdatePetDetails({pet}) {
 	}
 
     return (
-        <div>
+        <main>
             <NavBar pet={pet}/>
 
             <FormControl className='form-style'>
@@ -100,7 +100,7 @@ export default withPageAuthRequired (function UpdatePetDetails({pet}) {
             </FormControl>
             {!noEmptyFields && <p className='form-remind'>* Please fill all</p>}
             {noEmptyFields && <LinkButton  text="Update" link={`/${pet.pet_id}`} onClick={handlePost}/>}
-        </div>
+        </main>
     )
 }
 )

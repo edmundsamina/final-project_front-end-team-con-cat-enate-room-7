@@ -90,7 +90,7 @@ export default withPageAuthRequired (function AddSymptom({pet}) {
     }
 
     return (
-        <div>
+        <main>
             <NavBar pet={pet}/>
             <FormControl className='form-style'>
             <FormLabel><h2>Add Symptom</h2></FormLabel>
@@ -101,7 +101,7 @@ export default withPageAuthRequired (function AddSymptom({pet}) {
             </FormControl>
             {!noEmptyFields && <p className='form-remind'>* Please fill all</p>}
             {noEmptyFields && <LinkButton text="Add" link={{pathname:`./`, query:{pets:`${pet.pet_id}`}}} onClick={handlePost}/>}
-        </div>
+        </main>
     )
 }
 )

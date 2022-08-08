@@ -78,10 +78,10 @@ h4{
   right: 0px;
   z-index: 10;}
 
-  .backButton{
-    position: fixed;
+  /* .backButton{ */
+    /* position: sticky;
     left: 0px;
-    z-index: 10;}
+    z-index: 10;} */
 
 .addButton {
   display: flex;
@@ -475,7 +475,7 @@ h4{
       max-width: 900px;
 
     }
-    body {
+    main {
       width: 900px;
       border: 1px solid black;
       margin: auto;

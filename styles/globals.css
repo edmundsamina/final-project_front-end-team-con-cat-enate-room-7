@@ -499,3 +499,8 @@ h4{
     color:var(--main-color);
   }
 
+.link-card:hover{
+  box-shadow: 1px 1px 1px 1px var(--second-color);
+  opacity: 1;
+  background-color: #b2d1ff40;
+}

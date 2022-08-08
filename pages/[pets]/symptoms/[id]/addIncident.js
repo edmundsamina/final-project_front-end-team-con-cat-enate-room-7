@@ -10,6 +10,7 @@ import NavBar from "../../../../Components/navBar";
 import LinkButton from "../../../../Components/linkButton";
 import { nanoid } from "nanoid/non-secure";
 import { withPageAuthRequired } from "@auth0/nextjs-auth0";
+import { getMaxDate, getMinDate } from "../../../../utils/getDate";
 
 const url = process.env.NEXT_PUBLIC_DB_URL ?? "http://localhost:3000"
 
@@ -103,6 +104,8 @@ export default withPageAuthRequired(function AddIncident({incidents}) {
 					name="date"
 					value={newIncident.date}
 					onChange={handleChange}
+					min={getMinDate()}
+					max={getMaxDate()}
 				/>
 				<Input
 					placeholder="Time"

@@ -45,7 +45,8 @@ export default withPageAuthRequired (function HistoryPage({pet}) {
 		const fetchData = async () => {
 			const response = await fetch(`${url}/reminders?pet_id=${pet.pet_id}`);
 			const data = await response.json();
-			setData(data.payload);
+			let newArray = data.payload.filter((object) => object.completed === true)
+			setData(newArray);
 		};
 
 		fetchData()

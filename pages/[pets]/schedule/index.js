@@ -118,7 +118,9 @@ export default withPageAuthRequired (function SchedulePage({pet}) {
 
 	function onClick(data) {
 		patchFunction(data);
-		postFunction(data);
+		if(data.repeated){
+			postFunction(data);
+		}
 	}
 
 	function addDays(days, date = new Date()) {

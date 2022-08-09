@@ -72,12 +72,19 @@ export default function Home() {
       <main>
         <PetNavBar pet={false}/>
         <div className={styles.container}>
+          <div className="hero-banner">
           <Image
-            className="home-image"
-            src={require("./../public/mock_photo.jpg")}
+            // className="home-image"
+            src={require("/public/line_black.png")}
             alt="Picture of cat and dog"
-            layout="responsive"
+            // layout="responsive"
           />
+          </div>
+          <div className="banner-text">
+          <p>Helping owners care for their pets</p>
+          <h3>since 2022</h3>
+          </div>
+
           <div className="m10-1 flex">
             {!data[0] && <NoDataCard text="You haven't added any pets yet. Click the Add Button below to get started"/>}
             {data.map((item, index) => {

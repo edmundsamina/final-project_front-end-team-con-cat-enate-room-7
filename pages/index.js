@@ -72,12 +72,11 @@ export default function Home() {
       <main>
         <PetNavBar pet={false}/>
         <div className={styles.container}>
+        <div className="mt4"></div>
           <div className="hero-banner">
           <Image
-            // className="home-image"
             src={require("/public/line_black.png")}
             alt="Picture of cat and dog"
-            // layout="responsive"
           />
           </div>
           <div className="banner-text">

@@ -10,8 +10,10 @@ import { withPageAuthRequired } from "@auth0/nextjs-auth0";
 const url = process.env.NEXT_PUBLIC_DB_URL ?? "http://localhost:3000"
 
 export async function getServerSideProps(context){
-  const id = context.params.pets
-const response = await fetch(`${url}/symptoms/${id}`)
+	console.log(context.params)
+  const pet_id = context.params.pets
+  const symptoms_id = context.params.id
+const response = await fetch(`${url}/symptoms/${pet_id}?symptoms_id=${symptoms_id}`)
   const data = await response.json()
  return {props:{incidents:data.payload}}
   }

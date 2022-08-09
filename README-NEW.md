@@ -1,4 +1,4 @@
-<img src=".\public\Care-full.png" />
+[<img src="./public/Banner.png" />](image.png)
 
 <br/>
 
@@ -9,13 +9,14 @@
 ## List of Contents
 
 1. [Introduction](#Care-Full)
-2. [Features](#features)
-3. [Getting Started](#getting-started)
-4. [Tech Stack](#tech-stack)
-5. [Color Reference](#color-reference)
-6. [Running Tests](#running-tests)
-7. [The Team](#The-Team)
-8. [Appendix](#appendix)
+2. [Demo](#App-Demo)
+3. [Features](#features)
+4. [Getting Started](#getting-started)
+5. [Tech Stack](#tech-stack)
+6. [Color Reference](#color-reference)
+7. [Running Tests](#running-tests)
+8. [The Team](#The-Team)
+9. [Appendix](#appendix)
 
 <br/>
 
@@ -36,6 +37,15 @@ This app aims to alleviate some of the stress that comes with having a sick pet 
 <br/>
 
 ---
+
+<br />
+
+# **_App-Demo_**
+
+[<img src=".\public\Care-Full home page.jpg" width="250" height="480"/>](image.png)
+[<img src="./public\DEMO-ADD-PET-NEW.gif" width="250" height="480"/>](image.png)
+
+<br/>
 
 <br />
 

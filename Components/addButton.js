@@ -5,18 +5,17 @@ import Link from "next/link";
 import { useRouter } from "next/router";
 
 const AddButton = ({ text, href }) => {
-
-  
   return (
     <div className="addButton">
       <Link href={href}>
         <IconButton
-          icon={<AddIcon color="roots.0" />}
+          icon={<AddIcon color="roots.0" w={8} h={8} />}
           isRound="true"
           bgColor={"roots.100"}
           zIndex="1"
           height="15vw"
           width="15vw"
+          title="Add an entry"
         />
       </Link>
       {/* <h3 className="addText">{text}</h3> */}
@@ -25,4 +24,3 @@ const AddButton = ({ text, href }) => {
 };
 
 export default AddButton;
-

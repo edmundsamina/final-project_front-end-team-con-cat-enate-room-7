@@ -64,7 +64,6 @@ export default withPageAuthRequired (function UpdatePetDetails({pet}) {
      }
 
     async function handlePost(){
-        console.log(pet.pet_id)
         const response = await fetch(`${url}/pets/${pet.pet_id}`, {
             method: "PUT",
             body: JSON.stringify(submission),
@@ -73,7 +72,6 @@ export default withPageAuthRequired (function UpdatePetDetails({pet}) {
               }
         })
         const data = response.json()
-        console.log(data.rows)
     }
 
     function selectChange(e) {
@@ -81,26 +79,26 @@ export default withPageAuthRequired (function UpdatePetDetails({pet}) {
 	}
 
     return (
-        <div>
+        <main>
             <NavBar pet={pet}/>
 
             <FormControl className='form-style'>
             <FormLabel><h2>Pet Details</h2></FormLabel>
-                <Input placeholder='Name' type="text" name="name" value={submission.name} pattern="^[a-zA-Z ]*$" onChange={handleChange} maxlength="16"/>
-                <Input placeholder='Breed' type="text" name="breed" value={submission.breed} pattern="^[a-zA-Z ]*$" onChange={handleChange} maxlength="50"/>
+                <Input placeholder='Name' name="name" value={submission.name} pattern="^[a-zA-Z ]*$" onChange={handleChange} maxLength="16"/>
+                <Input placeholder='Breed' name="breed" value={submission.breed} pattern="^[a-zA-Z ]*$" onChange={handleChange} maxLength="50"/>
 
 				<Select data-testid="Species" onChange={selectChange} placeholder="Species" variant='flushed' borderColor='var(--main-color)' borderBottom="2px">
 					<option value={true}>Cat</option>
 					<option value={false}>Dog</option>
 				</Select>
 
-                <Input data-testid="age" type="number" placeholder='Age' name="age" value={submission.age} pattern="[0-9]*" onChange={handleChange} min={0} max={99}/>
-                <Input type = "number" placeholder='Weight' name="weight" value={submission.weight} pattern="[0-9]*" onChange={handleChange} min={0} max={100} step={0.01} />
+                <Input data-testid="age" placeholder='Age' name="age" value={submission.age} pattern="[0-9]*" onChange={handleChange} maxLength="2" />
+                <Input placeholder='Weight' name="weight" value={submission.weight} pattern="[0-9.]*" onChange={handleChange} maxLength="5" />
                 <div className='formtext'>kg</div>
             </FormControl>
             {!noEmptyFields && <p className='form-remind'>* Please fill all</p>}
             {noEmptyFields && <LinkButton  text="Update" link={`/${pet.pet_id}`} onClick={handlePost}/>}
-        </div>
+        </main>
     )
 }
 )

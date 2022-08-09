@@ -6,6 +6,8 @@ import SymptomCard from "../../../Components/symptomCard";
 import { useEffect, useState } from "react";
 import { withPageAuthRequired } from "@auth0/nextjs-auth0";
 import Loader from "../../../Components/loader.js";
+import InfoModal from "../../../Components/modal.js";
+import NoDataCard from "../../../Components/noDataCard.js";
 
 const url = process.env.NEXT_PUBLIC_DB_URL ?? "http://localhost:3000"
 
@@ -60,22 +62,7 @@ export default withPageAuthRequired (function SymptomPage({pet}) {
       .catch(console.error);
   }, [stateCount]);
 
-  // useEffect(() => {
-  //   function removeDuplicates() {
-  //     if (data) {
-  //       let unique = [...new Set(data.map((item) => item.symptoms))];
-  //       console.log(unique)
-  //       let uniqueNoNull = []
-  //       for (let i = 0; i < unique.length; i++){
-  //         if (unique[i]){
-  //           uniqueNoNull.push(unique[i])
-  //         }
-  //       }
-  //       setNewData(uniqueNoNull);
-  //     }
-  //   }
-  //   removeDuplicates();
-  // }, [data]);
+
 
   useEffect(() => {
     function removeDuplicates() {
@@ -106,7 +93,7 @@ export default withPageAuthRequired (function SymptomPage({pet}) {
 			},
 		})
 			.then((res) => res.json)
-			.then((data) => console.log(data))
+			.then((data))
 			.then(() => {
 				setStateCount((c) => c + 1);
 			});
@@ -115,12 +102,18 @@ export default withPageAuthRequired (function SymptomPage({pet}) {
   if (!data || !newData) {
     return <Loader/>;
   }
+  
+
 
   return (
     <main>
       <NavBar pet={pet}/>
-      <h2>{pet.name}</h2>
       <div className="m10">
+      <InfoModal title="Symptoms Info" text="Here is the symptoms page, you can add any symptom your pet has displayed by pressing the Add Button (+) and filling out the form. Add more incidents of the same symptom by pressing 'Details' to keep track of how your pet is doing."/>
+      <h2 className="text-center">Symptoms</h2>
+      <h2>{pet.name}</h2>
+      <div>
+      {!newData[0] && <NoDataCard text="You haven't added any symptoms yet. Press the Add Button below to get started."/> }
         {newData.map((item) => {
           return (
             <SymptomCard
@@ -135,7 +128,43 @@ export default withPageAuthRequired (function SymptomPage({pet}) {
       </div>
 
       <AddButton text="Add Symptom" href={{pathname:`symptoms/addSymptom`, query:{pets:`${pet.pet_id}`}}} />
+      </div>
     </main>
   );
 }
 )
+
+  // useEffect(() => {
+  //   function removeDuplicates() {
+  //     if (data) {
+  //       let unique = [...new Set(data.map((item) => item.symptoms))];
+  //       console.log(unique)
+  //       let uniqueNoNull = []
+  //       for (let i = 0; i < unique.length; i++){
+  //         if (unique[i]){
+  //           uniqueNoNull.push(unique[i])
+  //         }
+  //       }
+  //       setNewData(uniqueNoNull);
+  //     }
+  //   }
+  //   removeDuplicates();
+  // }, [data]);
+
+
+  // if (newData.length === 0) {
+  //   return (
+  //     <main>
+  //       <NavBar pet={pet}/>
+  //       <div className="m10">
+  //         <InfoModal title="Symptoms Info" text="Here is the symptoms page, you can add any symptom your pet has displayed by pressing the Add Button (+) and filling out the form. Add more incidents of the same symptom by pressing 'Details' to keep track of how your pet is doing"/>
+  //           <h2 className="text-center">Symtpoms</h2>
+  //           <h2>{pet.name}</h2>
+  //             <div>
+  //               <NoDataCard text="You haven't added any symptoms yet. Press the Add Button below to get started"/>
+  //             </div>
+  //        <AddButton text="Add Symptom" href={{pathname:`symptoms/addSymptom`, query:{pets:`${pet.pet_id}`}}} />
+  //        </div>
+  //      </main>
+  //   )
+  // }

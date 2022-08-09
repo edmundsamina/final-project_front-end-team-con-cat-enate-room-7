@@ -11,6 +11,7 @@ import {useRouter} from "next/router";
 import Link from "next/link";
 import Loader from "../Components/loader";
 import SignInOut from "../Components/signInOut.js";
+import NoDataCard from "../Components/noDataCard";
 
 
 const url = process.env.NEXT_PUBLIC_DB_URL ?? "http://localhost:3000";
@@ -48,7 +49,6 @@ export default function Home() {
 			if (user) {
 				let string = user.sub;
 				let splitarray = string.split("|");
-				console.log(splitarray);
 				setUserID(splitarray[1]);
 			}
 		}
@@ -68,7 +68,6 @@ export default function Home() {
 	}
 
   if (user) {
-    console.log(user.sub);
     return (
       <main>
         <PetNavBar pet={false}/>
@@ -79,7 +78,8 @@ export default function Home() {
             alt="Picture of cat and dog"
             layout="responsive"
           />
-          <div className="m10 flex">
+          <div className="m10-1 flex">
+            {!data[0] && <NoDataCard text="You haven't added any pets yet. Click the Add Button below to get started"/>}
             {data.map((item, index) => {
               let images = "";
               if (item.species == true) {
@@ -98,3 +98,23 @@ export default function Home() {
   }
   
 }
+
+  // if (data.length === 0) {
+  //   return (
+  //     <main>
+  //     <PetNavBar pet={false}/>
+  //     <div className={styles.container}>
+  //       <Image
+  //         className="home-image"
+  //         src={require("./../public/mock_photo.jpg")}
+  //         alt="Picture of cat and dog"
+  //         layout="responsive"
+  //       />
+  //       <div className="m10-1 flex">
+  //         <NoDataCard text="You haven't added any pets yet. Click the Add Button below to get started"/>
+  //       </div>        
+  //       <AddButton text="Add Pet" href="/addPet" />
+  //     </div>
+  //   </main>
+  //   )
+  // }

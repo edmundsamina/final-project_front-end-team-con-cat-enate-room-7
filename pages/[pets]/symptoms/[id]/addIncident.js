@@ -10,6 +10,7 @@ import NavBar from "../../../../Components/navBar";
 import LinkButton from "../../../../Components/linkButton";
 import { nanoid } from "nanoid/non-secure";
 import { withPageAuthRequired } from "@auth0/nextjs-auth0";
+import { getMaxDate, getMinDate } from "../../../../utils/getDate";
 
 const url = process.env.NEXT_PUBLIC_DB_URL ?? "http://localhost:3000"
 
@@ -18,7 +19,6 @@ export async function getServerSideProps(context){
   const symptoms_id = context.params.id
 const response = await fetch(`${url}/symptoms/${pet_id}?symptoms_id=${symptoms_id}`)
   const data = await response.json()
-console.log(data.payload)
  return {props:{incidents:data.payload[0]}}
   }
 
@@ -87,13 +87,12 @@ export default withPageAuthRequired(function AddIncident({incidents}) {
         "Content-Type": "application/json",
       },
     });
-    const data = response.json();
-    console.log(data.rows);
+    const data = await response.json();
   }
 
 
 	return (
-		<div>
+		<main>
 			<NavBar pet={incidents}/>
 			<FormControl className='form-style'>
 				<FormLabel><h2>{incidents.symptoms}</h2></FormLabel>
@@ -105,6 +104,8 @@ export default withPageAuthRequired(function AddIncident({incidents}) {
 					name="date"
 					value={newIncident.date}
 					onChange={handleChange}
+					min={getMinDate()}
+					max={getMaxDate()}
 				/>
 				<Input
 					placeholder="Time"
@@ -124,7 +125,7 @@ export default withPageAuthRequired(function AddIncident({incidents}) {
 			{noEmptyFields && (
 				<LinkButton text="Submit" link={{pathname:`./`, query:{pets:`${incidents.pet_id}`,id:`${incidents.symptoms_id}`}}} onClick={handlePost} />
 			)}
-		</div>
+		</main>
 	);
 });
 

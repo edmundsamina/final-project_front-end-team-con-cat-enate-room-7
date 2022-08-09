@@ -12,6 +12,7 @@ import NavBar from "../../../Components/navBar";
 import LinkButton from "../../../Components/linkButton";
 import { nanoid } from "nanoid/non-secure";
 import { withPageAuthRequired } from "@auth0/nextjs-auth0";
+import { getMaxDate, getMinDate } from "../../../utils/getDate.js"
 
 /*
 user_id - handed in as state
@@ -101,8 +102,6 @@ export default withPageAuthRequired (function AddReminder({pet}) {
 				"Content-Type": "application/json",
 			},
 		});
-		// const data = response.json();
-		// console.log(data.rows);
 	}
 
 	function selectChange(e) {
@@ -110,7 +109,7 @@ export default withPageAuthRequired (function AddReminder({pet}) {
 	}
 
 	return (
-		<div>
+		<main>
 			<NavBar pet={pet}/>
 			<FormControl className='form-style'>
 				<FormLabel><h2>Add Reminder</h2></FormLabel>
@@ -119,7 +118,7 @@ export default withPageAuthRequired (function AddReminder({pet}) {
 					name="task"
 					value={submission.task}
 					onChange={handleChange}
-					maxlength="30"
+					maxLength="30"
 				/>
 				<Input
 					placeholder="Date"
@@ -127,6 +126,8 @@ export default withPageAuthRequired (function AddReminder({pet}) {
 					name="date"
 					value={submission.date}
 					onChange={handleChange}
+					min={getMinDate()}
+					max={getMaxDate()}
 				/>
 				<Checkbox
 					value={submission.repeated}
@@ -151,7 +152,7 @@ export default withPageAuthRequired (function AddReminder({pet}) {
 			{submission.task && submission.date && (
 				<LinkButton text="Add" link={{pathname:`./`, query:{pets:`${pet.pet_id}`}}} onClick={handlePost} />
 			)}
-		</div>
+		</main>
 	);
 }
 )

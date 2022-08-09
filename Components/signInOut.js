@@ -43,15 +43,21 @@ const SignInOut = () => {
                 { isBreakpoint ? (
                     <Image
                      src={require("/public/big_line.png")}
-                     alt="Picture of cat and dog"/>
+                     alt="Picture of cat and dog"
+                     layout='responsive'
+                     priority
+                     />
                 ) : (
                     <Image
                      src={require("/public/line_black.png")}
-                     alt="Picture of cat and dog"/>
+                     alt="Picture of cat and dog"
+                     layout='responsive'
+                     priority
+                     />
                     )
                 }
               </div>
-            <h2>Helping owners care for their pets</h2>
+            <h3>Helping owners care for their pets</h3>
             <p>since 2022</p>
         </div>
           {/* <Image
@@ -61,6 +67,7 @@ const SignInOut = () => {
               />
          </div>
         <h2>Welcome to The Care-Full App</h2> */}
+        <br/>
         <LinkButton text="Log In" link="/api/auth/login"/>
         </div>
     )

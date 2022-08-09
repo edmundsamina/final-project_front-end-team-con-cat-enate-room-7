@@ -28,9 +28,13 @@
 
 Welcome to Care-Full!
 
+This app was created as part of the School of Code bootcamp, a team of 6 animal lovers came together and began brainstorming what real world problem we wanted to solve. Soon we realised a common issue experienced amongst pet owners - remembering when specific symptoms began and tracking how many times a symptom has been experienced. This then led us onto talking about the difficulty of remembering when you need to administer medication and attend appointments. After lots of ideation and grand ideas, we pulled ourselves back to reality and came up with a viable product that we could plan and produce in only 4 weeks, this is the result.
+
+Problem statement:
 Having a sick pet is a stressful situation, on top of our already busy lives, this additional stress can make it difficult to remember the specific details of your pet's illness and their needs.
 
-This app aims to alleviate some of the stress that comes with having a sick pet by providing the user with an easy way to track symptoms and medications and facilitate better communication with their vet.
+Solution:
+This app aims to alleviate some of the stress that comes with having a sick pet by providing the user with an easy way to track symptoms and medications and facilitate better and more accurate in person communication when visiting the vets.
 
 **This README is for the front-end of the Care-Full app. If you would like to explore the back-end of the app please go to the [backend repository](https://github.com/SchoolOfCode/final-project_back-end-team-con-cat-enate-room-7)**
 
@@ -51,10 +55,19 @@ This app aims to alleviate some of the stress that comes with having a sick pet 
 
 ## **_Features_** 📱
 
-- Multiple pet profiles.
-- Symptom tracker.
-- Schedule Tracker & reminder.
-
+- Secure login and authorisation provided by Auth0
+- Add multiple pets
+- Update pet information
+- Symptom tracker:
+    - Add different symptoms
+    - Automatically stores instances of the same symptoms in one convenient location
+    - Keep track of the time and date that symptoms occured
+- Schedule Tracker & reminder system:
+    - Keep track of medications/appointments for your pet
+    - Schedule recurring reminders
+    - Mark reminders as done - automatically moved into your history page, should you need to check dates
+    - Delete reminders that you no longer want/need
+- Useful links page directs you to cat/dog friendly resources depending on your pet species 
 <br/>
 
 ---
@@ -65,15 +78,15 @@ This app aims to alleviate some of the stress that comes with having a sick pet 
 
 ### **Backend**
 
-\*\_The backend is deployed on Heroku however if you would like to run locally you will need to follow the steps below.
+The backend is deployed on Heroku however if you would like to run locally you will need to follow the steps below.
 
-1. Git clone the backend repository.
+1. Git clone the backend repository by pasting the following into your terminal:
 
 ```bash
   git clone https://github.com/SchoolOfCode/final-project_back-end-team-con-cat-enate-room-7
 ```
 
-2. Install all needed dependencies by running:
+2. Install all required dependencies by running:
 
 ```bash
   npm i
@@ -93,21 +106,24 @@ npm run createRemindersTable
 npm run createPetsTable
 ```
 
-5. To populate the tables you can achieve this by interacting with the front end UI here https://care-full.netlify.app. If you would like to run the front end locally, please follow the instructions in the next section.
+5. To populate the tables you can achieve this by interacting with the front-end, you can either run this locally or host on a hosting platform - we recommend Netlify but you are free to choose your own. For assistance deploying on Netlify please [click here](https://www.netlify.com/blog/2016/09/29/a-step-by-step-guide-deploying-on-netlify/).
 
-````
 
-6. Finally, to run the server use the following script within your terminal:
+
+
+
+
+6. Finally, to run the server locally use the following script within your terminal:
 
 ```bash
   npm run dev
 ````
 
-### **Frontend**
+### **Front-end**
 
-The front end is deployed using netlify, however you will need to follow the steps below if you would like to run it locally.
+To run the front-end locally follow the steps below:
 
-1. Git clone the frontend repository.
+1. Git clone the front-end repository by pasting the following into your terminal:
 
 ```bash
   git clone https://github.com/SchoolOfCode/final-project_front-end-team-con-cat-enate-room-7
@@ -115,13 +131,13 @@ The front end is deployed using netlify, however you will need to follow the ste
 
 2. Remember to navigate to the correct folder: final-project_front-end-team-con-cat-enate-room-7
 
-3. Install all necessary dependencies by running the following command in the terminal.
+3. Install all necessary dependencies by running the following command in the terminal:
 
 ```bash
   npm i
 ```
 
-4. Start the app.
+4. Start the app using:
 
 ```bash
   npm run dev
@@ -133,15 +149,15 @@ The front end is deployed using netlify, however you will need to follow the ste
 
 <br />
 
-<a name="tech-stack"/>
+
 
 ## **_Tech Stack⚙️_**
 
 **Client:** Next.js, CSS, Chakra Component Library, Auth0
 </br>
-**Server:** Node, Express, PostreSQL, Nanoid
+**Server:** Node.js, Express, PostreSQL, Nanoid
 </br>
-**Client-side Testing:** React-test library, Cypress
+**Client-side Testing:** React-test library, Cypress, Jest
 </br>
 **Server-side Testing:** Supertest, Jest
 
@@ -203,3 +219,5 @@ We are Con-Cat-enate!
 - [Next.js](https://nextjs.org/)
 - [Auth0](https://auth0.com/docs/quickstart/webapp/nextjs/)
 - [Chakra UI](https://chakra-ui.com/)
+- [Heroku](https://www.heroku.com/)
+- [Netlify](https://www.netlify.com/)

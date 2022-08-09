@@ -25,12 +25,19 @@ export default withPageAuthRequired (function SchedulePage({pet}) {
       <NavBar pet={pet} />
       <div className="m10"></div>
       <h2 className="ml10">{pet.name}</h2>
-      <Image
+      {/* <Image
           className="home-image"
           src={require("../../public/mock_photo.jpg")}
           alt="Picture of cat and dog"
           layout="responsive"
-        />
+        /> */}
+        <div className="hero-banner">
+          <Image
+            src={require("/public/line_black.png")}
+            alt="Picture of cat and dog"
+          />
+          </div>
+
       <div className="m10-1">
           <PetButton text="Change Pet Info" link={`${pet.pet_id}/updatePetDetails`} />
           <PetButton text="View Symptoms" link={`${pet.pet_id}/symptoms`}/>

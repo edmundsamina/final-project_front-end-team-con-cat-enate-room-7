@@ -14,7 +14,8 @@ import { withPageAuthRequired } from "@auth0/nextjs-auth0";
 import { useUser, useAuth0 } from "@auth0/nextjs-auth0";
 
 const url = process.env.NEXT_PUBLIC_DB_URL ?? "http://localhost:3000";
-export default withPageAuthRequired (function AddPets() {
+// withPageAuthRequired (
+    export default  function AddPets() {
 
     const { user, error, isLoading } = useUser();
 
@@ -50,7 +51,7 @@ export default withPageAuthRequired (function AddPets() {
     useEffect(() => {
         const checkFields = async () => {
             let entries = Object.values(submission);
-            for (let i = 0; i < entries.length; i++) {
+            for (let i = 1; i < entries.length; i++) {
               if (entries[i] === "" || entries[i] === undefined || entries[i] === null) {
                 setNoEmptyFields(false)
                 return
@@ -121,4 +122,4 @@ export default withPageAuthRequired (function AddPets() {
         </main>
     )
 }
-)
+// )

@@ -34,7 +34,8 @@ export async function getServerSideProps(context){
    return {props:{pet:data.payload[0]}}
 	}
 
-export default withPageAuthRequired (function AddReminder({pet}) {
+// export default withPageAuthRequired (
+	export default	function AddReminder({pet}) {
 
 	// const [checkbox, setCheckbox] = useState(false);
 
@@ -152,4 +153,4 @@ export default withPageAuthRequired (function AddReminder({pet}) {
 		</main>
 	);
 }
-)
+// )

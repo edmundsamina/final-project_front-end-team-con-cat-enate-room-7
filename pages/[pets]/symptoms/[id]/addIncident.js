@@ -21,7 +21,8 @@ const response = await fetch(`${url}/symptoms/${pet_id}?symptoms_id=${symptoms_i
  return {props:{incidents:data.payload[0]}}
   }
 
-export default withPageAuthRequired(function AddIncident({incidents}) {
+//  withPageAuthRequired(
+	export default	function AddIncident({incidents}) {
 
 
   const [newIncident, setNewIncident] = useState({
@@ -124,7 +125,8 @@ export default withPageAuthRequired(function AddIncident({incidents}) {
 			)}
 		</main>
 	);
-});
+}
+// );
 
 
 

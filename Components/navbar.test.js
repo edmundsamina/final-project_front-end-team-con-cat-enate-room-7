@@ -6,6 +6,6 @@ import "@jest/globals"
 describe("Navbar", () => {
     render(<NavBar/>)
 it("checks that the navbar renders correctly on the page", () => {
-expect(screen.getByText("are-Full")).toBeInTheDocument();
+expect(screen.getByAltText("Care-Full Logo")).toBeInTheDocument();
 })
 })

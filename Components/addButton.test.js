@@ -4,14 +4,14 @@ import "@testing-library/jest-dom";
 import "@jest/globals"
 
 describe("Add Button", () => {
-    render(<AddButton/>)
+    render(<AddButton href="/"/>)
 it("checks that the button renders correctly on the page", () => {
 expect(screen.getByRole('button')).toBeInTheDocument();
 })
 
-it("checks that the button label renders correctly on the page", () => {
+it("checks that the button title is present", () => {
     const text = "text"
-    render(<AddButton text={text}/>)
-    expect(screen.getByText("text")).toBeInTheDocument();
+    render(<AddButton text={text} href="/"/>)
+    expect(screen.getByTitle("Add an entry")).toBeInTheDocument();
     })
 })

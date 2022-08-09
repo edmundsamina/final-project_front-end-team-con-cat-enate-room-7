@@ -23,7 +23,8 @@ export async function getServerSideProps(context){
     }
 
 
-export default withPageAuthRequired (function UpdatePetDetails({pet}) {
+// withPageAuthRequired (
+    export default    function UpdatePetDetails({pet}) {
 
 
     const [submission,setSubmission] = useState({
@@ -101,4 +102,4 @@ export default withPageAuthRequired (function UpdatePetDetails({pet}) {
         </main>
     )
 }
-)
+// )

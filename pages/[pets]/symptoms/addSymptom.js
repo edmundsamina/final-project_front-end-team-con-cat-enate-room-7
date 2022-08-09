@@ -20,7 +20,8 @@ export async function getServerSideProps(context) {
 	return { props: { pet: data.payload[0] } };
 }
 
-export default withPageAuthRequired(function AddSymptom({ pet }) {
+//  withPageAuthRequired(
+	export default	function AddSymptom({ pet }) {
 	const [submission, setSubmission] = useState({
 		user_id: pet.user_id,
 		pet_id: pet.pet_id,
@@ -105,4 +106,4 @@ export default withPageAuthRequired(function AddSymptom({ pet }) {
         </main>
     )
 }
-)
+// )

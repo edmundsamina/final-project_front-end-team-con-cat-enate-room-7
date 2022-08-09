@@ -155,7 +155,7 @@ To run the front-end locally follow the steps below:
 
 **Client:** Next.js, CSS, Chakra Component Library, Auth0
 </br>
-**Server:** Node.js, Express, PostreSQL, Nanoid
+**Server:** Node.js, Express, PostgreSQL, Nanoid
 </br>
 **Client-side Testing:** React-test library, Cypress, Jest
 </br>

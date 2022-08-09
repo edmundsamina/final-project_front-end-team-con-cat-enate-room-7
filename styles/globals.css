@@ -177,6 +177,34 @@ h4{
   border-radius: 20px;
 }
 
+.hero-banner{
+    width: 80%;
+    margin: auto;
+}
+
+.hero-banner img{
+    /* width: 80% !important; */
+}
+
+.banner-text{
+  color:var(--main-color);
+  text-align: center;
+  margin-top: -1em;
+}
+
+.banner-text p{
+  font-weight: 700 !important;
+  font-size: 1.4em;
+}
+
+.banner-text h3{
+  font-weight: 700 !important;
+  font-size: 0.7em;
+}
+
+.mt4{
+  height: 4em;
+}
 /* .schedulecard{
   border: 3px solid var(--second-color);
   width: 100%;

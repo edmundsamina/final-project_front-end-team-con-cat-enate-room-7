@@ -538,6 +538,17 @@ h4{
   object-fit: contain;
 }
 
+.sign-in{
+  text-align: center;
+  padding-top: 4em;
+  color:var(--main-color);
+  font-weight: 700;
+}
+
+.sign-in img{
+  max-width: 500px;
+}
+
   @media screen and (min-width: 900px) {
     .navbar {
       max-width: 900px;

@@ -13,7 +13,8 @@ export async function getServerSideProps(context) {
 	return { props: { pet: data.payload[0] } };
 }
 
-export default withPageAuthRequired(function UsefulLinks({ pet }) {
+//  withPageAuthRequired(
+	export default	function UsefulLinks({ pet }) {
 	const catUsefulLinks = [
 		{
 			title: "Find a Vet",
@@ -132,4 +133,5 @@ export default withPageAuthRequired(function UsefulLinks({ pet }) {
 			</main>
 		);
 	}
-});
+}
+// );

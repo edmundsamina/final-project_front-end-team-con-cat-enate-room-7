@@ -179,10 +179,12 @@ h4{
 
 .hero-banner{
     padding-top: 4em;
+    width: 80%;
+    margin: auto;
 }
 
 .hero-banner img{
-    width: 80% !important;
+    /* width: 80% !important; */
 }
 
 .banner-text{

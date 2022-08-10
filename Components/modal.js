@@ -17,7 +17,7 @@ import {
     const { isOpen, onOpen, onClose } = useDisclosure()
     return (
       <div className="info-modal">
-        <IconButton className="modal-icon" onClick={onOpen} icon={<InfoIcon color="roots.100"/>} bgColor={"white"}/>
+        <IconButton className="modal-icon" onClick={onOpen} icon={<InfoIcon/>} bgColor={"white"}/>
   
         <Modal isOpen={isOpen} onClose={onClose} size={"sm"}>
           <ModalOverlay />

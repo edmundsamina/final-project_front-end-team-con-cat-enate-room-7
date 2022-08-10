@@ -6,7 +6,7 @@ const LinkButton = ({text,link,onClick}) => {
     return (
         <div data-testid="updateButton" className='linkbutton'>
           <Link href={link}>
-            <Button bgColor={'roots.100'} className="linkbutton" onClick={onClick}>{text} </Button>
+            <Button className="linkbutton" onClick={onClick}>{text} </Button>
           </Link>
         </div>
     )

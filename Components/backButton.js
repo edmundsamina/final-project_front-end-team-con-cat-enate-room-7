@@ -10,7 +10,7 @@ const BackButton = () => {
     return (
         <div className="backButton">
           <IconButton
-            icon={<ChevronLeftIcon color="roots.50" boxSize={"3em"} />}
+            icon={<ChevronLeftIcon  boxSize={"3em"} />}
             onClick={() => router.back()}
             bgColor={"white"}
             zIndex="100"

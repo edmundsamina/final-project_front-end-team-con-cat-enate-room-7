@@ -20,9 +20,6 @@ export async function getServerSideProps(context){
 }
 
 export default withPageAuthRequired (function SymptomPage({pet}) {
-  // const array = [{"symptoms":"Dodgy foot","symptoms_id":"1234567890","date":"120722"},
-  //                {"symptoms":"Red hand","symptoms_id":"122124112","date":"230722"},
-  //                {"symptoms":"Small Head","symptoms_id":"12314410","date":"220822"}]
 
   const [data, setData] = useState();
   const [newData, setNewData] = useState();
@@ -33,7 +30,7 @@ export default withPageAuthRequired (function SymptomPage({pet}) {
   );
 
   useEffect(() => {
-    // declare the data fetching function
+
     const fetchData = async () => {
       await delay(500)
       const response = await fetch(`${url}/symptoms/${pet.pet_id}`);
@@ -41,14 +38,11 @@ export default withPageAuthRequired (function SymptomPage({pet}) {
       setData(data.payload);
     };
 
-    // call the function
-    fetchData()
-      // make sure to catch any error
-      .catch(console.error);
+    fetchData().catch(console.error);
   }, []);
 
   useEffect(() => {
-    // declare the data fetching function
+
     const fetchData = async () => {
       await delay(500)
       const response = await fetch(`${url}/symptoms/${pet.pet_id}`);
@@ -56,10 +50,7 @@ export default withPageAuthRequired (function SymptomPage({pet}) {
       setData(data.payload);
     };
 
-    // call the function
-    fetchData()
-      // make sure to catch any error
-      .catch(console.error);
+    fetchData().catch(console.error);
   }, [stateCount]);
 
 
@@ -133,38 +124,3 @@ export default withPageAuthRequired (function SymptomPage({pet}) {
   );
 }
 )
-
-  // useEffect(() => {
-  //   function removeDuplicates() {
-  //     if (data) {
-  //       let unique = [...new Set(data.map((item) => item.symptoms))];
-  //       console.log(unique)
-  //       let uniqueNoNull = []
-  //       for (let i = 0; i < unique.length; i++){
-  //         if (unique[i]){
-  //           uniqueNoNull.push(unique[i])
-  //         }
-  //       }
-  //       setNewData(uniqueNoNull);
-  //     }
-  //   }
-  //   removeDuplicates();
-  // }, [data]);
-
-
-  // if (newData.length === 0) {
-  //   return (
-  //     <main>
-  //       <NavBar pet={pet}/>
-  //       <div className="m10">
-  //         <InfoModal title="Symptoms Info" text="Here is the symptoms page, you can add any symptom your pet has displayed by pressing the Add Button (+) and filling out the form. Add more incidents of the same symptom by pressing 'Details' to keep track of how your pet is doing"/>
-  //           <h2 className="text-center">Symtpoms</h2>
-  //           <h2>{pet.name}</h2>
-  //             <div>
-  //               <NoDataCard text="You haven't added any symptoms yet. Press the Add Button below to get started"/>
-  //             </div>
-  //        <AddButton text="Add Symptom" href={{pathname:`symptoms/addSymptom`, query:{pets:`${pet.pet_id}`}}} />
-  //        </div>
-  //      </main>
-  //   )
-  // }

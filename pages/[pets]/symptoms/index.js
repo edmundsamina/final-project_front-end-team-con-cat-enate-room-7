@@ -1,7 +1,6 @@
 import React from "react";
 import NavBar from "../../../Components/navBar.js";
 import AddButton from "../../../Components/addButton.js";
-import Link from "next/link";
 import SymptomCard from "../../../Components/symptomCard";
 import { useEffect, useState } from "react";
 import { withPageAuthRequired } from "@auth0/nextjs-auth0";

@@ -2,14 +2,11 @@ import React, { useState, useEffect } from 'react'
 import {
     FormControl,
     FormLabel,
-    FormErrorMessage,
-    FormHelperText,
     Input,
     Select
   } from '@chakra-ui/react'
 import NavBar from '../../Components/navBar'
 import LinkButton from '../../Components/linkButton'
-import { nanoid } from 'nanoid/non-secure'
 import { withPageAuthRequired } from "@auth0/nextjs-auth0";
 
 const url = process.env.NEXT_PUBLIC_DB_URL ?? "http://localhost:3000"
@@ -50,16 +47,10 @@ export default withPageAuthRequired (function UpdatePetDetails({pet}) {
             }
             setNoEmptyFields(true)
         };
-    
-        // call the function
-        checkFields()
-          // make sure to catch any error
-          .catch(console.error);
+        checkFields().catch(console.error);
       }, [submission]);
 
      function handleChange(e){
-        // let value = (e.target.value)
-        // setSubmission({ ...submission, [e.target.name]: value });
         setSubmission((v)=> (e.target.validity.valid ? { ...submission, [e.target.name]: e.target.value  }: v));
      }
 

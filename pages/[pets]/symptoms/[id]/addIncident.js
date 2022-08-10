@@ -2,8 +2,6 @@ import React, { useState, useEffect } from "react";
 import {
   FormControl,
   FormLabel,
-  FormErrorMessage,
-  FormHelperText,
   Input,
 } from "@chakra-ui/react";
 import NavBar from "../../../../Components/navBar";
@@ -36,22 +34,6 @@ export default withPageAuthRequired(function AddIncident({incidents}) {
     description: "",
   });
 
-
-	// const [noEmptyFields, setNoEmptyFields] = useState(false);
-
-	// function handleChange(e) {
-	// 	let value = e.target.value.toString();
-	// 	setNewIncident({ ...newIncident, [e.target.name]: value });
-	// 	let entries = Object.values(newIncident);
-	// 	for (let i = 0; i < entries.length; i++) {
-	// 		if (entries[i] === "" || entries[i] === undefined) {
-	// 			setNoEmptyFields(false);
-	// 			return;
-	// 		}
-	// 	}
-	// 	setNoEmptyFields(true);
-	// }
-
 	const [noEmptyFields, setNoEmptyFields] = useState(false)
 
     useEffect(() => {
@@ -67,10 +49,7 @@ export default withPageAuthRequired(function AddIncident({incidents}) {
             setNoEmptyFields(true)
         };
     
-        // call the function
-        checkFields()
-          // make sure to catch any error
-          .catch(console.error);
+        checkFields().catch(console.error);
       }, [newIncident]);
 
 	  function handleChange(e){

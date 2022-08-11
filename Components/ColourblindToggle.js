@@ -5,37 +5,16 @@ import { useState, useEffect } from 'react'
 const ColourblindToggle = () => {
 
 
-    function findToggle(entry){
-        if (entry === 'true'){
-            return true
-        }
-        else if (entry === 'false'){
-            return false
-        }
-        else {
-            return null
-        }
-    }
-    
-    let storedState = localStorage.getItem('colourBlind')
-
-    const toggled = findToggle(storedState)
-    const [colourBlind, setColourBlind] = useState(toggled)
+    const [colourBlind, setColourBlind] = useState(false)
 
 
     useEffect(()=>{
-      if (colourBlind === true){
         var r = document.querySelector(':root');
         var rs = getComputedStyle(r);
-        r.style.setProperty('--main-color', '#122746');
-        r.style.setProperty('--second-color', '#8ea3c6');
-      }
+        if(r.style.getPropertyValue('--main-color') === '#122746'){
+          setColourBlind(true)
+        }
     },[])
-
-    useEffect(() => {
-        localStorage.setItem('colourBlind', colourBlind);
-      }, [colourBlind]);
-
 
     function changeColour(e){
       if (colourBlind === false){

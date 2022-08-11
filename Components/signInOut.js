@@ -3,6 +3,7 @@ import Image from 'next/image'
 import LinkButton from './linkButton'
 
 import { useState, useCallback, useEffect } from 'react';
+import ColourblindToggle from './ColourblindToggle';
 
 const useMediaQuery = (width) => {
   const [targetReached, setTargetReached] = useState(false);

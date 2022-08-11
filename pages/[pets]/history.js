@@ -17,27 +17,22 @@ export async function getServerSideProps(context){
    return {props:{pet:data.payload[0]}}
     }
 
-  
-
 export default withPageAuthRequired (function HistoryPage({pet}) {
-    const [stateCount, setStateCount] = useState(0);
+    
+	const [stateCount, setStateCount] = useState(0);
 	const [data, setData] = useState();
 
-	// const delay = ms => new Promise(
-	// 	resolve => setTimeout(resolve, ms)
-	//   );
 	useEffect(() => {
 		
 		const fetchData = async () => {
-			// await delay()
+
 			const response = await fetch(`${url}/reminders?pet_id=${pet.pet_id}`);
 			const data = await response.json();
 			let newArray = data.payload.filter((object) => object.completed === true)
 			setData(newArray);
 		};
 
-		fetchData()
-			.catch(console.error);
+		fetchData().catch(console.error);
 	}, []);
 
     useEffect(() => {
@@ -49,8 +44,7 @@ export default withPageAuthRequired (function HistoryPage({pet}) {
 			setData(newArray);
 		};
 
-		fetchData()
-			.catch(console.error);
+		fetchData().catch(console.error);
 	}, [stateCount]);
 
     async function onDelete(data) {
@@ -95,19 +89,3 @@ export default withPageAuthRequired (function HistoryPage({pet}) {
     )
 }
 )
-
-	// if (data.length === 0) {
-	// 	return (
-	// 		<main>
-	// 		<NavBar pet={pet}/>  
-	// 		<div className="m10"> 
-	// 		<div className="history-card">
-	// 		<InfoModal title="Reminder History- Info" text="Welcome to the History Page. Here is a record of all the reminders you have completed in order for you keep a track of things easier. There isn't much to do on this page, it is only here to help keep things easier for any vet appointments you may have." />
-	// 				<h2 className="text-center">Reminder History</h2>
-	// 				<h2>{pet.name}</h2>
-	// 				<NoDataCard text="You haven't completed anything in the Check Schedule page yet. Once you have pressed Done on some of your reminders you will see them here" />
-	// 		</div>       
-	// 		</div>
-	// 		</main>
-	// 	)
-	// }

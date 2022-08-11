@@ -1,10 +1,8 @@
-
 import React from "react";
 import NavBar from "../../Components/navBar.js";
 import Image from "next/image.js";
 import PetButton from "../../Components/petButton"
 import { withPageAuthRequired } from "@auth0/nextjs-auth0";
-
 
 
 const url = process.env.NEXT_PUBLIC_DB_URL ?? "http://localhost:3000"
@@ -25,12 +23,6 @@ export default withPageAuthRequired (function SchedulePage({pet}) {
       <NavBar pet={pet} />
       <div className="m10"></div>
       <h2 className="ml10">{pet.name}</h2>
-      {/* <Image
-          className="home-image"
-          src={require("../../public/mock_photo.jpg")}
-          alt="Picture of cat and dog"
-          layout="responsive"
-        /> */}
         <div className="hero-banner">
           <Image
             src={require("/public/line_black.png")}

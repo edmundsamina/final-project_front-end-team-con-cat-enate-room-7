@@ -1,5 +1,4 @@
 import React from 'react';
-import Link from "next/link";
 import { IconButton } from "@chakra-ui/react";
 import { ChevronLeftIcon } from "@chakra-ui/icons";
 import { useRouter } from "next/router";

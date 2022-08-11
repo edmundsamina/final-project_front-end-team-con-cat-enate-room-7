@@ -2,8 +2,6 @@ import React, { useState, useEffect } from "react";
 import {
 	FormControl,
 	FormLabel,
-	FormErrorMessage,
-	FormHelperText,
 	Input,
 	Select,
 	Checkbox,
@@ -14,16 +12,6 @@ import { nanoid } from "nanoid/non-secure";
 import { withPageAuthRequired } from "@auth0/nextjs-auth0";
 import { getMaxDate, getMinDate } from "../../../utils/getDate.js"
 
-/*
-user_id - handed in as state
-pet_id - same
-reminder_id - nanoid
-task - string
-date - string (functionality needed here to account for data types)
-completed - boolean
-repeated - boolean
-frequency - number
-*/
 
 const url = process.env.NEXT_PUBLIC_DB_URL ?? "http://localhost:3000";
 
@@ -37,8 +25,6 @@ export async function getServerSideProps(context){
 
 export default withPageAuthRequired (function AddReminder({pet}) {
 
-	// const [checkbox, setCheckbox] = useState(false);
-
 	const [submission, setSubmission] = useState({
 		user_id: pet.user_id,
 		pet_id: pet.pet_id,
@@ -49,24 +35,6 @@ export default withPageAuthRequired (function AddReminder({pet}) {
 		repeated: false,
 		frequency: Number,
 	});
-
-	//Needs to be refactored
-  // Conditional render happens without noEmptyFields check
-	// const [noEmptyFields, setNoEmptyFields] = useState(false);
-
-	// function handleChange(e) {
-	// 	console.log(submission.date)
-	// 	let value = e.target.value.toString();
-	// 	setSubmission({ ...submission, [e.target.name]: value });
-	// 	let entries = Object.values(submission);
-	// 	for (let i = 0; i < entries.length; i++) {
-	// 		if (entries[i] === "" || entries[i] === undefined) {
-	// 			setNoEmptyFields(false);
-	// 			return;
-	// 		}
-	// 	}
-	// 	setNoEmptyFields(true);
-	// }
 
 	const [noEmptyFields, setNoEmptyFields] = useState(false)
 
@@ -83,10 +51,7 @@ export default withPageAuthRequired (function AddReminder({pet}) {
             setNoEmptyFields(true)
         };
     
-        // call the function
-        checkFields()
-          // make sure to catch any error
-          .catch(console.error);
+        checkFields().catch(console.error);
       }, [submission]);
 
      function handleChange(e){

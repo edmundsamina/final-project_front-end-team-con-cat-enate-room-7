@@ -2,8 +2,6 @@ import React, { useState, useEffect } from 'react'
 import {
     FormControl,
     FormLabel,
-    FormErrorMessage,
-    FormHelperText,
     Input,
     Select
   } from '@chakra-ui/react'
@@ -11,12 +9,12 @@ import NavBar from '../Components/navBar'
 import LinkButton from '../Components/linkButton'
 import { nanoid } from 'nanoid/non-secure'
 import { withPageAuthRequired } from "@auth0/nextjs-auth0";
-import { useUser, useAuth0 } from "@auth0/nextjs-auth0";
+import { useUser } from "@auth0/nextjs-auth0";
 
 const url = process.env.NEXT_PUBLIC_DB_URL ?? "http://localhost:3000";
 export default withPageAuthRequired (function AddPets() {
 
-    const { user, error, isLoading } = useUser();
+    const { user } = useUser();
 
     const [userID, setUserID] = useState("");
 
@@ -38,13 +36,6 @@ export default withPageAuthRequired (function AddPets() {
         weight: ""
     })
 
-    function isNumberKey(evt){
-        var charCode = (evt.which) ? evt.which : evt.keyCode
-        if (charCode > 31 && (charCode < 48 || charCode > 57))
-            return false;
-        return true;
-    }
-
     const [noEmptyFields, setNoEmptyFields] = useState(false)
 
     useEffect(() => {
@@ -59,16 +50,10 @@ export default withPageAuthRequired (function AddPets() {
             }
             setNoEmptyFields(true)
         };
-    
-        // call the function
-        checkFields()
-          // make sure to catch any error
-          .catch(console.error);
+        checkFields().catch(console.error);
       }, [submission]);
 
      function handleChange(e){
-        // let value = (e.target.value)
-        // setSubmission({ ...submission, [e.target.name]: value });
         setSubmission((v)=> (e.target.validity.valid ? { ...submission, [e.target.name]: e.target.value  }: v));
      }
 
@@ -84,7 +69,6 @@ export default withPageAuthRequired (function AddPets() {
     }
 
     function selectChange(e) {
-
 		setSubmission((v)=> (e.target.validity.valid ? { ...submission, species: e.target.value  }: v));
 	}
 
@@ -122,3 +106,14 @@ export default withPageAuthRequired (function AddPets() {
     )
 }
 )
+
+/*
+Logic to check input values are numerical, never used, written as inline
+    function isNumberKey(evt){
+        var charCode = (evt.which) ? evt.which : evt.keyCode
+        if (charCode > 31 && (charCode < 48 || charCode > 57))
+            return false;
+        return true;
+    }
+What's going on with userId? There are two functions turning it to a string only one of which appears to be used
+*/

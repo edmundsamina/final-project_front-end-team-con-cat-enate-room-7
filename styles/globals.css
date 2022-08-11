@@ -79,10 +79,18 @@ h4{
   right: 0px;
   z-index: 10;}
 
-  /* .backButton{ */
-    /* position: sticky;
-    left: 0px;
-    z-index: 10;} */
+  .backButton > button{ 
+    color: var(--second-color);
+  }
+
+.doneButton{
+  color: white;
+  background-color: var(--main-color)!important;
+}
+.deleteButton{
+  color: white;
+  background-color: var(--main-color)!important;
+}
 
 .addButton {
   display: flex;
@@ -176,6 +184,7 @@ h4{
 .linkbutton button{
   padding: 0px 30px;
   border-radius: 20px;
+  background-color: var(--main-color)!important;
 }
 
 .hero-banner{
@@ -484,7 +493,9 @@ h4{
 
   .modal-icon{
     float: right;
-    margin-top: 6px;}
+    margin-top: 6px;
+    color: var(--main-color)!important;
+  }
   
   @-webkit-keyframes rotating {
     from {
@@ -574,4 +585,11 @@ h4{
 
   }
 
-  
+  .colour-toggle{
+    padding-left: 0.4em;
+  }
+
+  .colour-toggle > label{
+    padding-left: 0.4em;
+  }
+

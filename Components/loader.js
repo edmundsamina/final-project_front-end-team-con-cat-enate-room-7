@@ -4,12 +4,6 @@ import Image from 'next/image'
 const Loader = () => {
     return (
         <div className='loadcat'>
-          {/* <div className="cat">
-          <div className="cat__body"></div>
-          <div className="cat__body"></div>
-          <div className="cat__tail"></div>
-          <div className="cat__head"></div>
-          </div> */}
           <Image
 						className="home-image"
 						unoptimized={true}

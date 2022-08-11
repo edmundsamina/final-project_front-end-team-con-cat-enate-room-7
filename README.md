@@ -68,6 +68,8 @@ This app aims to alleviate some of the stress that comes with having a sick pet 
     - Mark reminders as done - automatically moved into your history page, should you need to check dates
     - Delete reminders that you no longer want/need
 - Useful links page directs you to cat/dog friendly resources depending on your pet species 
+- Toggle for colourblind users
+- Models on every page to provide instructions for the user every step of the way
 <br/>
 
 ---
@@ -157,7 +159,7 @@ To run the front-end locally follow the steps below:
 </br>
 **Server:** Node.js, Express, PostgreSQL, Nanoid
 </br>
-**Client-side Testing:** React-test library, Cypress, Jest
+**Client-side Testing:** React Testing Library, Cypress, Jest
 </br>
 **Server-side Testing:** Supertest, Jest
 
@@ -167,13 +169,13 @@ To run the front-end locally follow the steps below:
 
 <br />
 
-## **_Color Reference_** 🖌️
+## **_Colour Reference_** 🖌️
 
-| Color      | Hex                                                              |
+| Colour      | Hex                                                              |
 | ---------- | ---------------------------------------------------------------- |
-| Main       | ![#448FFF](https://via.placeholder.com/10/448FFF?text=+) #448FFF |
-| secondary  | ![#B2D1FF](https://via.placeholder.com/10/B2D1FF?text=+)#B2D1FF  |
-| Background | ![#fff](https://via.placeholder.com/10/fff?text=+) #fff          |
+| Main       | ![#448FFF](https://via.placeholder.com/15/448FFF/448FFF.png) `#448FFF` |
+| secondary  | ![#B2D1FF](https://via.placeholder.com/15/B2D1FF/B2D1FF.png)`#B2D1FF`  |
+| Background | ![#fff](https://via.placeholder.com/15/fff/fff.png) `#fff`          |
 
 <br/>
 

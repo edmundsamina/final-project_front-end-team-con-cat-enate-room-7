@@ -1,14 +1,10 @@
 import AddButton from "../Components/addButton";
 import PetNavBar from "../Components/petNavBar";
 import styles from "../styles/Home.module.css";
-import SymptomCard from "../Components/symptomCard";
-import LinkButton from "../Components/linkButton";
 import Image from "next/image";
 import PetCard from "../Components/PetCard";
 import { useEffect, useState } from "react";
-import { useUser, useAuth0 } from "@auth0/nextjs-auth0";
-import {useRouter} from "next/router";
-import Link from "next/link";
+import { useUser } from "@auth0/nextjs-auth0";
 import Loader from "../Components/loader";
 import SignInOut from "../Components/signInOut.js";
 import NoDataCard from "../Components/noDataCard";
@@ -19,16 +15,17 @@ const url = process.env.NEXT_PUBLIC_DB_URL ?? "http://localhost:3000";
 
 export default function Home() {
   //Logic for login/logout with auth0
-  const { user, error, isLoading } = useUser();
-  const router = useRouter()
+  const { user } = useUser();
   const [data, setData] = useState();
   const [userID, setUserID] = useState("");
   
+  //delay prevents inital fetch executing too fast upon client request
   const delay = ms => new Promise(
 		resolve => setTimeout(resolve, ms)
 	  );
+
+  //uses delay before fetching backend data with autheticated userId
 	useEffect(() => {
-		// declare the data fetching function
 		const fetchData = async () => {
       await delay(500)
       if (userID){
@@ -37,13 +34,10 @@ export default function Home() {
         setData(data.payload);
       }
 		};
-
-		// call the function
-		fetchData()
-			// make sure to catch any error
-			.catch(console.error);
+		fetchData().catch(console.error);
 	}, [userID]);
 
+  //gets userId and turns to a string for backend use
   useEffect(() => {
 		function getId(user) {
 			if (user) {
@@ -104,23 +98,3 @@ export default function Home() {
   }
   
 }
-
-  // if (data.length === 0) {
-  //   return (
-  //     <main>
-  //     <PetNavBar pet={false}/>
-  //     <div className={styles.container}>
-  //       <Image
-  //         className="home-image"
-  //         src={require("./../public/mock_photo.jpg")}
-  //         alt="Picture of cat and dog"
-  //         layout="responsive"
-  //       />
-  //       <div className="m10-1 flex">
-  //         <NoDataCard text="You haven't added any pets yet. Click the Add Button below to get started"/>
-  //       </div>        
-  //       <AddButton text="Add Pet" href="/addPet" />
-  //     </div>
-  //   </main>
-  //   )
-  // }

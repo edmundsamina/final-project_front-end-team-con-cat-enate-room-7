@@ -6,7 +6,7 @@ const DoneButton = ({ text, onClick }) => {
 	return (
 		<div className="linkbutton">
 			
-				<Button bgColor={"roots.100"} className="linkbutton" onClick={onClick}>
+				<Button className="doneButton" onClick={onClick}>
 					{text}
 				</Button>
 			

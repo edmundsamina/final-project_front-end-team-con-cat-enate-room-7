@@ -2,8 +2,6 @@ import React, { useState, useEffect } from "react";
 import {
 	FormControl,
 	FormLabel,
-	FormErrorMessage,
-	FormHelperText,
 	Input,
 } from "@chakra-ui/react";
 import NavBar from "../../../Components/navBar";
@@ -33,22 +31,6 @@ export default withPageAuthRequired(function AddSymptom({ pet }) {
 		description: "",
 	});
 
-	// const [noEmptyFields, setNoEmptyFields] = useState(false)
-
-	//  function handleChange(e){
-	//     let value = (e.target.value).toString()
-	//     setSubmission({ ...submission, [e.target.name]: value });
-	//     let entries = Object.values(submission);
-	//     for (let i = 0; i < entries.length; i++) {
-	//       if (entries[i] === "" || entries[i] === undefined) {
-	//         setNoEmptyFields(false)
-	//         return
-	//       }
-
-	//     }
-	//     setNoEmptyFields(true)
-	//  }
-
 	const [noEmptyFields, setNoEmptyFields] = useState(false);
 
 	useEffect(() => {
@@ -67,17 +49,13 @@ export default withPageAuthRequired(function AddSymptom({ pet }) {
 			setNoEmptyFields(true);
 		};
 
-		// call the function
-		checkFields()
-			// make sure to catch any error
-			.catch(console.error);
+		checkFields().catch(console.error);
 	}, [submission]);
 
 	function handleChange(e) {
 		let value = e.target.value;
 		setSubmission({ ...submission, [e.target.name]: value });
 	}
-
 
     async function handlePost(){
         const response = await fetch(`${url}/symptoms`, {

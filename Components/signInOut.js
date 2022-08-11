@@ -60,13 +60,6 @@ const SignInOut = () => {
             <h3>Helping owners care for their pets</h3>
             <p>since 2022</p>
         </div>
-          {/* <Image
-              className="home-image"
-              src={require("./../public/conCAT.png")}
-              alt="Picture of cat and dog"
-              />
-         </div>
-        <h2>Welcome to The Care-Full App</h2> */}
         <br/>
         <LinkButton text="Log In" link="/api/auth/login"/>
         </div>

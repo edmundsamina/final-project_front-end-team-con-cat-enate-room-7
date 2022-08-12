@@ -46,9 +46,10 @@ This app aims to alleviate some of the stress that comes with having a sick pet 
 
 # **_App-Demo_**
 
-[<img src=".\public\Care-Full home page.jpg" width="250" height="480"/>](image.png)
-[<img src="./public\DEMO-ADD-PET-NEW.gif" width="250" height="480"/>](image.png)
-
+[<img src=".\public\demo-home.gif" width="250" height="480"/>](demo-home.gif)
+[<img src="./public\demo-addPet.gif" width="250" height="480"/>](demo-addPet.gif)
+[<img src="./public\demo-modal.gif" width="250" height="480"/>](demo-modal.gif)
+[<img src="./public\demo-colour.gif" width="250" height="480"/>](demo-colour.gif)
 <br/>
 
 <br />
@@ -59,18 +60,18 @@ This app aims to alleviate some of the stress that comes with having a sick pet 
 - Add multiple pets
 - Update pet information
 - Symptom tracker:
-    - Add different symptoms
-    - Automatically stores instances of the same symptoms in one convenient location
-    - Keep track of the time and date that symptoms occured
+  - Add different symptoms
+  - Automatically stores instances of the same symptoms in one convenient location
+  - Keep track of the time and date that symptoms occured
 - Schedule Tracker & reminder system:
-    - Keep track of medications/appointments for your pet
-    - Schedule recurring reminders
-    - Mark reminders as done - automatically moved into your history page, should you need to check dates
-    - Delete reminders that you no longer want/need
-- Useful links page directs you to cat/dog friendly resources depending on your pet species 
+  - Keep track of medications/appointments for your pet
+  - Schedule recurring reminders
+  - Mark reminders as done - automatically moved into your history page, should you need to check dates
+  - Delete reminders that you no longer want/need
+- Useful links page directs you to cat/dog friendly resources depending on your pet species
 - Toggle for colourblind users
 - Modals on every page to provide instructions for the user every step of the way
-<br/>
+  <br/>
 
 ---
 
@@ -110,16 +111,11 @@ npm run createPetsTable
 
 5. To populate the tables you can achieve this by interacting with the front-end, you can either run this locally or host on a hosting platform - we recommend Netlify but you are free to choose your own. For assistance deploying on Netlify please [click here](https://www.netlify.com/blog/2016/09/29/a-step-by-step-guide-deploying-on-netlify/).
 
-
-
-
-
-
 6. Finally, to run the server locally use the following script within your terminal:
 
 ```bash
   npm run dev
-````
+```
 
 ### **Front-end**
 
@@ -151,8 +147,6 @@ To run the front-end locally follow the steps below:
 
 <br />
 
-
-
 ## **_Tech Stack⚙️_**
 
 **Client:** Next.js, CSS, Chakra Component Library, Auth0
@@ -171,11 +165,11 @@ To run the front-end locally follow the steps below:
 
 ## **_Colour Reference_** 🖌️
 
-| Colour      | Hex                                                              |
-| ---------- | ---------------------------------------------------------------- |
+| Colour     | Hex                                                                    |
+| ---------- | ---------------------------------------------------------------------- |
 | Main       | ![#448FFF](https://via.placeholder.com/15/448FFF/448FFF.png) `#448FFF` |
 | secondary  | ![#B2D1FF](https://via.placeholder.com/15/B2D1FF/B2D1FF.png)`#B2D1FF`  |
-| Background | ![#fff](https://via.placeholder.com/15/fff/fff.png) `#fff`          |
+| Background | ![#fff](https://via.placeholder.com/15/fff/fff.png) `#fff`             |
 
 <br/>
 

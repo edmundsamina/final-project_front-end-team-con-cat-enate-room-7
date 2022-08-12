@@ -69,7 +69,7 @@ This app aims to alleviate some of the stress that comes with having a sick pet 
     - Delete reminders that you no longer want/need
 - Useful links page directs you to cat/dog friendly resources depending on your pet species 
 - Toggle for colourblind users
-- Models on every page to provide instructions for the user every step of the way
+- Modals on every page to provide instructions for the user every step of the way
 <br/>
 
 ---
